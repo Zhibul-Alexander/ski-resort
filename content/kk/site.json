@@ -1,0 +1,130 @@
+{
+  "brand": {
+    "name": "Ski №1 Rental",
+    "tagline": "TODO: translate to kk — Premium rental & lessons in Gudauri."
+  },
+  "resort": {
+    "name": "Gudauri",
+    "description": "Үлкен Кавказ тауларындағы Грузиядағы танымал шаңғы курорты, Тбилисиден шамамен 120–130 км қашықтықта, Әскери-Грузия жолында. Мұнда әртүрлі деңгейлерге арналған трассалар бар — бастапқыларды оқытудан сенімді шаңғы тебуге дейін, сондай-ақ фрирайд әуесқойлары үшін еңістердің жанындағы үлкен аймақтар. Курорт ықшам және ыңғайлы: тұрғын үйлер, кафелер және қызметтер әдетте көтергіштердің жанында орналасқан. Қыста жол жағдайлары ауа райына байланысты өзгеруі мүмкін, сондықтан саяхатты уақыт резервімен жоспарлаған жөн."
+  },
+  "contacts": {
+    "phone": "+995 000 00 00 00",
+    "email": "zhibul.alexander@gmail.com",
+    "whatsapp": "+995 000 00 00 00",
+    "telegram": "@ski1rental",
+    "viber": "+995 000 00 00 00",
+    "instagram": "https://instagram.com/"
+  },
+  "hours": {
+    "label": "Hours",
+    "value": "09:00–19:00"
+  },
+  "location": {
+    "addressLine": "Gudauri, Georgia (replace with exact address)",
+    "directions": "TODO: translate to kk — Replace with real directions and landmarks.",
+    "mapEmbedUrl": "https://www.google.com/maps?q=42.4661767,44.4830638&z=17&output=embed",
+    "mapOpenUrl": "https://www.google.com/maps/place/%D0%9F%D0%B0%D1%81%D0%B0%D0%BD%D0%B0%D1%83%D1%80%D0%B8/@42.4659349,44.4830925,17.25z/data=!4m6!3m5!1s0x404529d8333dd5e3:0x8ec9ffc4962978a2!8m2!3d42.4661767!4d44.4830638!16s%2Fg%2F11pzvl7bp9"
+  },
+  "pageTitles": {
+    "thankYouMessage": "Демалысыңызға сенгеніңізге рахмет!",
+    "resortMap": "Курорт картасы",
+    "resortPhotos": "Курорт фотосуреттері",
+    "capacity": "Өткізу қабілеті:",
+    "start": "Басталу:",
+    "verticalDrop": "Тік құлау:",
+    "length": "Ұзындығы:",
+    "liftsSubtitle": "Doppelmayr (Австрия) және Poma (Франция) канатты жолының 14 жұмыс істейтін желісі"
+  },
+  "sections": {
+    "highlights": {
+      "title": "TODO: translate to kk — Highlights",
+      "items": [
+        {
+          "title": "Premium equipment",
+          "text": "Economy + premium sets, well-maintained and ready for the slopes."
+        },
+        {
+          "title": "Fast fitting",
+          "text": "We help you pick the right gear quickly — perfect for families."
+        },
+        {
+          "title": "Trusted service",
+          "text": "Friendly team, clear prices, and great guest feedback."
+        }
+      ]
+    },
+    "shopPhotos": {
+      "title": "TODO: translate to kk — Shop photos",
+      "items": [
+        {
+          "title": "Inside the shop",
+          "src": "/images/shop/inside-1.jpg"
+        },
+        {
+          "title": "Gear wall",
+          "src": "/images/shop/inside-2.jpg"
+        },
+        {
+          "title": "Outside entrance",
+          "src": "/images/shop/outside-1.jpg"
+        }
+      ]
+    },
+    "certificates": {
+      "title": "TODO: translate to kk — Certificates & quality",
+      "items": [
+        {
+          "title": "Certified instructors",
+          "text": "Add your real certificates here (images or PDF links)."
+        },
+        {
+          "title": "Serviced equipment",
+          "text": "We tune and check gear regularly for safety and performance."
+        }
+      ]
+    },
+    "resortMap": {
+      "title": "Курорт картасы",
+      "src": "/images/resort/map.webp",
+      "alt": "Курорт картасы"
+    },
+    "resortLifts": {
+      "title": "Көтергіштер мен трассалар",
+      "items": []
+    },
+    "liveStream": {
+      "title": "Курорттан тікелей трансляция",
+      "youtubeUrl": "https://www.youtube.com/embed/JKrcipuNb7I",
+      "videoUrl": "https://g2.ipcamlive.com/player/player.php?alias=5df6407e5ca46"
+    },
+    "resortPhotos": {
+      "title": "Курорт фотосуреттері",
+      "items": [
+        {
+          "title": "Курорт фото 1",
+          "src": "/images/resort/1.webp"
+        },
+        {
+          "title": "Курорт фото 2",
+          "src": "/images/resort/2.webp"
+        },
+        {
+          "title": "Курорт фото 3",
+          "src": "/images/resort/3.webp"
+        },
+        {
+          "title": "Курорт фото 4",
+          "src": "/images/resort/4.webp"
+        },
+        {
+          "title": "Курорт фото 5",
+          "src": "/images/resort/5.webp"
+        },
+        {
+          "title": "Курорт фото 6",
+          "src": "/images/resort/6.webp"
+        }
+      ]
+    }
+  }
+}

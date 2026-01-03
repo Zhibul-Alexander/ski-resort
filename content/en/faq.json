@@ -1,0 +1,33 @@
+{
+  "title": "FAQ",
+  "items": [
+    {
+      "q": "How do I request a booking?",
+      "a": "Fill out the booking request form on the booking page: specify rental dates, select the equipment you need (skis, snowboard, kids' sets, clothing), and add your contact details. After submitting, we'll contact you by phone or email within a few hours to confirm availability and clarify details. This is not an instant booking — we check availability and select the best options for your parameters."
+    },
+    {
+      "q": "Do you have kids gear?",
+      "a": "Yes, we have a full range of kids' equipment: ski and snowboard sets for children of different ages and sizes. We select equipment based on the child's height, weight, and skill level. Kids' sets include skis or a snowboard, boots, and bindings, specially selected for safe and comfortable skiing. When booking, be sure to specify the child's age and parameters in the comments."
+    },
+    {
+      "q": "What should I include in the notes?",
+      "a": "In the comments, specify shoe size, height and weight (important for selecting the right skis or snowboard), skill level (beginner, intermediate, advanced), and any special wishes or requirements. If you have brand preferences, skiing style preferences, or need additional accessories — mention it. The more detailed the information, the more accurately we'll select the equipment and the faster the booking process will be."
+    },
+    {
+      "q": "Can one person book for a family?",
+      "a": "Absolutely! In the booking form, you can add multiple items — separately for each family member. Just click the \"Add item\" button and fill in the data for each person: adult skis, kids' snowboard, additional clothing, and so on. This is very convenient for family vacations — the entire booking is processed together, and we can offer favorable options for the group. All items can be booked for the same dates."
+    },
+    {
+      "q": "Do you offer group lessons?",
+      "a": "We mainly specialize in private lessons, which allow the instructor to fully focus on your needs and ensure maximum progress. However, if you want to take lessons in a small group (2–3 people of approximately the same level), we can discuss this possibility. Contact us in advance, and we'll select the best option based on your wishes and the instructors' schedule."
+    },
+    {
+      "q": "How quickly can I get the equipment after booking?",
+      "a": "We usually process bookings within a few hours during business hours (from 09:00 to 19:00). After confirming the booking, the equipment will be ready by the specified rental start date. If you need it urgently — call us or write in a messenger, and we'll try to speed up the process. On peak days (weekends, holidays), we recommend booking in advance, at least 1–2 days ahead."
+    },
+    {
+      "q": "What's included in the rental set?",
+      "a": "A standard set includes skis or a snowboard, appropriate boots, and bindings. All equipment is regularly serviced and ready to use. Additionally, you can rent a helmet, goggles, gloves, jacket, and pants. We also provide ski poles. If you need any specific accessories or equipment — specify when booking, and we'll select the best option."
+    }
+  ]
+}

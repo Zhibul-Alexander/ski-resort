@@ -1,0 +1,25 @@
+{
+  "title": "FAQ",
+  "items": [
+    {
+      "q": "How do I request a booking?",
+      "a": "Fill the request form and we will confirm by email/phone."
+    },
+    {
+      "q": "Do you have kids gear?",
+      "a": "Yes — kids ski and snowboard sets are available (subject to confirmation)."
+    },
+    {
+      "q": "What should I include in the notes?",
+      "a": "Shoe size, height/weight, skill level, and any preferences."
+    },
+    {
+      "q": "Can one person book for a family?",
+      "a": "Yes — add multiple items in the request form."
+    },
+    {
+      "q": "Do you offer group lessons?",
+      "a": "Not listed yet. Contact us and we’ll see what we can arrange."
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "exchangeRate": 2.7,
+  "rental": {
+    "tables": [
+      {
+        "id": "adults",
+        "title": "Adults",
+        "subtitle": "Equipment for adults",
+        "columns": [
+          "Equipment type",
+          "1–2 days",
+          "3–5 days",
+          "6–10 days",
+          "11+ days"
+        ],
+        "rows": [
+          {
+            "label": "Full ski set (skis, boots, poles) — Economy / Premium",
+            "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
+          },
+          {
+            "label": "Full snowboard set (board, boots) — Economy / Premium",
+            "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
+          },
+          {
+            "label": "Freeride set (skis/snowboard, boots, poles)",
+            "values": ["100", "100", "100", "100"]
+          },
+          {
+            "label": "Freeride skis / snowboard",
+            "values": ["100", "100", "100", "100"]
+          },
+          {
+            "label": "Skis / snowboard — Economy / Premium",
+            "values": ["45 / 100", "40 / 100", "35 / 100", "35 / 100"]
+          },
+          {
+            "label": "Boots (ski / snowboard)",
+            "values": ["40", "35", "30", "30"]
+          },
+          {
+            "label": "Poles",
+            "values": ["10", "8", "5", "5"]
+          }
+        ]
+      },
+      {
+        "id": "kids",
+        "title": "Kids",
+        "subtitle": "Equipment for children",
+        "columns": [
+          "Equipment type",
+          "1–2 days",
+          "3–5 days",
+          "6–10 days",
+          "11+ days"
+        ],
+        "rows": [
+          {
+            "label": "Full ski set (skis, boots, poles)",
+            "values": ["55", "50", "45", "45"]
+          },
+          {
+            "label": "Full snowboard set (board, boots)",
+            "values": ["55", "50", "45", "45"]
+          },
+          {
+            "label": "Skis / snowboard",
+            "values": ["40", "35", "30", "30"]
+          },
+          {
+            "label": "Boots (ski / snowboard)",
+            "values": ["35", "30", "25", "25"]
+          },
+          {
+            "label": "Poles",
+            "values": ["8", "7", "4", "4"]
+          }
+        ]
+      },
+      {
+        "id": "accessories",
+        "title": "Accessories & clothing",
+        "subtitle": "Additional equipment",
+        "columns": [
+          "Equipment type",
+          "1–2 days",
+          "3–5 days",
+          "6–10 days",
+          "11+ days"
+        ],
+        "rows": [
+          {
+            "label": "Helmet",
+            "values": ["15", "12", "10", "10"]
+          },
+          {
+            "label": "Goggles",
+            "values": ["15", "12", "10", "10"]
+          },
+          {
+            "label": "Jacket",
+            "values": ["25", "23", "20", "20"]
+          },
+          {
+            "label": "Pants",
+            "values": ["20", "18", "15", "15"]
+          },
+          {
+            "label": "Gloves",
+            "values": ["15", "12", "10", "10"]
+          }
+        ]
+      }
+    ],
+    "extras": []
+  },
+  "lessons": {
+    "duration": "1.5 hours",
+    "packages": [
+      {
+        "label": "1 lesson",
+        "price": "100 GEL",
+        "note": "Private"
+      },
+      {
+        "label": "2 lessons",
+        "price": "180 GEL",
+        "note": "Private"
+      },
+      {
+        "label": "4 lessons",
+        "price": "320 GEL",
+        "note": "Private"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "ski-no1-rental-worker",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {}
+}

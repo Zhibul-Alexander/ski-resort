@@ -1,0 +1,285 @@
+{
+  "brand": {
+    "name": "Ski №1 Rental",
+    "tagline": "Premium ski & snowboard rental and private lessons in Gudauri."
+  },
+  "resort": {
+    "name": "Gudauri",
+    "description": "Popular ski resort in Georgia in the Greater Caucasus Mountains, approximately 120–130 km from Tbilisi, on the Georgian Military Road. There are slopes for different levels — from beginner training to confident skiing, as well as large areas near the slopes for freeride enthusiasts. The resort is compact and convenient: accommodation, cafes and services are usually located near the lifts. In winter, road conditions can change due to weather, so it's better to plan your trip with extra time."
+  },
+  "contacts": {
+    "phone": "+995 000 00 00 00",
+    "email": "zhibul.alexander@gmail.com",
+    "whatsapp": "+995 000 00 00 00",
+    "telegram": "@ski1rental",
+    "viber": "+995 000 00 00 00",
+    "instagram": "https://instagram.com/"
+  },
+  "hours": {
+    "label": "Hours",
+    "value": "09:00–19:00"
+  },
+  "location": {
+    "addressLine": "Georgia, Gudauri",
+    "directions": "We are a professional ski and snowboard rental service. We specialize in quality equipment that helps you get the most out of your skiing — with comfort, safety, and great experiences.\n\nWe understand how important it is to choose the right equipment for your skill level and skiing style, as well as to ensure reliable protection and a comfortable fit — so you feel confident on the slopes from the first minutes. In our rental, you'll find everything you need for adults and children: skis, snowboards, boots, bindings, and kids' sets. You can also rent clothing and accessories: jackets and pants, helmets, goggles, and gloves — so you're fully prepared for any weather conditions.\n\nOur goal is simple: to make your winter vacation as easy and enjoyable as possible. Are you a beginner and want to try for the first time — we'll help you choose the best option and explain everything. Already confident on the slopes — we'll select more advanced equipment for your style and mountain conditions. And if you want to progress faster and ski more safely, we have experienced instructors: they'll help you develop technique, confidently master the basics, or improve your skills at any level. We care about service, equipment quality, and your mood, so every day on the slopes is remembered only for the best impressions.",
+    "mapEmbedUrl": "https://www.google.com/maps?q=42.4661767,44.4830638&z=17&output=embed",
+    "mapOpenUrl": "https://www.google.com/maps/place/%D0%9F%D0%B0%D1%81%D0%B0%D0%BD%D0%B0%D1%83%D1%80%D0%B8/@42.4659349,44.4830925,17.25z/data=!4m6!3m5!1s0x404529d8333dd5e3:0x8ec9ffc4962978a2!8m2!3d42.4661767!4d44.4830638!16s%2Fg%2F11pzvl7bp9"
+  },
+  "pageTitles": {
+    "aboutShop": "About us",
+    "findUs": "Find us",
+    "quickAnswers": "Quick answers",
+    "reviews": "Reviews",
+    "whyChooseUs": "Why guests choose us",
+    "insideOutside": "Inside & outside",
+    "map": "Map",
+    "openMapDescription": "Open the map in a new tab for navigation.",
+    "openInGoogleMaps": "Open in Google Maps",
+    "contactsDescription": "Phone, email and messengers",
+    "thankYouMessage": "Thank you for trusting us with your vacation!",
+    "resortMap": "Resort map",
+    "resortPhotos": "Resort photos",
+    "capacity": "Capacity:",
+    "start": "Start:",
+    "verticalDrop": "Vertical drop:",
+    "length": "Length:",
+    "liftsSubtitle": "14 working lines of Doppelmayr (Austria) and Poma (France) cable way"
+  },
+  "sections": {
+    "highlights": {
+      "title": "Highlights",
+      "items": [
+        {
+          "title": "Professional rental",
+          "text": "We specialize in quality equipment for skiing and snowboarding."
+        },
+        {
+          "title": "Right selection",
+          "text": "We select equipment based on skill level and skiing style, ensuring reliable protection and comfortable fit."
+        },
+        {
+          "title": "For adults and kids",
+          "text": "Everything you need: skis, snowboards, boots, bindings, and kids' sets."
+        },
+        {
+          "title": "Clothing and accessories",
+          "text": "Jackets, pants, helmets, goggles, and gloves — fully prepared for any weather conditions."
+        },
+        {
+          "title": "For beginners and pros",
+          "text": "We'll help you choose the best option for your first experience or advanced equipment for confident skiers."
+        },
+        {
+          "title": "Experienced instructors",
+          "text": "They'll help you develop technique, master the basics, or improve your skills at any level."
+        },
+        {
+          "title": "Quality care",
+          "text": "We care about service, equipment quality, and your mood, so every day on the slopes is remembered for the best impressions."
+        }
+      ]
+    },
+    "shopPhotos": {
+      "title": "Shop photos",
+      "items": [
+        {
+          "title": "Shop photo 1",
+          "src": "/images/shop/1.webp"
+        },
+        {
+          "title": "Shop photo 2",
+          "src": "/images/shop/2.webp"
+        },
+        {
+          "title": "Shop photo 3",
+          "src": "/images/shop/3.webp"
+        },
+        {
+          "title": "Shop photo 4",
+          "src": "/images/shop/4.webp"
+        },
+        {
+          "title": "Shop photo 5",
+          "src": "/images/shop/5.webp"
+        },
+        {
+          "title": "Shop photo 6",
+          "src": "/images/shop/6.webp"
+        },
+        {
+          "title": "Shop photo 7",
+          "src": "/images/shop/7.webp"
+        }
+      ]
+    },
+    "certificates": {
+      "title": "Certificates & quality",
+      "items": [
+        {
+          "title": "Certified instructors",
+          "text": "Add your real certificates here (images or PDF links)."
+        },
+        {
+          "title": "Serviced equipment",
+          "text": "We tune and check gear regularly for safety and performance."
+        }
+      ]
+    },
+    "resortMap": {
+      "title": "Resort map",
+      "src": "/images/resort/map.webp",
+      "alt": "Resort map"
+    },
+    "resortLifts": {
+      "title": "Lifts & slopes",
+      "items": [
+        {
+          "name": "PIRVELI",
+          "type": "six-seat, open type",
+          "capacity": "1800 passengers per hour",
+          "startAltitude": "2000 m",
+          "verticalDrop": "150 m",
+          "length": "1010 m"
+        },
+        {
+          "name": "SOLIKO",
+          "type": "six-seat, closed type",
+          "capacity": "2800 passengers per hour",
+          "startAltitude": "2150 m",
+          "verticalDrop": "520 m",
+          "length": "2310 m"
+        },
+        {
+          "name": "SHINO",
+          "type": "six-seat, open type",
+          "capacity": "1800 passengers per hour",
+          "startAltitude": "2200 m",
+          "verticalDrop": "500 m",
+          "length": "2750 m"
+        },
+        {
+          "name": "GOOD AURA",
+          "type": "gondola (10-seat closed type cabins)",
+          "capacity": "",
+          "startAltitude": "2160 m",
+          "verticalDrop": "540 m",
+          "length": "2380 m"
+        },
+        {
+          "name": "SNOW PARK",
+          "type": "three-seat, open type",
+          "capacity": "",
+          "startAltitude": "2700 m",
+          "verticalDrop": "120 m",
+          "length": "900 m"
+        },
+        {
+          "name": "KOBI PASS",
+          "type": "gondola (10-seat closed type cabins)",
+          "capacity": "",
+          "startAltitude": "2700 m",
+          "verticalDrop": "300 m",
+          "length": "1560 m"
+        },
+        {
+          "name": "KUDEBI",
+          "type": "six-seat, closed type",
+          "capacity": "2800 passengers per hour",
+          "startAltitude": "2850 m",
+          "verticalDrop": "290 m",
+          "length": "850 m"
+        },
+        {
+          "name": "SADZELE",
+          "type": "four-seat, open type",
+          "capacity": "",
+          "startAltitude": "2770 m",
+          "verticalDrop": "488 m",
+          "length": "1300 m"
+        },
+        {
+          "name": "KOBI-1",
+          "type": "gondola (10-seat closed type cabins)",
+          "capacity": "",
+          "startAltitude": "1800 m",
+          "verticalDrop": "500 m",
+          "length": "1480 m"
+        },
+        {
+          "name": "KOBI-2",
+          "type": "gondola (10-seat closed type cabins)",
+          "capacity": "",
+          "startAltitude": "2300 m",
+          "verticalDrop": "700 m",
+          "length": "1520 m"
+        },
+        {
+          "name": "T-Bar from Alpina Hotel",
+          "type": "T-Bar lift",
+          "capacity": "",
+          "startAltitude": "2200 m",
+          "verticalDrop": "100 m",
+          "length": "540 m"
+        },
+        {
+          "name": "T-Bar near \"Time Out\" Cafe",
+          "type": "training T-Bar lift",
+          "capacity": "",
+          "startAltitude": "2150 m",
+          "verticalDrop": "50 m",
+          "length": "380 m"
+        },
+        {
+          "name": "T-Bar near \"SNOW PARK\" Lift",
+          "type": "juvenile T-Bar lift",
+          "capacity": "",
+          "startAltitude": "2700 m",
+          "verticalDrop": "100 m",
+          "length": "250 m"
+        },
+        {
+          "name": "Juvenile Magic Carpet in New Gudauri",
+          "type": "Magic Carpet",
+          "capacity": "",
+          "startAltitude": "2200 m",
+          "verticalDrop": "25 m",
+          "length": "150 m"
+        }
+      ]
+    },
+    "liveStream": {
+      "title": "Live stream from the resort",
+      "youtubeUrl": "https://www.youtube.com/embed/JKrcipuNb7I",
+      "videoUrl": "https://g2.ipcamlive.com/player/player.php?alias=5df6407e5ca46"
+    },
+    "resortPhotos": {
+      "title": "Resort photos",
+      "items": [
+        {
+          "title": "Resort photo 1",
+          "src": "/images/resort/1.webp"
+        },
+        {
+          "title": "Resort photo 2",
+          "src": "/images/resort/2.webp"
+        },
+        {
+          "title": "Resort photo 3",
+          "src": "/images/resort/3.webp"
+        },
+        {
+          "title": "Resort photo 4",
+          "src": "/images/resort/4.webp"
+        },
+        {
+          "title": "Resort photo 5",
+          "src": "/images/resort/5.webp"
+        },
+        {
+          "title": "Resort photo 6",
+          "src": "/images/resort/6.webp"
+        }
+      ]
+    }
+  }
+}

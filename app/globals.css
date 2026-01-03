@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --background: 210 40% 98%;
+  --foreground: 222 25% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 25% 14%;
+  --primary: 222 60% 18%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 25% 92%;
+  --secondary-foreground: 222 25% 14%;
+  --muted: 210 25% 92%;
+  --muted-foreground: 215 14% 38%;
+  --accent: 197 95% 40%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 52%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 24% 86%;
+  --input: 214 24% 86%;
+  --ring: 197 95% 40%;
+  --radius: 1rem;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+a {
+  @apply underline-offset-4 hover:underline;
+}
+
+@layer utilities {
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  .animate-accordion-down { animation: accordion-down 200ms ease-out; }
+  .animate-accordion-up { animation: accordion-up 200ms ease-out; }
+}
+
+/* Стилизация select dropdown */
+select {
+  background-image: none;
+}
+
+select option {
+  background-color: hsl(var(--card));
+  color: hsl(var(--foreground));
+  padding: 0.5rem;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+select optgroup {
+  background-color: hsl(var(--card));
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+
+/* Стилизация date input */
+input[type="date"] {
+  position: relative;
+  color-scheme: light;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  filter: invert(0.5);
+  transition: opacity 0.2s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Скрытие стандартной иконки календаря для полей с классом hide-native-calendar-icon */
+input[type="date"].hide-native-calendar-icon::-webkit-calendar-picker-indicator {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Для Firefox */
+input[type="date"].hide-native-calendar-icon {
+  -moz-appearance: textfield;
+}
+
+/* Для других браузеров */
+input[type="date"].hide-native-calendar-icon::-ms-clear,
+input[type="date"].hide-native-calendar-icon::-ms-reveal {
+  display: none;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  color: hsl(var(--muted-foreground));
+  padding: 0 0.25em;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: hsl(var(--foreground));
+  padding: 0 0.25em;
+}
+
+/* Исправляем фокус для date input */
+input[type="date"]:focus-visible {
+  outline: none;
+}
+
+input[type="date"]:focus-visible::-webkit-datetime-edit-fields-wrapper {
+  outline: none;
+}
+
+/* Убираем внутренний фокус у элементов date input */
+input[type="date"]::-webkit-datetime-edit-day-field:focus,
+input[type="date"]::-webkit-datetime-edit-month-field:focus,
+input[type="date"]::-webkit-datetime-edit-year-field:focus {
+  background-color: transparent !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  background-color: transparent !important;
+}
+
+/* Убираем фокус у wrapper */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper:focus {
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+/* Скрываем стандартный плейсхолдер браузера когда поле пустое или невалидно */
+input[type="date"]:invalid::-webkit-datetime-edit-day-field,
+input[type="date"]:invalid::-webkit-datetime-edit-month-field,
+input[type="date"]:invalid::-webkit-datetime-edit-year-field {
+  color: transparent !important;
+  opacity: 0 !important;
+}
+
+input[type="date"]:invalid::-webkit-datetime-edit-text {
+  color: transparent !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Скрываем разделители когда поле пустое */
+input[type="date"]:not([value])::-webkit-datetime-edit-text,
+input[type="date"][value=""]::-webkit-datetime-edit-text {
+  color: transparent !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Скрываем плейсхолдер браузера когда есть любое значение (даже неполное) */
+input[type="date"][value]:not([value=""])::-webkit-datetime-edit-day-field:empty,
+input[type="date"][value]:not([value=""])::-webkit-datetime-edit-month-field:empty,
+input[type="date"][value]:not([value=""])::-webkit-datetime-edit-year-field:empty {
+  color: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Восстанавливаем нормальное отображение когда дата выбрана */
+input[type="date"]:valid::-webkit-datetime-edit-day-field,
+input[type="date"]:valid::-webkit-datetime-edit-month-field,
+input[type="date"]:valid::-webkit-datetime-edit-year-field {
+  color: hsl(var(--foreground));
+  opacity: 1;
+}
+
+input[type="date"]:valid::-webkit-datetime-edit-text {
+  color: hsl(var(--muted-foreground));
+  opacity: 1;
+  visibility: visible;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+/* Формат: день, месяц, год (DD/MM/YYYY) */
+input[type="date"][lang="en-GB"]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+input[type="date"][lang="en-GB"]::-webkit-datetime-edit-day-field {
+  order: 1;
+}
+
+input[type="date"][lang="en-GB"]::-webkit-datetime-edit-text:nth-of-type(1) {
+  order: 2;
+}
+
+input[type="date"][lang="en-GB"]::-webkit-datetime-edit-month-field {
+  order: 3;
+}
+
+input[type="date"][lang="en-GB"]::-webkit-datetime-edit-text:nth-of-type(2) {
+  order: 4;
+}
+
+input[type="date"][lang="en-GB"]::-webkit-datetime-edit-year-field {
+  order: 5;
+}
+
