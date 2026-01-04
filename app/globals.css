@@ -46,6 +46,37 @@ a {
   }
   .animate-accordion-down { animation: accordion-down 200ms ease-out; }
   .animate-accordion-up { animation: accordion-up 200ms ease-out; }
+
+  @keyframes shake-attention {
+    0%, 75% { transform: translateX(0) rotate(0deg); }
+    76% { transform: translateX(-2px) rotate(-1deg); }
+    77% { transform: translateX(2px) rotate(1deg); }
+    78% { transform: translateX(-2px) rotate(-1deg); }
+    79% { transform: translateX(2px) rotate(1deg); }
+    80% { transform: translateX(-2px) rotate(-1deg); }
+    81% { transform: translateX(2px) rotate(1deg); }
+    82% { transform: translateX(-2px) rotate(-1deg); }
+    83% { transform: translateX(2px) rotate(1deg); }
+    84% { transform: translateX(-1.5px) rotate(-0.75deg); }
+    85% { transform: translateX(1.5px) rotate(0.75deg); }
+    86% { transform: translateX(-1px) rotate(-0.5deg); }
+    87% { transform: translateX(1px) rotate(0.5deg); }
+    88% { transform: translateX(-0.5px) rotate(-0.25deg); }
+    89% { transform: translateX(0.5px) rotate(0.25deg); }
+    90% { transform: translateX(0) rotate(0deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
+  .animate-shake-attention {
+    animation: shake-attention 3.33s linear infinite;
+  }
+}
+
+/* Скрытие кнопки "static route" от Next.js DevOverlay */
+[data-nextjs-route-info] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Стилизация select dropdown */
