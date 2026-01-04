@@ -1,0 +1,163 @@
+{
+  "exchangeRate": 2.7,
+  "rental": {
+    "tables": [
+      {
+        "id": "adults",
+        "title": "成人",
+        "subtitle": "成人装备",
+        "columns": [
+          "装备类型",
+          "1–2 天",
+          "3–5 天",
+          "6–10 天",
+          "11+ 天"
+        ],
+        "rows": [
+          {
+            "label": "双板全套（雪板、雪靴、雪杖）— Economy / Premium",
+            "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
+          },
+          {
+            "label": "单板全套（雪板、雪靴）— Economy / Premium",
+            "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
+          },
+          {
+            "label": "自由式/野雪套装（双板/单板、雪靴、雪杖）",
+            "values": ["100", "100", "100", "100"]
+          },
+          {
+            "label": "自由式/野雪 双板 / 单板",
+            "values": ["100", "100", "100", "100"]
+          },
+          {
+            "label": "双板 / 单板 — Economy / Premium",
+            "values": ["45 / 100", "40 / 100", "35 / 100", "35 / 100"]
+          },
+          {
+            "label": "雪靴（双板 / 单板）",
+            "values": ["40", "35", "30", "30"]
+          },
+          {
+            "label": "雪杖",
+            "values": ["10", "8", "5", "5"]
+          }
+        ]
+      },
+      {
+        "id": "kids",
+        "title": "儿童",
+        "subtitle": "儿童装备",
+        "columns": [
+          "装备类型",
+          "1–2 天",
+          "3–5 天",
+          "6–10 天",
+          "11+ 天"
+        ],
+        "rows": [
+          {
+            "label": "双板全套（雪板、雪靴、雪杖）",
+            "values": ["55", "50", "45", "45"]
+          },
+          {
+            "label": "单板全套（雪板、雪靴）",
+            "values": ["55", "50", "45", "45"]
+          },
+          {
+            "label": "双板 / 单板",
+            "values": ["40", "35", "30", "30"]
+          },
+          {
+            "label": "雪靴（双板 / 单板）",
+            "values": ["35", "30", "25", "25"]
+          },
+          {
+            "label": "雪杖",
+            "values": ["8", "7", "4", "4"]
+          }
+        ]
+      },
+      {
+        "id": "accessories",
+        "title": "配件与服装",
+        "subtitle": "额外装备",
+        "columns": [
+          "装备类型",
+          "1–2 天",
+          "3–5 天",
+          "6–10 天",
+          "11+ 天"
+        ],
+        "rows": [
+          {
+            "label": "头盔",
+            "values": ["15", "12", "10", "10"]
+          },
+          {
+            "label": "雪镜（goggles）",
+            "values": ["15", "12", "10", "10"]
+          },
+          {
+            "label": "滑雪夹克",
+            "values": ["25", "23", "20", "20"]
+          },
+          {
+            "label": "滑雪裤",
+            "values": ["20", "18", "15", "15"]
+          },
+          {
+            "label": "手套",
+            "values": ["15", "12", "10", "10"]
+          }
+        ]
+      }
+    ],
+    "extras": []
+  },
+  "lessons": {
+    "duration": "1.5 小时",
+    "packages": [
+      {
+        "label": "1 节课",
+        "price": "100 GEL",
+        "note": "私教"
+      },
+      {
+        "label": "2 节课",
+        "price": "180 GEL",
+        "note": "私教"
+      },
+      {
+        "label": "4 节课",
+        "price": "320 GEL",
+        "note": "私教"
+      }
+    ]
+  },
+  "services": {
+    "items": [
+      { "name": "双板固定器安装", "price": 50 },
+      { "name": "Touring /Freeride 双板固定器安装", "price": 70 },
+      { "name": "单板固定器安装", "price": 30 },
+      { "name": "分体单板（Splitboard）固定器安装", "price": 70 },
+      { "name": "双板固定器重新安装", "price": 70 },
+      { "name": "Touring/Freeride 双板固定器重新安装", "price": 70 },
+      { "name": "分体单板（Splitboard）固定器重新安装", "price": 60 },
+      { "name": "双板刃边打磨", "price": 45 },
+      { "name": "单板刃边打磨", "price": 35 },
+      { "name": "双板/Touring 双板底板修复", "price": 35 },
+      { "name": "单板/分体单板（Splitboard）底板修复", "price": 35 },
+      { "name": "双板打蜡", "price": 35 },
+      { "name": "Touring 双板打蜡", "price": 35 },
+      { "name": "单板打蜡", "price": 45 },
+      { "name": "分体单板（Splitboard）打蜡", "price": 35 },
+      { "name": "双板全套保养", "price": 100 },
+      { "name": "Touring 双板全套保养", "price": 100 },
+      { "name": "单板全套保养", "price": 100 },
+      { "name": "分体单板（Splitboard）全套保养", "price": 100 },
+      { "name": "Touring 双板、分体单板（Splitboard）皮条（skin）修剪", "price": 50 }
+    ],
+    "note": "价格可能会根据损坏情况有所变化"
+  }
+}

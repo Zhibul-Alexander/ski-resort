@@ -5,9 +5,9 @@
       {
         "id": "adults",
         "title": "Взрослые",
-        "subtitle": "Экипировка для взрослых",
+        "subtitle": "Снаряжение для взрослых",
         "columns": [
-          "Тип экипировки",
+          "Тип снаряжения",
           "1–2 дня",
           "3–5 дней",
           "6–10 дней",
@@ -19,7 +19,7 @@
             "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
           },
           {
-            "label": "Полный сноуборд комплект (доска, ботинки) — Economy / Premium",
+            "label": "Полный сноуборд-комплект (доска, ботинки) — Economy / Premium",
             "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
           },
           {
@@ -35,7 +35,7 @@
             "values": ["45 / 100", "40 / 100", "35 / 100", "35 / 100"]
           },
           {
-            "label": "Ботинки (лыжные / сноубордические)",
+            "label": "Ботинки (лыжи / сноуборд)",
             "values": ["40", "35", "30", "30"]
           },
           {
@@ -47,9 +47,9 @@
       {
         "id": "kids",
         "title": "Дети",
-        "subtitle": "Экипировка для детей",
+        "subtitle": "Снаряжение для детей",
         "columns": [
-          "Тип экипировки",
+          "Тип снаряжения",
           "1–2 дня",
           "3–5 дней",
           "6–10 дней",
@@ -61,7 +61,7 @@
             "values": ["55", "50", "45", "45"]
           },
           {
-            "label": "Полный сноуборд комплект (доска, ботинки)",
+            "label": "Полный сноуборд-комплект (доска, ботинки)",
             "values": ["55", "50", "45", "45"]
           },
           {
@@ -69,7 +69,7 @@
             "values": ["40", "35", "30", "30"]
           },
           {
-            "label": "Ботинки (лыжные / сноубордические)",
+            "label": "Ботинки (лыжи / сноуборд)",
             "values": ["35", "30", "25", "25"]
           },
           {
@@ -83,7 +83,7 @@
         "title": "Аксессуары и одежда",
         "subtitle": "Дополнительное снаряжение",
         "columns": [
-          "Тип экипировки",
+          "Тип снаряжения",
           "1–2 дня",
           "3–5 дней",
           "6–10 дней",
@@ -95,7 +95,7 @@
             "values": ["15", "12", "10", "10"]
           },
           {
-            "label": "Очки",
+            "label": "Маска/очки (goggles)",
             "values": ["15", "12", "10", "10"]
           },
           {
@@ -116,48 +116,48 @@
     "extras": []
   },
   "lessons": {
-    "duration": "1.5 hours",
+    "duration": "1.5 часа",
     "packages": [
       {
-        "label": "1 lesson",
+        "label": "1 занятие",
         "price": "100 GEL",
-        "note": "Private"
+        "note": "Индивидуально"
       },
       {
-        "label": "2 lessons",
+        "label": "2 занятия",
         "price": "180 GEL",
-        "note": "Private"
+        "note": "Индивидуально"
       },
       {
-        "label": "4 lessons",
+        "label": "4 занятия",
         "price": "320 GEL",
-        "note": "Private"
+        "note": "Индивидуально"
       }
     ]
   },
   "services": {
     "items": [
-      { "name": "Ski binding mounting", "price": 50 },
-      { "name": "Touring /Freeride ski bindings mounting", "price": 70 },
-      { "name": "Snowboard binding mounting", "price": 30 },
-      { "name": "Splitboard binding mounting", "price": 70 },
-      { "name": "Remounting ski bindings", "price": 70 },
-      { "name": "Remounting Touring/Freeride ski binding", "price": 70 },
-      { "name": "Remounting Splitboard bindings", "price": 60 },
-      { "name": "Ski edge grinding", "price": 45 },
-      { "name": "Snowboard edge grinding", "price": 35 },
-      { "name": "Ski/Touring ski base repair", "price": 35 },
-      { "name": "Snowboard/Splitboard base repair", "price": 35 },
-      { "name": "Ski waxing", "price": 35 },
-      { "name": "Touring ski waxing", "price": 35 },
-      { "name": "Snowboard waxing", "price": 45 },
-      { "name": "Splitboard waxing", "price": 35 },
-      { "name": "Full ski service", "price": 100 },
-      { "name": "Full touring Ski service", "price": 100 },
-      { "name": "Full Snowboard service", "price": 100 },
-      { "name": "Full Split board service", "price": 100 },
-      { "name": "Touring Ski, Splitboard skin trimming", "price": 50 }
+      { "name": "Установка креплений на лыжи", "price": 50 },
+      { "name": "Установка креплений Touring /Freeride на лыжи", "price": 70 },
+      { "name": "Установка креплений на сноуборд", "price": 30 },
+      { "name": "Установка креплений на сплитборд", "price": 70 },
+      { "name": "Переустановка креплений на лыжи", "price": 70 },
+      { "name": "Переустановка креплений Touring/Freeride на лыжи", "price": 70 },
+      { "name": "Переустановка креплений на сплитборд", "price": 60 },
+      { "name": "Шлифовка кантов лыж", "price": 45 },
+      { "name": "Шлифовка кантов сноуборда", "price": 35 },
+      { "name": "Ремонт скользяка лыж/туринговых лыж", "price": 35 },
+      { "name": "Ремонт скользяка сноуборда/сплитборда", "price": 35 },
+      { "name": "Парафинирование лыж", "price": 35 },
+      { "name": "Парафинирование туринговых лыж", "price": 35 },
+      { "name": "Парафинирование сноуборда", "price": 45 },
+      { "name": "Парафинирование сплитборда", "price": 35 },
+      { "name": "Полный сервис лыж", "price": 100 },
+      { "name": "Полный сервис туринговых лыж", "price": 100 },
+      { "name": "Полный сервис сноуборда", "price": 100 },
+      { "name": "Полный сервис сплитборда", "price": 100 },
+      { "name": "Подрезка камусов (skin) для туринговых лыж и сплитборда", "price": 50 }
     ],
-    "note": "* Prices may vary depending on the damage"
+    "note": "Цены могут меняться в зависимости от повреждений"
   }
 }

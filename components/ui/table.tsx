@@ -14,8 +14,8 @@ export function TR({ className, ...props }: React.HTMLAttributes<HTMLTableRowEle
   return <tr className={cn("border-b border-border transition-colors hover:bg-secondary/40", className)} {...props} />;
 }
 export function TH({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th className={cn("h-12 px-4 text-left align-middle font-medium text-muted-foreground", className)} {...props} />;
+  return <th className={cn("h-12 px-2 text-base text-left align-middle font-medium text-muted-foreground md:px-4 md:text-sm", className)} {...props} />;
 }
 export function TD({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {
-  return <td className={cn("p-4 align-middle", className)} {...props} />;
+  return <td className={cn("p-2 text-base align-middle md:p-4 md:text-sm", className)} {...props} />;
 }

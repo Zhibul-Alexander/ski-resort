@@ -255,23 +255,26 @@ export function RentalBookingForm({
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-3">
-                  <div className="grid gap-2 md:col-span-2">
+                  <div className="grid gap-2 md:col-span-2 min-w-0">
                     <label className="text-sm font-medium">{labels?.equipment || "Equipment"}</label>
-                    <Select
-                      value={it.itemType}
-                      onChange={(value) => {
-                        const newOption = itemOptions.find(o => o.id === value);
-                        updateItem(idx, { 
-                          itemType: value, 
-                          segment: newOption?.segments[0] || "n/a" 
-                        });
-                      }}
-                      options={[
-                        ...itemsByCategory.adults.map(opt => ({ value: opt.id, label: opt.label, group: labels?.adults || "Adults" })),
-                        ...itemsByCategory.kids.map(opt => ({ value: opt.id, label: opt.label, group: labels?.kids || "Kids" })),
-                        ...itemsByCategory.accessories.map(opt => ({ value: opt.id, label: opt.label, group: labels?.accessories || "Accessories & Clothing" }))
-                      ]}
-                    />
+                    <div className="min-w-0">
+                      <Select
+                        value={it.itemType}
+                        onChange={(value) => {
+                          const newOption = itemOptions.find(o => o.id === value);
+                          updateItem(idx, { 
+                            itemType: value, 
+                            segment: newOption?.segments[0] || "n/a" 
+                          });
+                        }}
+                        options={[
+                          ...itemsByCategory.adults.map(opt => ({ value: opt.id, label: opt.label, group: labels?.adults || "Adults" })),
+                          ...itemsByCategory.kids.map(opt => ({ value: opt.id, label: opt.label, group: labels?.kids || "Kids" })),
+                          ...itemsByCategory.accessories.map(opt => ({ value: opt.id, label: opt.label, group: labels?.accessories || "Accessories & Clothing" }))
+                        ]}
+                        className="w-full"
+                      />
+                    </div>
                   </div>
 
                   {option?.hasSegments && (

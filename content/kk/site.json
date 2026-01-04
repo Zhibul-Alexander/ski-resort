@@ -1,11 +1,11 @@
 {
   "brand": {
     "name": "Ski №1 Rental",
-    "tagline": "TODO: translate to kk — Premium rental & lessons in Gudauri."
+    "tagline": "Gudauri-де премиум шаңғы/сноуборд жалға беру және жеке сабақтар."
   },
   "resort": {
-    "name": "Gudauri",
-    "description": "Үлкен Кавказ тауларындағы Грузиядағы танымал шаңғы курорты, Тбилисиден шамамен 120–130 км қашықтықта, Әскери-Грузия жолында. Мұнда әртүрлі деңгейлерге арналған трассалар бар — бастапқыларды оқытудан сенімді шаңғы тебуге дейін, сондай-ақ фрирайд әуесқойлары үшін еңістердің жанындағы үлкен аймақтар. Курорт ықшам және ыңғайлы: тұрғын үйлер, кафелер және қызметтер әдетте көтергіштердің жанында орналасқан. Қыста жол жағдайлары ауа райына байланысты өзгеруі мүмкін, сондықтан саяхатты уақыт резервімен жоспарлаған жөн."
+    "name": "Гудаури",
+    "description": "Грузиядағы Үлкен Кавказ тауларында орналасқан танымал шаңғы курорты. Тбилисиден шамамен 120–130 км жерде, Грузия Әскери жолының бойында. Әртүрлі деңгейге арналған трассалар бар — бастаушыларға арналған оқу аймақтарынан бастап сенімді сырғанауға дейін, сондай-ақ фрирайд әуесқойларына арналған кең аймақтар да бар. Курорт ықшам әрі ыңғайлы: қонақүй, кафелер және сервистер көбіне көтергіштердің жанында орналасады. Қыста ауа райына байланысты жол жағдайы өзгеруі мүмкін, сондықтан жолға қосымша уақыт жоспарлаған дұрыс."
   },
   "contacts": {
     "phone": "+995 000 00 00 00",
@@ -16,138 +16,180 @@
     "instagram": "https://instagram.com/"
   },
   "hours": {
-    "label": "Hours",
+    "label": "Жұмыс уақыты",
     "value": "09:00–19:00"
   },
   "location": {
-    "addressLine": "Gudauri, Georgia (replace with exact address)",
-    "directions": "TODO: translate to kk — Replace with real directions and landmarks.",
+    "addressLine": "Грузия, Гудаури",
+    "directions": "Біз — кәсіби шаңғы және сноуборд жалға беру қызметіміз. Сапалы жабдыққа маманданамыз: сізге жайлылық, қауіпсіздік және керемет әсер сыйлау үшін.\n\nДеңгейіңіз бен сырғанау стиліңізге сай жабдық таңдаудың, сондай-ақ сенімді қорғаныс пен ыңғайлы отырыстың қаншалықты маңызды екенін жақсы түсінеміз — сонда алғашқы минуттардан-ақ өзіңізді сенімді сезінесіз. Бізде ересектер мен балаларға қажеттінің бәрі бар: шаңғылар, сноубордтар, бәтеңкелер, бекіткіштер және балалар жиынтықтары. Сонымен қатар киім мен аксессуарларды да жалға алуға болады: күртеше мен шалбар, дулыға, goggles және қолғап — кез келген ауа райына дайын боласыз.\n\nБіздің мақсатымыз қарапайым: қысқы демалысыңызды барынша жеңіл әрі көңілді ету. Алғаш рет байқап көргіңіз келе ме? Ең қолайлы нұсқаны таңдап, бәрін түсіндіріп береміз. Трассада өзіңізді сенімді сезінесіз бе? Сіздің стиліңіз бен тау жағдайына сай анағұрлым жоғары деңгейлі жабдық ұсынамыз. Ал тезірек дамып, қауіпсізірек сырғанағыңыз келсе, тәжірибелі инструкторларымыз бар: техникаңызды жетілдіруге, негіздерді сенімді меңгеруге немесе кез келген деңгейде шеберлікті арттыруға көмектеседі. Біз сервиске, жабдық сапасына және сіздің көңіл-күйіңізге мән береміз — сондықтан әр күн тек жақсы әсермен есте қалады.",
     "mapEmbedUrl": "https://www.google.com/maps?q=42.4661767,44.4830638&z=17&output=embed",
     "mapOpenUrl": "https://www.google.com/maps/place/%D0%9F%D0%B0%D1%81%D0%B0%D0%BD%D0%B0%D1%83%D1%80%D0%B8/@42.4659349,44.4830925,17.25z/data=!4m6!3m5!1s0x404529d8333dd5e3:0x8ec9ffc4962978a2!8m2!3d42.4661767!4d44.4830638!16s%2Fg%2F11pzvl7bp9"
   },
   "pageTitles": {
-    "thankYouMessage": "Демалысыңызға сенгеніңізге рахмет!",
+    "aboutShop": "Біз туралы",
+    "findUs": "Бізді табу",
+    "quickAnswers": "Жылдам жауаптар",
+    "reviews": "Пікірлер",
+    "whyChooseUs": "Неге бізді таңдайды",
+    "insideOutside": "Іші және сырты",
+    "map": "Карта",
+    "openMapDescription": "Навигация үшін картаны жаңа қойындыда ашыңыз.",
+    "openInGoogleMaps": "Google Maps-та ашу",
+    "contactsDescription": "Телефон, email және мессенджерлер",
+    "thankYouMessage": "Демалысыңызды бізге сеніп тапсырғаныңызға рахмет!",
     "resortMap": "Курорт картасы",
-    "resortPhotos": "Курорт фотосуреттері",
+    "resortPhotos": "Курорт фотолары",
     "capacity": "Өткізу қабілеті:",
-    "start": "Басталу:",
-    "verticalDrop": "Тік құлау:",
+    "start": "Бастау:",
+    "verticalDrop": "Биіктік айырмасы:",
     "length": "Ұзындығы:",
-    "liftsSubtitle": "Doppelmayr (Австрия) және Poma (Франция) канатты жолының 14 жұмыс істейтін желісі",
+    "liftsSubtitle": "Doppelmayr (Австрия) және Poma (Франция) 14 жұмыс істейтін арқанжол желісі",
     "rentalPrices": "Жалға алу бағалары",
-    "rentalSubtitle": "Кез келген деңгейге арналған кәсіби жабдықтар.",
-    "requestBooking": "Брондау сұрауы",
-    "requestBookingSubtitle": "Жабдықты жалға алу сұрауы үшін форманы толтырыңыз",
+    "rentalSubtitle": "Кез келген деңгейге арналған кәсіби жабдық.",
+    "requestBooking": "Бронь",
+    "requestBookingSubtitle": "Жабдықты жалға алу үшін форманы толтырыңыз",
     "lessons": "Сабақтар",
-    "lessonsSubtitle": "Біздің кәсіби нұсқаушылар командасы тау шаңғысы мен сноубордты меңгеруге немесе дағдыларыңызды жақсартуға көмектеседі, дайындық деңгейіңізге қарамастан. Біз балалар мен ересектермен, бастапқылар мен тәжірибелі шаңғышылармен жұмыс істейміз.",
+    "lessonsSubtitle": "Кәсіби инструкторларымыз тау шаңғысы мен сноубордты меңгеруге немесе шеберлігіңізді арттыруға көмектеседі — деңгейіңіз қандай болса да. Балалармен және ересектермен, бастаушылармен және тәжірибелі райдерлермен жұмыс істейміз.",
     "lessonsIndividual": "Жеке сабақтар:",
-    "lessonsIndividualText": "Ұзақтығы — {duration}. Әрбір сабақ сіздің мақсаттарыңызға және дайындық деңгейіңізге бейімделген. Нұсқаушы тек сізге назар аударады, бұл максималды жылдам прогресс қалыптастыруға және жеке ұсыныстар алуға мүмкіндік береді.",
-    "lessonsGroup": "Топтық жаттығулар:",
-    "lessonsGroupText": "Алдын ала келісім бойынша қолжетімді. Кесте, топ құрамы және құнын нақтылау үшін бізбен телефон немесе мессенджер арқылы байланысыңыз.",
-    "lessonsGuarantee": "Біздің барлық нұсқаушыларымызда халықаралық сертификаттар және көпжылдық тәжірибе бар. Біз қауіпсіздікті, кәсіби тәсілді және әрбір оқушыға жеке назар аударуды кепілдейміз.",
-    "lessonsPricing": "Бағалар",
+    "lessonsIndividualText": "Ұзақтығы — {duration}. Әр сабақ мақсаттарыңыз бен деңгейіңізге қарай құрылады. Инструктор тек сізге көңіл бөледі, бұл мүмкіндігінше тез ілгерілеуге және жеке ұсыныстар алуға көмектеседі.",
+    "lessonsGroup": "Топтық оқу:",
+    "lessonsGroupText": "Алдын ала келісім бойынша қолжетімді. Кесте, топ құрамы және құнын нақтылау үшін телефонмен немесе мессенджер арқылы хабарласыңыз.",
+    "lessonsGuarantee": "Барлық инструкторларымызда халықаралық сертификаттар және көпжылдық тәжірибе бар. Қауіпсіздік, кәсіби тәсіл және әр студентке жеке назар кепілді.",
+    "lessonsPricing": "Баға",
     "lessonsPricingSubtitle": "Сабақ пакеттері",
-    "lessonsTeam": "Біздің нұсқаушылар командасы",
-    "lessonsTeamSubtitle": "Тәжірибесі мен тау шаңғысына деген құмарлығы бар кәсібилер",
-    "lessonsSpecialization": "Мамандану:",
-    "services": "Қызметтер",
-    "servicesSubtitle": "Біз сіздің жабдықтарыңызды ең жақсы жағдайда ұстаймыз — жылдам, мұқият және қызмет стандарттарына сәйкес. Біз шаңғы, сноуборд және байланысты жабдықтар үшін тұрақты техникалық қызметтен толық жөндеуге дейін барлық нәрсені өңдейміз.",
-    "servicesSubtitle2": "Келесі жүгіру алдында жылдам жаңарту қажет болсын немесе тастарға соққаннан кейін дұрыс жөндеу қажет болсын, біз өнімділікті қалпына келтіреміз, сырғанауды жақсартамыз және жабдықтарыңызға ұзағырақ тұруға көмектесеміз — нақты ұсыныстармен және әділ орындау уақытымен.",
-    "servicesNotAvailable": "Қызметтер туралы ақпарат қолжетімсіз.",
-    "servicePrices": "Қызмет бағалары",
-    "servicePricesSubtitle": "Жабдықты техникалық қызмет көрсету және жөндеу",
+    "lessonsTeam": "Инструкторлар командасы",
+    "lessonsTeamSubtitle": "Тәжірибесі бар, өз ісін сүйетін мамандар",
+    "lessonsSpecialization": "Мамандануы:",
+    "services": "Сервис",
+    "servicesSubtitle": "Жабдығыңызды үздік күйде ұстаймыз — тез, ұқыпты және сервис стандарттарына сай. Шаңғы, сноуборд және қатысты жабдықтарға күнделікті күтімнен бастап толық жөндеуге дейін жасаймыз. Шеберхана базаны жөндеу, P-tex толтыру, кантты баптау және қайрау, stone grinding (қолжетімді болса), ыстық парафин жағу, бекіткіштерді тексеру және реттеу, сондай-ақ жалпы тексеріс жұмыстарын орындайды — жабдықтың қауіпсіз әрі қар үстінде жайлы болуын қамтамасыз ету үшін.",
+    "servicesSubtitle2": "Келесі түсу алдында жылдам жаңарту керек пе, әлде тасқа соғылғаннан кейін дұрыс жөндеу қажет пе — біз өнімділікті қалпына келтіріп, сырғанауды жақсартып, жабдықтың қызмет ету мерзімін ұзартып береміз. Барлығы түсінікті ұсыныстармен және әділ орындалу мерзімдерімен.",
+    "servicesNotAvailable": "Сервис туралы ақпарат қолжетімсіз.",
+    "servicePrices": "Сервис бағалары",
+    "servicePricesSubtitle": "Жабдыққа күтім және жөндеу",
     "service": "Қызмет",
     "price": "Баға",
     "navAboutUs": "Біз туралы",
     "navRentalPrices": "Жалға алу бағалары",
     "navLessons": "Сабақтар",
-    "navServices": "Қызметтер",
+    "navServices": "Сервис",
     "navSkiResort": "Курорт",
-    "navContacts": "Байланыстар",
+    "navContacts": "Байланыс",
     "hoursLabel": "Жұмыс уақыты:",
-    "footerDescription": "Гудауриде премиум жалға алу және сабақтар. Жылдам алу, жаңа жабдықтар және достық команда.",
-    "footerContacts": "Байланыстар",
-    "footerPrivacyPolicy": "Құпиялылық саясаты",
+    "footerDescription": "Gudauri-де премиум жалға беру және сабақтар. Тез алып кету, жаңа жабдық және жылы шырайлы команда.",
+    "footerContacts": "Байланыс",
+    "footerPrivacyPolicy": "Құпиялық саясаты",
     "footerRights": "Барлық құқықтар қорғалған.",
     "bookingFormDates": "Күндер",
     "bookingFormDatesDesc": "Жалға алу күндерін таңдаңыз.",
-    "bookingFormFrom": "Бастап",
-    "bookingFormTo": "Дейін",
+    "bookingFormFrom": "Басталуы",
+    "bookingFormTo": "Аяқталуы",
     "bookingFormItems": "Позициялар",
-    "bookingFormItemsDesc": "Бірнеше позиция қосыңыз (отбасы / достар үшін).",
+    "bookingFormItemsDesc": "Бірнеше позиция қосыңыз (отбасы/достар).",
     "bookingFormAddItem": "Позиция қосу",
-    "bookingFormRemove": "Жою",
+    "bookingFormRemove": "Өшіру",
     "bookingFormEquipment": "Жабдық",
     "bookingFormSegment": "Сегмент",
     "bookingFormQuantity": "Саны",
-    "bookingFormNotes": "Ескертпелер (міндетті емес)",
-    "bookingFormNotesPlaceholder": "мысалы, аяқ киім өлшемі 42, бойы 175см, деңгей...",
-    "bookingFormContacts": "Байланыстар",
-    "bookingFormContactsDesc": "Біз сіздің сұрауыңызды растау үшін осыны пайдаланамыз.",
+    "bookingFormNotes": "Ескертпе (қалауыңызша)",
+    "bookingFormNotesPlaceholder": "мыс. аяқ киім өлшемі 42, бойы 175cm, деңгейі...",
+    "bookingFormContacts": "Байланыс",
+    "bookingFormContactsDesc": "Сұранысты растау үшін қолданамыз.",
     "bookingFormEmail": "Email",
     "bookingFormPhone": "Телефон",
-    "bookingFormMessenger": "Мессенджер (міндетті емес)",
-    "bookingFormMessengerContact": "Мессенджердегі байланыс",
-    "bookingFormComment": "Пікір (міндетті емес)",
-    "bookingFormCommentPlaceholder": "Кез келген қосымша мәліметтер...",
-    "bookingFormSubmit": "Сұрау жіберу",
-    "bookingFormSubmitNote": "Бұл сұрау, лезде брондау емес. Біз email/телефон арқылы қолжетімділікті растаймыз.",
-    "bookingFormSuccessTitle": "Сұрау қабылданды",
-    "bookingFormSuccessDesc": "Біз растау email жібердік. Жақында қолжетімділікті растау үшін сізбен байланысамыз.",
-    "bookingFormCreateAnother": "Тағы бір сұрау жасау",
+    "bookingFormMessenger": "Мессенджер (қалауыңызша)",
+    "bookingFormMessengerContact": "Мессенджер контакті",
+    "bookingFormComment": "Комментарий (қалауыңызша)",
+    "bookingFormCommentPlaceholder": "Қосымша мәліметтер...",
+    "bookingFormSubmit": "Жіберу",
+    "bookingFormSubmitNote": "Бұл — сұраныс, бірден бронь емес. Қолжетімділікті email/телефон арқылы растаймыз.",
+    "bookingFormSuccessTitle": "Сұраныс қабылданды",
+    "bookingFormSuccessDesc": "Растау хаты email-ға жіберілді. Жақында қолжетімділікті растау үшін хабарласамыз.",
+    "bookingFormCreateAnother": "Жаңа сұраныс",
     "bookingFormAdults": "Ересектер",
     "bookingFormKids": "Балалар",
     "bookingFormAccessories": "Аксессуарлар және киім",
     "bookingFormNone": "Жоқ",
-    "bookingFormEconomy": "Эконом",
-    "bookingFormPremium": "Премиум",
-    "bookingFormNa": "Ж/О"
+    "bookingFormEconomy": "Economy",
+    "bookingFormPremium": "Premium",
+    "bookingFormNa": "N/A"
   },
   "sections": {
     "highlights": {
-      "title": "TODO: translate to kk — Highlights",
+      "title": "Артықшылықтар",
       "items": [
         {
-          "title": "Premium equipment",
-          "text": "Economy + premium sets, well-maintained and ready for the slopes."
+          "title": "Кәсіби прокат",
+          "text": "Шаңғы және сноубордқа арналған сапалы жабдыққа маманданамыз."
         },
         {
-          "title": "Fast fitting",
-          "text": "We help you pick the right gear quickly — perfect for families."
+          "title": "Дұрыс таңдау",
+          "text": "Деңгейіңіз бен стиліңізге қарай таңдаймыз, қорғаныс пен ыңғайлы отырысты қамтамасыз етеміз."
         },
         {
-          "title": "Trusted service",
-          "text": "Friendly team, clear prices, and great guest feedback."
+          "title": "Ересек және бала",
+          "text": "Қажеттінің бәрі бар: шаңғы, сноуборд, бәтеңке, бекіткіштер және балалар жиынтықтары."
+        },
+        {
+          "title": "Киім және аксессуар",
+          "text": "Күртеше, шалбар, дулыға, goggles және қолғап — кез келген ауа райына дайын."
+        },
+        {
+          "title": "Бастаушыдан pro-ға",
+          "text": "Алғашқы тәжірибеге ең жақсы нұсқаны, ал сенімді сырғанаушыларға — озық жабдықты ұсынамыз."
+        },
+        {
+          "title": "Тәжірибелі инструктор",
+          "text": "Техниканы дамытуға, негіздерді меңгеруге және кез келген деңгейде жақсартуға көмектеседі."
+        },
+        {
+          "title": "Сапаға мән береміз",
+          "text": "Сервиске, жабдық сапасына және көңіл-күйіңізге мән береміз — әр күн ең жақсы әсермен есте қалады."
         }
       ]
     },
     "shopPhotos": {
-      "title": "TODO: translate to kk — Shop photos",
+      "title": "Дүкен фотолары",
       "items": [
         {
-          "title": "Inside the shop",
-          "src": "/images/shop/inside-1.jpg"
+          "title": "Дүкен фото 1",
+          "src": "/images/shop/1.webp"
         },
         {
-          "title": "Gear wall",
-          "src": "/images/shop/inside-2.jpg"
+          "title": "Дүкен фото 2",
+          "src": "/images/shop/2.webp"
         },
         {
-          "title": "Outside entrance",
-          "src": "/images/shop/outside-1.jpg"
+          "title": "Дүкен фото 3",
+          "src": "/images/shop/3.webp"
+        },
+        {
+          "title": "Дүкен фото 4",
+          "src": "/images/shop/4.webp"
+        },
+        {
+          "title": "Дүкен фото 5",
+          "src": "/images/shop/5.webp"
+        },
+        {
+          "title": "Дүкен фото 6",
+          "src": "/images/shop/6.webp"
+        },
+        {
+          "title": "Дүкен фото 7",
+          "src": "/images/shop/7.webp"
         }
       ]
     },
     "certificates": {
-      "title": "TODO: translate to kk — Certificates & quality",
+      "title": "Сертификаттар және сапа",
       "items": [
         {
-          "title": "Certified instructors",
-          "text": "Add your real certificates here (images or PDF links)."
+          "title": "Сертификатталған инструкторлар",
+          "text": "Мұнда өзіңіздің нақты сертификаттарыңызды қосыңыз (суреттер немесе PDF сілтемелері)."
         },
         {
-          "title": "Serviced equipment",
-          "text": "We tune and check gear regularly for safety and performance."
+          "title": "Қаралған жабдық",
+          "text": "Қауіпсіздік пен өнімділік үшін жабдықты тұрақты түрде баптап, тексереміз."
         }
       ]
     },
@@ -157,16 +199,129 @@
       "alt": "Курорт картасы"
     },
     "resortLifts": {
-      "title": "Көтергіштер мен трассалар",
-      "items": []
+      "title": "Көтергіштер және трассалар",
+      "items": [
+        {
+          "name": "PIRVELI",
+          "type": "алты орындық, ашық түрі",
+          "capacity": "1800 жолаушы/сағат",
+          "startAltitude": "2000 m",
+          "verticalDrop": "150 m",
+          "length": "1010 m"
+        },
+        {
+          "name": "SOLIKO",
+          "type": "алты орындық, жабық түрі",
+          "capacity": "2800 жолаушы/сағат",
+          "startAltitude": "2150 m",
+          "verticalDrop": "520 m",
+          "length": "2310 m"
+        },
+        {
+          "name": "SHINO",
+          "type": "алты орындық, ашық түрі",
+          "capacity": "1800 жолаушы/сағат",
+          "startAltitude": "2200 m",
+          "verticalDrop": "500 m",
+          "length": "2750 m"
+        },
+        {
+          "name": "GOOD AURA",
+          "type": "гондола (10 орындық жабық кабиналар)",
+          "capacity": "",
+          "startAltitude": "2160 m",
+          "verticalDrop": "540 m",
+          "length": "2380 m"
+        },
+        {
+          "name": "SNOW PARK",
+          "type": "үш орындық, ашық түрі",
+          "capacity": "",
+          "startAltitude": "2700 m",
+          "verticalDrop": "120 m",
+          "length": "900 m"
+        },
+        {
+          "name": "KOBI PASS",
+          "type": "гондола (10 орындық жабық кабиналар)",
+          "capacity": "",
+          "startAltitude": "2700 m",
+          "verticalDrop": "300 m",
+          "length": "1560 m"
+        },
+        {
+          "name": "KUDEBI",
+          "type": "алты орындық, жабық түрі",
+          "capacity": "2800 жолаушы/сағат",
+          "startAltitude": "2850 m",
+          "verticalDrop": "290 m",
+          "length": "850 m"
+        },
+        {
+          "name": "SADZELE",
+          "type": "төрт орындық, ашық түрі",
+          "capacity": "",
+          "startAltitude": "2770 m",
+          "verticalDrop": "488 m",
+          "length": "1300 m"
+        },
+        {
+          "name": "KOBI-1",
+          "type": "гондола (10 орындық жабық кабиналар)",
+          "capacity": "",
+          "startAltitude": "1800 m",
+          "verticalDrop": "500 m",
+          "length": "1480 m"
+        },
+        {
+          "name": "KOBI-2",
+          "type": "гондола (10 орындық жабық кабиналар)",
+          "capacity": "",
+          "startAltitude": "2300 m",
+          "verticalDrop": "700 m",
+          "length": "1520 m"
+        },
+        {
+          "name": "T-Bar from Alpina Hotel",
+          "type": "T-Bar көтергіші",
+          "capacity": "",
+          "startAltitude": "2200 m",
+          "verticalDrop": "100 m",
+          "length": "540 m"
+        },
+        {
+          "name": "T-Bar near \"Time Out\" Cafe",
+          "type": "оқу T-Bar көтергіші",
+          "capacity": "",
+          "startAltitude": "2150 m",
+          "verticalDrop": "50 m",
+          "length": "380 m"
+        },
+        {
+          "name": "T-Bar near \"SNOW PARK\" Lift",
+          "type": "жасөспірімдерге арналған T-Bar көтергіші",
+          "capacity": "",
+          "startAltitude": "2700 m",
+          "verticalDrop": "100 m",
+          "length": "250 m"
+        },
+        {
+          "name": "Juvenile Magic Carpet in New Gudauri",
+          "type": "Magic Carpet",
+          "capacity": "",
+          "startAltitude": "2200 m",
+          "verticalDrop": "25 m",
+          "length": "150 m"
+        }
+      ]
     },
     "liveStream": {
-      "title": "Курорттан тікелей трансляция",
+      "title": "Курорттан тікелей эфир",
       "youtubeUrl": "https://www.youtube.com/embed/JKrcipuNb7I",
       "videoUrl": "https://g2.ipcamlive.com/player/player.php?alias=5df6407e5ca46"
     },
     "resortPhotos": {
-      "title": "Курорт фотосуреттері",
+      "title": "Курорт фотолары",
       "items": [
         {
           "title": "Курорт фото 1",

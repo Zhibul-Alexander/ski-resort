@@ -4,8 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import type { Lang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher, LanguageSwitcherMobile } from "./language-switcher";
@@ -32,6 +33,13 @@ export function Header({
   };
 }) {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Закрываем меню при изменении URL
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
   const nav = [
     { href: `/${lang}`, label: navLabels?.aboutUs || "About Us" },
     { href: `/${lang}/rental`, label: navLabels?.rentalPrices || "Rental Prices" },
@@ -56,7 +64,7 @@ export function Header({
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-3 text-sm">
+        <nav className="hidden lg:flex items-center gap-2 text-sm">
           {nav.map((l) => {
             // Нормализуем пути для сравнения (убираем trailing slash и якорь)
             const normalizedPathname = pathname.replace(/\/$/, "") || "/";
@@ -71,7 +79,7 @@ export function Header({
                 key={l.href}
                 href={l.href}
                 className={cn(
-                  "px-3 py-1.5 rounded-lg transition-colors",
+                  "px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap text-xs lg:text-sm",
                   isActive
                     ? "bg-secondary text-foreground font-medium"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
@@ -82,36 +90,36 @@ export function Header({
             );
           })}
           <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-            <Button size="sm">{navLabels?.requestBooking || "Request Booking"}</Button>
+            <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}#contacts`} className="hidden lg:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
             {navLabels?.contacts || "Contacts"}
           </Link>
           <LanguageSwitcher currentLang={lang} />
 
-          {/* Mobile primary action */}
-          <Link href={`/${lang}/rental#booking-form`} className="md:hidden no-underline">
-            <Button size="sm">{navLabels?.requestBooking || "Request Booking"}</Button>
+          {/* Tablet/Mobile primary action */}
+          <Link href={`/${lang}/rental#booking-form`} className="lg:hidden no-underline">
+            <Button size="sm" className="whitespace-nowrap text-xs">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>
 
           {/* Mobile menu */}
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <div className="space-y-6">
-                <div className="space-y-1">
-                  <div className="font-semibold">{brandName}</div>
+              <div className="space-y-4 pt-4">
+                <div className="pb-2 border-b border-border">
+                  <div className="font-semibold text-lg">{brandName}</div>
                 </div>
 
-                <div className="grid gap-2">
+                <div className="space-y-2">
                   {nav.map((l) => {
                     const normalizedPathname = pathname.replace(/\/$/, "") || "/";
                     const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
@@ -121,26 +129,38 @@ export function Header({
                       ? normalizedPathname === normalizedHref
                       : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
                     return (
-                      <Link key={l.href} href={l.href} className="no-underline">
-                        <Button variant="secondary" className={cn("w-full justify-start", isActive && "bg-secondary")}>
-                          {l.label}
-                        </Button>
-                      </Link>
+                      <SheetClose key={l.href} asChild>
+                        <Link href={l.href} className="no-underline block">
+                          <Button variant="secondary" className={cn("w-full justify-start h-auto py-3 px-4", isActive && "bg-secondary")}>
+                            {l.label}
+                          </Button>
+                        </Link>
+                      </SheetClose>
                     );
                   })}
                 </div>
 
-                <Link href={`/${lang}#contacts`} className="no-underline">
-                  <Button variant="secondary" className="w-full justify-start">
-                    {navLabels?.contacts || "Contacts"}
-                  </Button>
-                </Link>
+                <div className="pt-2 border-t border-border">
+                  <SheetClose asChild>
+                    <Link href={`/${lang}#contacts`} className="no-underline">
+                      <Button variant="secondary" className="w-full justify-start h-auto py-3 px-4">
+                        {navLabels?.contacts || "Contacts"}
+                      </Button>
+                    </Link>
+                  </SheetClose>
+                </div>
 
-                <LanguageSwitcherMobile currentLang={lang} />
+                <div className="pt-2">
+                  <LanguageSwitcherMobile currentLang={lang} onLanguageChange={() => setIsMenuOpen(false)} />
+                </div>
 
-                <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-                  <Button className="w-full">{navLabels?.requestBooking || "Request booking"}</Button>
-                </Link>
+                <div className="pt-2 border-t border-border">
+                  <SheetClose asChild>
+                    <Link href={`/${lang}/rental#booking-form`} className="no-underline">
+                      <Button className="w-full h-auto py-3 px-4">{navLabels?.requestBooking || "Booking"}</Button>
+                    </Link>
+                  </SheetClose>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

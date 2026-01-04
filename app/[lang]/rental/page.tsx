@@ -25,9 +25,29 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
         {pricing.rental.tables.map((t) => (
           <Section key={t.id} title={t.title} subtitle={t.subtitle}>
             <Card>
-              <CardContent className="pt-6">
+              {/* Mobile: Card view */}
+              <CardContent className="pt-6 px-0 md:px-6 md:hidden">
+                <div className="space-y-2 px-3">
+                  {t.rows.map((r) => (
+                    <div key={r.label} className="rounded-xl border border-border bg-card p-2.5">
+                      <div className="font-medium text-xs mb-2 break-words leading-snug">{r.label}</div>
+                      <div className="space-y-1.5">
+                        {t.columns.slice(1).map((col, idx) => (
+                          <div key={idx} className="flex items-start justify-between gap-2">
+                            <span className="text-muted-foreground text-[11px] shrink-0 leading-tight pt-0.5">{col}:</span>
+                            <span className="font-medium text-xs text-right break-words leading-tight">{formatPrice(r.values[idx], exchangeRate)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+
+              {/* Desktop: Table view */}
+              <CardContent className="pt-6 hidden md:block">
                 <div className="overflow-x-auto rounded-2xl border border-border">
-                  <Table>
+                  <Table className="w-full">
                     <THead>
                       <TR>
                         <TH>{t.columns[0]}</TH>
@@ -55,7 +75,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
       </div>
 
       <div id="booking-form" className="scroll-mt-24">
-        <Section title={(site.pageTitles as any)?.requestBooking || "Request booking"} subtitle={(site.pageTitles as any)?.requestBookingSubtitle || "Fill out the form to request equipment rental"}>
+        <Section title={(site.pageTitles as any)?.requestBooking || "Booking"} subtitle={(site.pageTitles as any)?.requestBookingSubtitle || "Fill out the form to request equipment rental"}>
           <RentalBookingForm 
             lang={lang} 
             itemOptions={itemOptions}

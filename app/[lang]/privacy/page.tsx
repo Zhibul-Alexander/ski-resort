@@ -10,7 +10,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
     <div className="py-10 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">Privacy Policy</h1>
       <p className="mt-3 text-muted-foreground">
-        Last updated: {new Date().toLocaleDateString(lang === "ru" ? "ru-RU" : lang === "ka" ? "ka-GE" : lang === "kk" ? "kk-KZ" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
+        Last updated: {new Date().toLocaleDateString(lang === "ru" ? "ru-RU" : lang === "ge" ? "ka-GE" : lang === "kk" ? "kk-KZ" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
       </p>
 
       <section className="mt-8">

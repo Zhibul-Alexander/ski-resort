@@ -48,7 +48,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Lang }) {
   );
 }
 
-export function LanguageSwitcherMobile({ currentLang }: { currentLang: Lang }) {
+export function LanguageSwitcherMobile({ currentLang, onLanguageChange }: { currentLang: Lang; onLanguageChange?: () => void }) {
   const pathname = usePathname();
 
   function getLanguagePath(newLang: Lang): string {
@@ -73,6 +73,7 @@ export function LanguageSwitcherMobile({ currentLang }: { currentLang: Lang }) {
           <Link
             key={l.lang}
             href={getLanguagePath(l.lang)}
+            onClick={onLanguageChange}
             className={cn(
               "no-underline text-center text-xs rounded-xl border border-border py-2 transition-colors",
               l.lang === currentLang ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-secondary/60"

@@ -91,12 +91,12 @@ export function Select({
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 mt-2 w-full min-w-[8rem] overflow-hidden rounded-lg border border-border bg-card shadow-lg">
+        <div className="absolute z-50 mt-2 w-full min-w-[8rem] max-w-[calc(100vw-2rem)] left-0 overflow-hidden rounded-lg border border-border bg-card shadow-lg">
           <div className="max-h-[300px] overflow-auto p-1">
             {Object.entries(groupedOptions).map(([groupName, groupOptions]) => (
               <div key={groupName || "default"}>
                 {groupName && (
-                  <div className="px-2 py-2 text-sm font-semibold text-muted-foreground">
+                  <div className="px-2 py-2 text-sm font-semibold text-muted-foreground break-words">
                     {groupName}
                   </div>
                 )}
@@ -106,18 +106,18 @@ export function Select({
                     type="button"
                     onClick={() => handleSelect(option.value)}
                     className={cn(
-                      "relative flex w-full cursor-pointer select-none items-center rounded-md px-2 py-1.5 text-sm",
+                      "relative flex w-full cursor-pointer select-none items-start rounded-md px-2 py-1.5 text-sm",
                       "outline-none hover:bg-secondary focus:bg-secondary",
                       value === option.value && "bg-secondary font-medium"
                     )}
                   >
                     {value === option.value ? (
                       <>
-                        <Check className="mr-2 h-4 w-4 shrink-0" />
-                        <span>{option.label}</span>
+                        <Check className="mr-2 h-4 w-4 shrink-0 mt-0.5" />
+                        <span className="break-words text-left">{option.label}</span>
                       </>
                     ) : (
-                      <span className="ml-6">{option.label}</span>
+                      <span className="ml-6 break-words text-left">{option.label}</span>
                     )}
                   </button>
                 ))}

@@ -45,7 +45,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </Carousel>
       </Section>
 
-      <div id="contacts" className="scroll-mt-24">
+      <div className="scroll-mt-32 md:scroll-mt-24">
         <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
           <div className="grid gap-6 lg:grid-cols-2">
             <Card>
@@ -74,13 +74,13 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card id="contacts" className="scroll-mt-32 md:scroll-mt-24">
             <CardHeader>
               <CardTitle>{site.pageTitles?.navContacts || "Contacts"}</CardTitle>
               <CardDescription>{site.pageTitles?.contactsDescription || "Phone, email and messengers"}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-2 text-sm">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <a className="hover:underline flex items-center gap-2" href={`tel:${site.contacts.phone}`}>
                   <Phone className="h-4 w-4" />{site.contacts.phone}
                 </a>

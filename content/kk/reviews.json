@@ -1,34 +1,34 @@
 {
-  "title": "Guest reviews",
+  "title": "Қонақтардың пікірлері",
   "items": [
     {
       "name": "Anna",
-      "text": "Super friendly team and the gear felt almost new. Quick fitting and clear prices.",
+      "text": "Өте жылы шырайлы команда, жабдық дерлік жаңа сияқты. Өлшемін тез сәйкестендіріп берді, бағалар түсінікті.",
       "rating": 5
     },
     {
       "name": "David",
-      "text": "Booked for the whole family — everything was ready on time. Great experience.",
+      "text": "Бүкіл отбасыға броньдадық — бәрі уақытында дайын болды. Өте жақсы әсер қалдырды.",
       "rating": 5
     },
     {
       "name": "Li Wei",
-      "text": "Premium set was excellent. Staff helped with sizing and gave good tips.",
+      "text": "Premium жиынтық керемет болды. Қызметкерлер өлшем таңдауға көмектесіп, пайдалы кеңес берді.",
       "rating": 5
     },
     {
       "name": "Dmitry",
-      "text": "Very удобное место и приятный персонал. Всё быстро и без лишних вопросов.",
+      "text": "Өте ыңғайлы орын және жағымды персонал. Бәрі тез әрі артық сұрақсыз өтті.",
       "rating": 5
     },
     {
       "name": "Mariam",
-      "text": "Private lesson was super helpful. Progress in one day!",
+      "text": "Жеке сабақ өте пайдалы болды. Бір күнде-ақ ілгерілеу байқалды!",
       "rating": 5
     },
     {
       "name": "Aruzhan",
-      "text": "Good quality service, beautiful shop, and easy booking flow.",
+      "text": "Қызмет сапасы жақсы, дүкен әдемі, бронь жасау процесі оңай.",
       "rating": 5
     }
   ]

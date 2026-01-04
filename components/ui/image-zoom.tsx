@@ -20,7 +20,7 @@ const translations = {
     reset: "Reset",
     hint: "Double click or ESC to reset • Drag to move"
   },
-  ka: {
+  ge: {
     reset: "გადატვირთვა",
     hint: "ორმაგი დაწკაპუნება ან ESC გადასატვირთად • გადაადგილება გადათრევით"
   },
