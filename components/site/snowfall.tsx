@@ -149,7 +149,8 @@ function createSnowfall(options: SnowfallOptions = {}) {
     opacityRange = [0.2, 1],
     scaleRange = [0.6, 1.2],
     driftRange = [-10, 10],
-    color = "#a6e7ff",
+    // Цвет подобран под цветовую схему сайта (акцентный цвет, но более мягкий)
+    color = "hsl(197, 50%, 75%)", // Мягкий голубой, гармонирующий с accent цветом (197, 95%, 40%)
     zIndex = "9999",
     iconSvg = DEFAULT_SNOWFLAKE_SVG,
     pauseWhenHidden = true,
