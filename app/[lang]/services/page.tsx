@@ -4,6 +4,7 @@ import { Section } from "@/components/site/section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
+import { SlideIn } from "@/components/ui/slide-in";
 
 export default async function ServicesPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -15,53 +16,59 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
   if (!services) {
     return (
       <div className="py-10">
-        <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.services || "Services"}</h1>
-        <p className="mt-3 text-muted-foreground">{(site.pageTitles as any)?.servicesNotAvailable || "Services information is not available."}</p>
+        <SlideIn index={0}>
+          <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.services || "Services"}</h1>
+          <p className="mt-3 text-muted-foreground">{(site.pageTitles as any)?.servicesNotAvailable || "Services information is not available."}</p>
+        </SlideIn>
       </div>
     );
   }
 
   return (
     <div className="py-10">
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.services || "Services"}</h1>
-        <div className="mt-4 space-y-3 text-muted-foreground">
-          <p>
-            {(site.pageTitles as any)?.servicesSubtitle || "We keep your gear in top condition — fast, аккуратно и по стандартам сервиса. We handle everything from routine maintenance to full repairs for skis, snowboards and related equipment. Our workshop can help with base repairs, P-tex filling, edge tuning and sharpening, stone grinding (where available), hot waxing, binding checks and adjustments, and general inspections to make sure your equipment is safe and feels great on snow."}
-          </p>
-          <p>
-            {(site.pageTitles as any)?.servicesSubtitle2 || "Whether you need a quick refresh before the next run or a proper fix after hitting rocks, we'll restore performance, improve glide, and help your gear last longer — with clear recommendations and fair turnaround times."}
-          </p>
+      <SlideIn index={0}>
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.services || "Services"}</h1>
+          <div className="mt-4 space-y-3 text-muted-foreground">
+            <p>
+              {(site.pageTitles as any)?.servicesSubtitle || "We keep your gear in top condition — fast, аккуратно и по стандартам сервиса. We handle everything from routine maintenance to full repairs for skis, snowboards and related equipment. Our workshop can help with base repairs, P-tex filling, edge tuning and sharpening, stone grinding (where available), hot waxing, binding checks and adjustments, and general inspections to make sure your equipment is safe and feels great on snow."}
+            </p>
+            <p>
+              {(site.pageTitles as any)?.servicesSubtitle2 || "Whether you need a quick refresh before the next run or a proper fix after hitting rocks, we'll restore performance, improve glide, and help your gear last longer — with clear recommendations and fair turnaround times."}
+            </p>
+          </div>
         </div>
-      </div>
+      </SlideIn>
 
-      <Section 
-        title={(site.pageTitles as any)?.servicePrices || "Service Prices"} 
-        subtitle={services.note ? `${(site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair"}. ${services.note}` : ((site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair")}
-      >
-        <Card>
-          <CardContent className="pt-6">
-            <div className="overflow-x-auto rounded-2xl border border-border">
-              <Table>
-                <THead>
-                  <TR>
-                    <TH>{(site.pageTitles as any)?.service || "Service"}</TH>
-                    <TH className="text-right">{(site.pageTitles as any)?.price || "Price"}</TH>
-                  </TR>
-                </THead>
-                <TBody>
-                  {services.items.map((service, idx) => (
-                    <TR key={idx}>
-                      <TD className="font-medium">{service.name}</TD>
-                      <TD className="text-right">{formatPrice(String(service.price), exchangeRate)}</TD>
+      <SlideIn index={1}>
+        <Section 
+          title={(site.pageTitles as any)?.servicePrices || "Service Prices"} 
+          subtitle={services.note ? `${(site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair"}. ${services.note}` : ((site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair")}
+        >
+          <Card>
+            <CardContent className="pt-6">
+              <div className="overflow-x-auto rounded-2xl border border-border">
+                <Table>
+                  <THead>
+                    <TR>
+                      <TH>{(site.pageTitles as any)?.service || "Service"}</TH>
+                      <TH className="text-right">{(site.pageTitles as any)?.price || "Price"}</TH>
                     </TR>
-                  ))}
-                </TBody>
-              </Table>
-            </div>
-          </CardContent>
-        </Card>
-      </Section>
+                  </THead>
+                  <TBody>
+                    {services.items.map((service, idx) => (
+                      <TR key={idx}>
+                        <TD className="font-medium">{service.name}</TD>
+                        <TD className="text-right">{formatPrice(String(service.price), exchangeRate)}</TD>
+                      </TR>
+                    ))}
+                  </TBody>
+                </Table>
+              </div>
+            </CardContent>
+          </Card>
+        </Section>
+      </SlideIn>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
 import { RentalBookingForm } from "@/components/booking/RentalBookingForm";
 import { extractRentalItemOptions } from "@/lib/rental-items-simple";
+import { SlideIn } from "@/components/ui/slide-in";
 
 export default async function RentalPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -16,14 +17,17 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
 
   return (
     <div className="py-10">
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.rentalPrices || "Rental prices"}</h1>
-        <p className="mt-2 text-muted-foreground">{(site.pageTitles as any)?.rentalSubtitle || "Professional gear for any skill level."}</p>
-      </div>
+      <SlideIn index={0}>
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.rentalPrices || "Rental prices"}</h1>
+          <p className="mt-2 text-muted-foreground">{(site.pageTitles as any)?.rentalSubtitle || "Professional gear for any skill level."}</p>
+        </div>
+      </SlideIn>
 
       <div className="grid gap-6">
-        {pricing.rental.tables.map((t) => (
-          <Section key={t.id} title={t.title} subtitle={t.subtitle}>
+        {pricing.rental.tables.map((t, tableIdx) => (
+          <SlideIn key={t.id} index={tableIdx + 1}>
+            <Section title={t.title} subtitle={t.subtitle}>
             <Card>
               {/* Mobile: Card view */}
               <CardContent className="pt-6 px-0 md:px-6 md:hidden">
@@ -71,11 +75,13 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
               </CardContent>
             </Card>
           </Section>
+          </SlideIn>
         ))}
       </div>
 
-      <div id="booking-form" className="scroll-mt-24">
-        <Section title={(site.pageTitles as any)?.requestBooking || "Booking"} subtitle={(site.pageTitles as any)?.requestBookingSubtitle || "Fill out the form to request equipment rental"}>
+      <SlideIn index={pricing.rental.tables.length + 1}>
+        <div id="booking-form" className="scroll-mt-24">
+          <Section title={(site.pageTitles as any)?.requestBooking || "Booking"} subtitle={(site.pageTitles as any)?.requestBookingSubtitle || "Fill out the form to request equipment rental"}>
           <RentalBookingForm 
             lang={lang} 
             itemOptions={itemOptions}
@@ -115,8 +121,9 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
               na: (site.pageTitles as any)?.bookingFormNa
             }}
           />
-        </Section>
-      </div>
+          </Section>
+        </div>
+      </SlideIn>
     </div>
   );
 }
