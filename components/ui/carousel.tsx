@@ -47,15 +47,23 @@ export function Carousel({
   const visibleSlides = getSlidesPerView();
   
   // Вычисляем максимальный индекс для навигации
-  // Для дробных visibleSlides (например, 1.5) нужно учесть, что последний слайд должен быть виден полностью
+  // Для дробных visibleSlides (например, 1.5) нужно учесть, что каждый слайд должен быть виден полностью
   // maxIndex должен позволить дойти до позиции, где последний слайд полностью виден
   const calculateMaxIndex = () => {
     if (totalItems <= visibleSlides) {
       // Если все слайды помещаются, не нужно прокручивать
       return 0;
     }
+    
+    // Для дробных visibleSlides (например, 1.5) нужно больше позиций, чтобы показать каждый слайд полностью
+    // Для целых visibleSlides используем стандартную логику
+    if (visibleSlides % 1 !== 0) {
+      // Для дробных: увеличиваем maxIndex до totalItems - 1, чтобы была возможность показать каждый слайд полностью
+      return Math.max(0, totalItems - 1);
+    }
+    
+    // Для целых visibleSlides: стандартная логика
     // Для показа последнего слайда полностью нужно сдвинуться на (totalItems - visibleSlides) позиций
-    // Используем floor, чтобы не выйти за пределы
     return Math.floor(totalItems - visibleSlides);
   };
   
@@ -97,11 +105,36 @@ export function Carousel({
   const slideWidth = 100 / visibleSlides;
   
   // Вычисляем смещение для transform
-  // Для последней позиции показываем последний слайд полностью и часть предпоследнего слева
+  // Для дробных visibleSlides нужно специальная логика, чтобы показать каждый слайд полностью
   const getTransform = () => {
+    if (totalItems <= visibleSlides) {
+      return 0;
+    }
+    
+    // Для дробных visibleSlides (например, 1.5) нужна специальная логика
+    if (visibleSlides % 1 !== 0) {
+      // Для последней позиции: сдвигаемся так, чтобы последний слайд был полностью виден
+      if (currentIndex === maxIndex) {
+        return (totalItems - visibleSlides) * slideWidth;
+      }
+      
+      // Для предпоследней позиции (когда нужно показать предпоследний слайд полностью)
+      // Например, при visibleSlides = 1.5 и totalItems = 6:
+      // - Позиция 4 должна показать 5-й слайд полностью
+      // - Позиция 5 должна показать 6-й слайд полностью
+      if (currentIndex === totalItems - 2) {
+        // Сдвигаемся так, чтобы предпоследний слайд был полностью виден
+        // Это означает сдвиг на (currentIndex + 1 - visibleSlides) * slideWidth
+        return (currentIndex + 1 - visibleSlides) * slideWidth;
+      }
+      
+      // Для остальных позиций: стандартная логика
+      return currentIndex * slideWidth;
+    }
+    
+    // Для целых visibleSlides: стандартная логика
     if (currentIndex === maxIndex && totalItems > visibleSlides) {
       // Для последней позиции: сдвигаемся так, чтобы последний слайд был полностью виден
-      // Это означает сдвиг на (totalItems - visibleSlides) * slideWidth
       return (totalItems - visibleSlides) * slideWidth;
     }
     return currentIndex * slideWidth;

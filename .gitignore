@@ -39,4 +39,5 @@ next-env.d.ts
 # cloudflare
 .wrangler/
 worker/.wrangler/
+worker/.dev.vars
 
