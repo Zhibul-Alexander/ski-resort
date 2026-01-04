@@ -77,6 +77,77 @@ export type PricingContent = {
 export type FaqContent = { title: string; items: { q: string; a: string }[] };
 export type ReviewsContent = { title: string; items: { name: string; text: string; rating: number }[] };
 
+export type PrivacyContent = {
+  title: string;
+  lastUpdated: string;
+  sections: {
+    introduction: {
+      title: string;
+      paragraphs: string[];
+    };
+    informationWeCollect: {
+      title: string;
+      intro: string;
+      items: { title: string; text: string }[];
+      automaticallyCollected: { title: string; text: string };
+    };
+    howWeUse: {
+      title: string;
+      intro: string;
+      items: { title: string; text: string }[];
+    };
+    legalBasis: {
+      title: string;
+      intro: string;
+      items: { title: string; text: string }[];
+    };
+    dataSharing: {
+      title: string;
+      intro: string;
+      items: { title: string; text: string }[];
+    };
+    dataSecurity: {
+      title: string;
+      intro: string;
+      items: string[];
+      disclaimer: string;
+    };
+    dataRetention: {
+      title: string;
+      intro: string;
+      items: { title: string; text: string }[];
+      conclusion: string;
+    };
+    yourRights: {
+      title: string;
+      intro: string;
+      items: { title: string; text: string }[];
+      conclusion: string;
+    };
+    cookies: {
+      title: string;
+      paragraphs: string[];
+    };
+    internationalTransfers: {
+      title: string;
+      text: string;
+    };
+    childrenPrivacy: {
+      title: string;
+      text: string;
+    };
+    changes: {
+      title: string;
+      text: string;
+    };
+    contactUs: {
+      title: string;
+      intro: string;
+      contactPage: string;
+    };
+  };
+};
+
 async function readJson<T>(path: string): Promise<T> {
   // Static export safe: JSON files are bundled at build time.
   return (await import(`../content/${path}`)).default as T;
@@ -100,4 +171,9 @@ export async function getFaq(lang: Lang) {
 export async function getReviews(lang: Lang) {
   const key = toLocaleKey(lang);
   return await readJson<ReviewsContent>(`${key}/reviews.json`);
+}
+
+export async function getPrivacy(lang: Lang) {
+  const key = toLocaleKey(lang);
+  return await readJson<PrivacyContent>(`${key}/privacy.json`);
 }
