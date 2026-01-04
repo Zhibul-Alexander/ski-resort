@@ -36,10 +36,10 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
       </Section>
 
       <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
-        <Carousel>
+        <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
           {site.sections.shopPhotos.items.map((p, idx) => (
-            <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card flex items-center justify-center h-[500px]">
-              <img src={p.src} alt={p.title} className="max-h-full max-w-full object-contain" />
+            <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card h-[500px]">
+              <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
             </div>
           ))}
         </Carousel>
