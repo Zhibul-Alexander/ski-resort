@@ -1,145 +1,133 @@
-import Link from "next/link";
-import { ArrowRight, MapPin, Snowflake, ShieldCheck, Timer } from "lucide-react";
-import { getSite, getPricing, getReviews } from "@/lib/content";
 import type { Lang } from "@/lib/i18n";
-import { Button } from "@/components/ui/button";
+import { getSite, getFaq, getReviews } from "@/lib/content";
+import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Carousel } from "@/components/ui/carousel";
+import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const site = await getSite(lang);
-  const pricing = await getPricing(lang);
+  const faq = await getFaq(lang);
   const reviews = await getReviews(lang);
 
   return (
     <div className="py-10">
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 p-10">
-        <div className="max-w-2xl">
-          <Badge variant="secondary">Gudauri • Premium</Badge>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight">
-            {site.brand.name}
-          </h1>
-          <p className="mt-3 text-base text-muted-foreground">
-            {site.brand.tagline}
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-              <Button size="lg">
-                Request booking <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href={`/${lang}/rental`} className="no-underline">
-              <Button size="lg" variant="outline">View rental prices</Button>
-            </Link>
-          </div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <div className="flex items-start gap-3">
-              <Snowflake className="h-5 w-5 text-accent mt-0.5" />
-              <div>
-                <div className="text-sm font-medium">Fresh gear</div>
-                <div className="text-xs text-muted-foreground">Economy & premium sets</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Timer className="h-5 w-5 text-accent mt-0.5" />
-              <div>
-                <div className="text-sm font-medium">Fast pickup</div>
-                <div className="text-xs text-muted-foreground">Simple request form</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="h-5 w-5 text-accent mt-0.5" />
-              <div>
-                <div className="text-sm font-medium">Trusted service</div>
-                <div className="text-xs text-muted-foreground">Great reviews</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="hidden lg:block absolute right-8 top-8 bottom-8 w-[380px] rounded-3xl border border-border bg-white/60 backdrop-blur p-5">
-          <div className="text-sm font-medium">Hours</div>
-          <div className="text-sm text-muted-foreground mt-1">{site.hours.value}</div>
-
-          <div className="mt-4 flex items-center gap-2 text-sm font-medium">
-            <MapPin className="h-4 w-4 text-accent" />
-            Find us on the map
-          </div>
-          <div className="mt-3 overflow-hidden rounded-2xl border border-border bg-white">
-            <iframe
-              title="Google map"
-              src={site.location.mapEmbedUrl}
-              width="100%"
-              height="240"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <div className="mt-3 text-xs text-muted-foreground">{site.location.addressLine}</div>
-          <a className="text-xs" href={site.location.mapOpenUrl} target="_blank" rel="noreferrer">
-            Open in Google Maps
-          </a>
-        </div>
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight">{site.pageTitles?.aboutShop || "About the shop"}</h1>
+        <p className="mt-2 text-muted-foreground whitespace-pre-line">{site.location.directions}</p>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>{site.pageTitles?.aboutShop || "About Us"}</CardTitle>
-            <CardDescription>Learn more about our shop, services and team.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link href={`/${lang}/about-us`} className="no-underline">
-              <Button variant="secondary" className="w-full">Learn more</Button>
-            </Link>
-          </CardContent>
-        </Card>
+      <Section title={site.sections.highlights.title} subtitle={site.pageTitles?.whyChooseUs || "Why guests choose us"}>
+        <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
+          {site.sections.highlights.items.map((it, idx) => (
+            <Card key={idx} className="h-full">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xl">{it.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base leading-relaxed">{it.text}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </Carousel>
+      </Section>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Rental Prices</CardTitle>
-            <CardDescription>Skis, snowboards, kids gear, clothing & accessories.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link href={`/${lang}/rental`} className="no-underline">
-              <Button variant="secondary" className="w-full">Explore prices</Button>
-            </Link>
-          </CardContent>
-        </Card>
+      <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
+        <Carousel>
+          {site.sections.shopPhotos.items.map((p, idx) => (
+            <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card flex items-center justify-center h-[500px]">
+              <img src={p.src} alt={p.title} className="max-h-full max-w-full object-contain" />
+            </div>
+          ))}
+        </Carousel>
+      </Section>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Lessons</CardTitle>
-            <CardDescription>Private coaching (1.5h). Packages available.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link href={`/${lang}/lessons`} className="no-underline">
-              <Button variant="secondary" className="w-full">View lesson pricing</Button>
-            </Link>
-          </CardContent>
-        </Card>
+      <div id="contacts" className="scroll-mt-24">
+        <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between gap-4">
+                  <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}</CardTitle>
+                  <a href={site.location.mapOpenUrl} target="_blank" rel="noreferrer" className="no-underline">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      {site.pageTitles?.openInGoogleMaps || "Open in Google Maps"}
+                      <ExternalLink className="h-4 w-4" />
+                    </Button>
+                  </a>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-hidden rounded-2xl border border-border bg-white">
+                  <iframe
+                    title="Google map"
+                    src={site.location.mapEmbedUrl}
+                    width="100%"
+                    height="360"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Ski Resort</CardTitle>
-            <CardDescription>Map, photos and quick tips for {site.resort.name}.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link href={`/${lang}/resort`} className="no-underline">
-              <Button variant="secondary" className="w-full">Open resort page</Button>
-            </Link>
-          </CardContent>
-        </Card>
+            <Card>
+            <CardHeader>
+              <CardTitle>{site.pageTitles?.navContacts || "Contacts"}</CardTitle>
+              <CardDescription>{site.pageTitles?.contactsDescription || "Phone, email and messengers"}</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-2 text-sm">
+              <div className="flex items-center gap-2">
+                <a className="hover:underline flex items-center gap-2" href={`tel:${site.contacts.phone}`}>
+                  <Phone className="h-4 w-4" />{site.contacts.phone}
+                </a>
+                <span className="text-muted-foreground">WhatsApp | Telegram | Viber</span>
+              </div>
+              <a className="hover:underline flex items-center gap-2" href={`mailto:${site.contacts.email}`}>
+                <Mail className="h-4 w-4" />{site.contacts.email}
+              </a>
+              {site.contacts.instagram ? (
+                <a className="hover:underline flex items-center gap-2" href={site.contacts.instagram} target="_blank" rel="noreferrer">
+                  <Instagram className="h-4 w-4" />Instagram
+                </a>
+              ) : null}
+              {site.contacts.telegram ? (
+                <a className="hover:underline flex items-center gap-2" href={`https://t.me/${site.contacts.telegram.replace('@', '')}`} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" />Telegram
+                </a>
+              ) : null}
+              <div className="flex items-center gap-2 mt-3">
+                <Clock className="h-4 w-4" />
+                <span>{(site.pageTitles as any)?.hoursLabel || "Время работы:"} {site.hours.value}</span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
       </div>
 
-      <div className="mt-12">
-        <h2 className="text-2xl font-semibold tracking-tight">{reviews.title}</h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          {reviews.items.slice(0, 6).map((r, idx) => (
-            <Card key={idx}>
+      <Section title={faq.title} subtitle={site.pageTitles?.quickAnswers || "Quick answers"}>
+        <Card>
+          <CardContent className="pt-6">
+            <Accordion type="single" collapsible className="w-full">
+              {faq.items.map((it, idx) => (
+                <AccordionItem key={idx} value={`item-${idx}`}>
+                  <AccordionTrigger>{it.q}</AccordionTrigger>
+                  <AccordionContent>{it.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </CardContent>
+        </Card>
+      </Section>
+
+      <Section title={reviews.title}>
+        <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
+          {reviews.items.map((r, idx) => (
+            <Card key={idx} className="h-full">
               <CardHeader>
                 <CardTitle className="text-base">{r.name}</CardTitle>
                 <CardDescription>{"★".repeat(Math.max(1, Math.min(5, r.rating)))}</CardDescription>
@@ -147,8 +135,8 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
               <CardContent className="text-sm text-muted-foreground">{r.text}</CardContent>
             </Card>
           ))}
-        </div>
-      </div>
+        </Carousel>
+      </Section>
     </div>
   );
 }

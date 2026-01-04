@@ -33,8 +33,22 @@ export default async function LangLayout({
 
   return (
     <>
-      <Header lang={lang} brandName={site.brand.name} phone={site.contacts.phone} email={site.contacts.email} />
-      <main className="container">{children}</main>
+      <Header 
+        lang={lang} 
+        brandName={site.brand.name} 
+        phone={site.contacts.phone} 
+        email={site.contacts.email}
+        navLabels={{
+          aboutUs: (site.pageTitles as any)?.navAboutUs,
+          rentalPrices: (site.pageTitles as any)?.navRentalPrices,
+          lessons: (site.pageTitles as any)?.navLessons,
+          services: (site.pageTitles as any)?.navServices,
+          skiResort: (site.pageTitles as any)?.navSkiResort,
+          contacts: (site.pageTitles as any)?.navContacts,
+          requestBooking: (site.pageTitles as any)?.requestBooking
+        }}
+      />
+      <main className="container pt-16">{children}</main>
       <div className="container">
         <div className="mt-0 mb-[48px] rounded-2xl border border-border bg-card p-6">
           <p className="text-center text-base font-medium">{site.pageTitles?.thankYouMessage || "Thank you for trusting us with your vacation!"}</p>
@@ -50,6 +64,13 @@ export default async function LangLayout({
         telegram={site.contacts.telegram}
         viber={site.contacts.viber}
         hours={site.hours.value}
+        footerLabels={{
+          description: (site.pageTitles as any)?.footerDescription,
+          contacts: (site.pageTitles as any)?.footerContacts,
+          hoursLabel: (site.pageTitles as any)?.hoursLabel,
+          privacyPolicy: (site.pageTitles as any)?.footerPrivacyPolicy,
+          rights: (site.pageTitles as any)?.footerRights
+        }}
       />
       <ScrollToTop />
     </>

@@ -1,5 +1,5 @@
 import type { Lang } from "@/lib/i18n";
-import { getPricing } from "@/lib/content";
+import { getPricing, getSite } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
@@ -10,14 +10,15 @@ import { extractRentalItemOptions } from "@/lib/rental-items-simple";
 export default async function RentalPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const pricing = await getPricing(lang);
+  const site = await getSite(lang);
   const exchangeRate = pricing.exchangeRate ?? 2.7;
   const itemOptions = extractRentalItemOptions(pricing);
 
   return (
     <div className="py-10">
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Rental prices</h1>
-        <p className="mt-2 text-muted-foreground">Professional gear for any skill level.</p>
+        <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.rentalPrices || "Rental prices"}</h1>
+        <p className="mt-2 text-muted-foreground">{(site.pageTitles as any)?.rentalSubtitle || "Professional gear for any skill level."}</p>
       </div>
 
       <div className="grid gap-6">
@@ -54,8 +55,46 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
       </div>
 
       <div id="booking-form" className="scroll-mt-24">
-        <Section title="Request booking" subtitle="Fill out the form to request equipment rental">
-          <RentalBookingForm lang={lang} itemOptions={itemOptions} />
+        <Section title={(site.pageTitles as any)?.requestBooking || "Request booking"} subtitle={(site.pageTitles as any)?.requestBookingSubtitle || "Fill out the form to request equipment rental"}>
+          <RentalBookingForm 
+            lang={lang} 
+            itemOptions={itemOptions}
+            labels={{
+              dates: (site.pageTitles as any)?.bookingFormDates,
+              datesDesc: (site.pageTitles as any)?.bookingFormDatesDesc,
+              from: (site.pageTitles as any)?.bookingFormFrom,
+              to: (site.pageTitles as any)?.bookingFormTo,
+              items: (site.pageTitles as any)?.bookingFormItems,
+              itemsDesc: (site.pageTitles as any)?.bookingFormItemsDesc,
+              addItem: (site.pageTitles as any)?.bookingFormAddItem,
+              remove: (site.pageTitles as any)?.bookingFormRemove,
+              equipment: (site.pageTitles as any)?.bookingFormEquipment,
+              segment: (site.pageTitles as any)?.bookingFormSegment,
+              quantity: (site.pageTitles as any)?.bookingFormQuantity,
+              notes: (site.pageTitles as any)?.bookingFormNotes,
+              notesPlaceholder: (site.pageTitles as any)?.bookingFormNotesPlaceholder,
+              contacts: (site.pageTitles as any)?.bookingFormContacts,
+              contactsDesc: (site.pageTitles as any)?.bookingFormContactsDesc,
+              email: (site.pageTitles as any)?.bookingFormEmail,
+              phone: (site.pageTitles as any)?.bookingFormPhone,
+              messenger: (site.pageTitles as any)?.bookingFormMessenger,
+              messengerContact: (site.pageTitles as any)?.bookingFormMessengerContact,
+              comment: (site.pageTitles as any)?.bookingFormComment,
+              commentPlaceholder: (site.pageTitles as any)?.bookingFormCommentPlaceholder,
+              submit: (site.pageTitles as any)?.bookingFormSubmit,
+              submitNote: (site.pageTitles as any)?.bookingFormSubmitNote,
+              successTitle: (site.pageTitles as any)?.bookingFormSuccessTitle,
+              successDesc: (site.pageTitles as any)?.bookingFormSuccessDesc,
+              createAnother: (site.pageTitles as any)?.bookingFormCreateAnother,
+              adults: (site.pageTitles as any)?.bookingFormAdults,
+              kids: (site.pageTitles as any)?.bookingFormKids,
+              accessories: (site.pageTitles as any)?.bookingFormAccessories,
+              none: (site.pageTitles as any)?.bookingFormNone,
+              economy: (site.pageTitles as any)?.bookingFormEconomy,
+              premium: (site.pageTitles as any)?.bookingFormPremium,
+              na: (site.pageTitles as any)?.bookingFormNa
+            }}
+          />
         </Section>
       </div>
     </div>

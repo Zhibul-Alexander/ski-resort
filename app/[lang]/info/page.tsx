@@ -101,7 +101,7 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
               ) : null}
               <div className="flex items-center gap-2 mt-3">
                 <Clock className="h-4 w-4" />
-                <span>Время работы: {site.hours.value}</span>
+                <span>{(site.pageTitles as any)?.hoursLabel || "Время работы:"} {site.hours.value}</span>
               </div>
             </CardContent>
           </Card>

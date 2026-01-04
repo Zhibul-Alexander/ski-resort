@@ -1,11 +1,12 @@
 import type { Lang } from "@/lib/i18n";
-import { getPricing } from "@/lib/content";
+import { getPricing, getSite } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default async function LessonsPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const pricing = await getPricing(lang);
+  const site = await getSite(lang);
 
   const coaches = [
     { 
@@ -31,33 +32,35 @@ export default async function LessonsPage({ params }: { params: Promise<{ lang: 
     }
   ];
 
+  const individualText = (site.pageTitles as any)?.lessonsIndividualText?.replace("{duration}", pricing.lessons.duration) || `Продолжительность — ${pricing.lessons.duration}. Каждый урок адаптирован под ваши цели и уровень подготовки. Инструктор уделяет внимание только вам, что позволяет максимально быстро прогрессировать и получать персональные рекомендации.`;
+
   return (
     <div className="py-10">
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Уроки катания</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">{(site.pageTitles as any)?.lessons || "Уроки катания"}</h1>
         <div className="mt-4 space-y-3 text-muted-foreground">
           <p>
-            Наша команда профессиональных инструкторов поможет вам освоить горные лыжи и сноуборд или улучшить свои навыки, независимо от вашего уровня подготовки. Мы работаем с детьми и взрослыми, новичками и продвинутыми райдерами.
+            {(site.pageTitles as any)?.lessonsSubtitle || "Наша команда профессиональных инструкторов поможет вам освоить горные лыжи и сноуборд или улучшить свои навыки, независимо от вашего уровня подготовки. Мы работаем с детьми и взрослыми, новичками и продвинутыми райдерами."}
           </p>
           <p>
-            <strong className="text-foreground">Индивидуальные уроки:</strong> Продолжительность — {pricing.lessons.duration}. Каждый урок адаптирован под ваши цели и уровень подготовки. Инструктор уделяет внимание только вам, что позволяет максимально быстро прогрессировать и получать персональные рекомендации.
+            <strong className="text-foreground">{(site.pageTitles as any)?.lessonsIndividual || "Индивидуальные уроки:"}</strong> {individualText}
           </p>
           <p>
-            <strong className="text-foreground">Групповые тренировки:</strong> Доступны по предварительному согласованию. Для уточнения расписания, состава группы и стоимости свяжитесь с нами по телефону или через мессенджеры.
+            <strong className="text-foreground">{(site.pageTitles as any)?.lessonsGroup || "Групповые тренировки:"}</strong> {(site.pageTitles as any)?.lessonsGroupText || "Доступны по предварительному согласованию. Для уточнения расписания, состава группы и стоимости свяжитесь с нами по телефону или через мессенджеры."}
           </p>
           <p>
-            Все наши инструкторы имеют международные сертификаты и многолетний опыт работы. Мы гарантируем безопасность, профессиональный подход и индивидуальное внимание к каждому ученику.
+            {(site.pageTitles as any)?.lessonsGuarantee || "Все наши инструкторы имеют международные сертификаты и многолетний опыт работы. Мы гарантируем безопасность, профессиональный подход и индивидуальное внимание к каждому ученику."}
           </p>
         </div>
       </div>
 
-      <Section title="Стоимость" subtitle="Пакеты уроков">
+      <Section title={(site.pageTitles as any)?.lessonsPricing || "Стоимость"} subtitle={(site.pageTitles as any)?.lessonsPricingSubtitle || "Пакеты уроков"}>
         <div className="grid gap-4 md:grid-cols-3">
           {pricing.lessons.packages.map((p, idx) => (
             <Card key={idx}>
               <CardHeader>
                 <CardTitle>{p.label}</CardTitle>
-                <CardDescription>{p.note ?? "Private lesson package"}</CardDescription>
+                <CardDescription>{p.note || "Private lesson package"}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-semibold">{p.price}</div>
@@ -67,7 +70,7 @@ export default async function LessonsPage({ params }: { params: Promise<{ lang: 
         </div>
       </Section>
 
-      <Section title="Наша команда инструкторов" subtitle="Профессионалы с опытом и страстью к горным лыжам">
+      <Section title={(site.pageTitles as any)?.lessonsTeam || "Наша команда инструкторов"} subtitle={(site.pageTitles as any)?.lessonsTeamSubtitle || "Профессионалы с опытом и страстью к горным лыжам"}>
         <div className="grid gap-6 md:grid-cols-3">
           {coaches.map((c, idx) => (
             <Card key={idx} className="flex flex-col">
@@ -81,7 +84,7 @@ export default async function LessonsPage({ params }: { params: Promise<{ lang: 
               <CardContent className="flex-1 space-y-4">
                 <p className="text-sm text-muted-foreground leading-relaxed">{c.experience}</p>
                 <div>
-                  <p className="text-sm font-medium mb-2">Специализация:</p>
+                  <p className="text-sm font-medium mb-2">{(site.pageTitles as any)?.lessonsSpecialization || "Специализация:"}</p>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     {c.specialties.map((spec, i) => (
                       <li key={i} className="flex items-start">

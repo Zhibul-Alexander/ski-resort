@@ -14,23 +14,34 @@ export function Header({
   lang,
   brandName,
   phone,
-  email
+  email,
+  navLabels
 }: {
   lang: Lang;
   brandName: string;
   phone: string;
   email: string;
+  navLabels?: {
+    aboutUs?: string;
+    rentalPrices?: string;
+    lessons?: string;
+    services?: string;
+    skiResort?: string;
+    contacts?: string;
+    requestBooking?: string;
+  };
 }) {
   const pathname = usePathname();
   const nav = [
-    { href: `/${lang}/about-us`, label: "About Us" },
-    { href: `/${lang}/rental`, label: "Rental Prices" },
-    { href: `/${lang}/lessons`, label: "Lessons" },
-    { href: `/${lang}/resort`, label: "Ski Resort" }
+    { href: `/${lang}`, label: navLabels?.aboutUs || "About Us" },
+    { href: `/${lang}/rental`, label: navLabels?.rentalPrices || "Rental Prices" },
+    { href: `/${lang}/lessons`, label: navLabels?.lessons || "Lessons" },
+    { href: `/${lang}/services`, label: navLabels?.services || "Services" },
+    { href: `/${lang}/resort`, label: navLabels?.skiResort || "Ski Resort" }
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-3 min-w-0">
           <Link href={`/${lang}`} className="no-underline min-w-0">
@@ -45,12 +56,16 @@ export function Header({
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+        <nav className="hidden md:flex items-center gap-3 text-sm">
           {nav.map((l) => {
             // Нормализуем пути для сравнения (убираем trailing slash и якорь)
             const normalizedPathname = pathname.replace(/\/$/, "") || "/";
             const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
-            const isActive = normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
+            // Для главной страницы проверяем только точное совпадение, для остальных - startsWith
+            const isMainPage = normalizedHref === `/${lang}`;
+            const isActive = isMainPage 
+              ? normalizedPathname === normalizedHref
+              : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
             return (
               <Link
                 key={l.href}
@@ -67,19 +82,19 @@ export function Header({
             );
           })}
           <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-            <Button size="sm">Request Booking</Button>
+            <Button size="sm">{navLabels?.requestBooking || "Request Booking"}</Button>
           </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}/about-us#contacts`} className="hidden lg:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Contacts
+          <Link href={`/${lang}#contacts`} className="hidden lg:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
+            {navLabels?.contacts || "Contacts"}
           </Link>
           <LanguageSwitcher currentLang={lang} />
 
           {/* Mobile primary action */}
           <Link href={`/${lang}/rental#booking-form`} className="md:hidden no-underline">
-            <Button size="sm">Request Booking</Button>
+            <Button size="sm">{navLabels?.requestBooking || "Request Booking"}</Button>
           </Link>
 
           {/* Mobile menu */}
@@ -100,7 +115,11 @@ export function Header({
                   {nav.map((l) => {
                     const normalizedPathname = pathname.replace(/\/$/, "") || "/";
                     const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
-                    const isActive = normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
+                    // Для главной страницы проверяем только точное совпадение, для остальных - startsWith
+                    const isMainPage = normalizedHref === `/${lang}`;
+                    const isActive = isMainPage 
+                      ? normalizedPathname === normalizedHref
+                      : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
                     return (
                       <Link key={l.href} href={l.href} className="no-underline">
                         <Button variant="secondary" className={cn("w-full justify-start", isActive && "bg-secondary")}>
@@ -111,16 +130,16 @@ export function Header({
                   })}
                 </div>
 
-                <Link href={`/${lang}/about-us#contacts`} className="no-underline">
+                <Link href={`/${lang}#contacts`} className="no-underline">
                   <Button variant="secondary" className="w-full justify-start">
-                    Contacts
+                    {navLabels?.contacts || "Contacts"}
                   </Button>
                 </Link>
 
                 <LanguageSwitcherMobile currentLang={lang} />
 
                 <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-                  <Button className="w-full">Request booking</Button>
+                  <Button className="w-full">{navLabels?.requestBooking || "Request booking"}</Button>
                 </Link>
               </div>
             </SheetContent>

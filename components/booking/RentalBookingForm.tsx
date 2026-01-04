@@ -38,10 +38,10 @@ export type BookingPayload = {
   createdAtIso: string;
 };
 
-const SEGMENT_LABEL: Record<Segment, string> = {
-  economy: "Economy",
-  premium: "Premium",
-  "n/a": "N/A"
+const getSegmentLabel = (segment: Segment, labels?: RentalBookingForm["labels"]): string => {
+  if (segment === "economy") return labels?.economy || "Economy";
+  if (segment === "premium") return labels?.premium || "Premium";
+  return labels?.na || "N/A";
 };
 
 
@@ -49,12 +49,48 @@ export function RentalBookingForm({
   lang,
   itemOptions,
   bookingEndpoint,
-  formId = "booking-form"
+  formId = "booking-form",
+  labels
 }: {
   lang: string;
   itemOptions: RentalItemOption[];
   bookingEndpoint?: string;
   formId?: string;
+  labels?: {
+    dates?: string;
+    datesDesc?: string;
+    from?: string;
+    to?: string;
+    items?: string;
+    itemsDesc?: string;
+    addItem?: string;
+    remove?: string;
+    equipment?: string;
+    segment?: string;
+    quantity?: string;
+    notes?: string;
+    notesPlaceholder?: string;
+    contacts?: string;
+    contactsDesc?: string;
+    email?: string;
+    phone?: string;
+    messenger?: string;
+    messengerContact?: string;
+    comment?: string;
+    commentPlaceholder?: string;
+    submit?: string;
+    submitNote?: string;
+    successTitle?: string;
+    successDesc?: string;
+    createAnother?: string;
+    adults?: string;
+    kids?: string;
+    accessories?: string;
+    none?: string;
+    economy?: string;
+    premium?: string;
+    na?: string;
+  };
 }) {
   const [from, setFrom] = React.useState("");
   const [to, setTo] = React.useState("");
@@ -141,13 +177,13 @@ export function RentalBookingForm({
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Request received</CardTitle>
+          <CardTitle>{labels?.successTitle || "Request received"}</CardTitle>
           <CardDescription>
-            We&apos;ve sent a confirmation email. We&apos;ll contact you soon to confirm availability.
+            {labels?.successDesc || "We've sent a confirmation email. We'll contact you soon to confirm availability."}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex gap-2">
-          <Button variant="secondary" onClick={() => setStatus("idle")}>Create another request</Button>
+          <Button variant="secondary" onClick={() => setStatus("idle")}>{labels?.createAnother || "Create another request"}</Button>
         </CardContent>
       </Card>
     );
@@ -157,12 +193,12 @@ export function RentalBookingForm({
     <form id={formId} onSubmit={onSubmit} className="grid gap-6">
       <Card>
         <CardHeader>
-          <CardTitle>Dates</CardTitle>
-          <CardDescription>Pick your rental dates.</CardDescription>
+          <CardTitle>{labels?.dates || "Dates"}</CardTitle>
+          <CardDescription>{labels?.datesDesc || "Pick your rental dates."}</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2">
-            <label className="text-sm font-medium">From</label>
+            <label className="text-sm font-medium">{labels?.from || "From"}</label>
             <DatePicker
               value={from}
               onChange={(value) => setFrom(value)}
@@ -171,7 +207,7 @@ export function RentalBookingForm({
             />
           </div>
           <div className="grid gap-2">
-            <label className="text-sm font-medium">To</label>
+            <label className="text-sm font-medium">{labels?.to || "To"}</label>
             <DatePicker
               value={to}
               onChange={(value) => setTo(value)}
@@ -186,11 +222,11 @@ export function RentalBookingForm({
         <CardHeader>
           <div className="flex items-start justify-between gap-4">
             <div>
-              <CardTitle>Items</CardTitle>
-              <CardDescription>Add multiple items (for family / friends).</CardDescription>
+              <CardTitle>{labels?.items || "Items"}</CardTitle>
+              <CardDescription>{labels?.itemsDesc || "Add multiple items (for family / friends)."}</CardDescription>
             </div>
             <Button type="button" variant="secondary" onClick={addItem}>
-              <Plus className="h-4 w-4" /> Add item
+              <Plus className="h-4 w-4" /> {labels?.addItem || "Add item"}
             </Button>
           </div>
         </CardHeader>
@@ -213,14 +249,14 @@ export function RentalBookingForm({
                   </div>
                   {items.length > 1 ? (
                     <Button type="button" variant="ghost" onClick={() => removeItem(idx)}>
-                      <Trash2 className="h-4 w-4" /> Remove
+                      <Trash2 className="h-4 w-4" /> {labels?.remove || "Remove"}
                     </Button>
                   ) : null}
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-3">
                   <div className="grid gap-2 md:col-span-2">
-                    <label className="text-sm font-medium">Equipment</label>
+                    <label className="text-sm font-medium">{labels?.equipment || "Equipment"}</label>
                     <Select
                       value={it.itemType}
                       onChange={(value) => {
@@ -231,26 +267,26 @@ export function RentalBookingForm({
                         });
                       }}
                       options={[
-                        ...itemsByCategory.adults.map(opt => ({ value: opt.id, label: opt.label, group: "Adults" })),
-                        ...itemsByCategory.kids.map(opt => ({ value: opt.id, label: opt.label, group: "Kids" })),
-                        ...itemsByCategory.accessories.map(opt => ({ value: opt.id, label: opt.label, group: "Accessories & Clothing" }))
+                        ...itemsByCategory.adults.map(opt => ({ value: opt.id, label: opt.label, group: labels?.adults || "Adults" })),
+                        ...itemsByCategory.kids.map(opt => ({ value: opt.id, label: opt.label, group: labels?.kids || "Kids" })),
+                        ...itemsByCategory.accessories.map(opt => ({ value: opt.id, label: opt.label, group: labels?.accessories || "Accessories & Clothing" }))
                       ]}
                     />
                   </div>
 
                   {option?.hasSegments && (
                     <div className="grid gap-2">
-                      <label className="text-sm font-medium">Segment</label>
+                      <label className="text-sm font-medium">{labels?.segment || "Segment"}</label>
                       <Select
                         value={seg}
                         onChange={(value) => updateItem(idx, { segment: value as Segment })}
-                        options={allowedSegments.map(s => ({ value: s, label: SEGMENT_LABEL[s] }))}
+                        options={allowedSegments.map(s => ({ value: s, label: getSegmentLabel(s, labels) }))}
                       />
                     </div>
                   )}
 
                   <div className="grid gap-2">
-                    <label className="text-sm font-medium">Quantity</label>
+                    <label className="text-sm font-medium">{labels?.quantity || "Quantity"}</label>
                     <Input
                       type="number"
                       min={1}
@@ -262,9 +298,9 @@ export function RentalBookingForm({
                 </div>
 
                 <div className="grid gap-2">
-                  <label className="text-sm font-medium">Notes (optional)</label>
+                  <label className="text-sm font-medium">{labels?.notes || "Notes (optional)"}</label>
                   <Input
-                    placeholder="e.g. shoe size 42, height 175cm, skill level..."
+                    placeholder={labels?.notesPlaceholder || "e.g. shoe size 42, height 175cm, skill level..."}
                     value={it.note ?? ""}
                     onChange={(e) => updateItem(idx, { note: e.target.value })}
                   />
@@ -277,27 +313,27 @@ export function RentalBookingForm({
 
       <Card>
         <CardHeader>
-          <CardTitle>Contacts</CardTitle>
-          <CardDescription>We&apos;ll use this to confirm your request.</CardDescription>
+          <CardTitle>{labels?.contacts || "Contacts"}</CardTitle>
+          <CardDescription>{labels?.contactsDesc || "We'll use this to confirm your request."}</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <label className="text-sm font-medium">Email</label>
+            <label className="text-sm font-medium">{labels?.email || "Email"}</label>
             <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="name@example.com" />
           </div>
           <div className="grid gap-2">
-            <label className="text-sm font-medium">Phone</label>
+            <label className="text-sm font-medium">{labels?.phone || "Phone"}</label>
             <Input value={phone} onChange={(e) => setPhone(e.target.value)} required />
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Messenger (optional)</label>
+              <label className="text-sm font-medium">{labels?.messenger || "Messenger (optional)"}</label>
               <Select
                 value={messenger}
                 onChange={(value) => setMessenger(value as Messenger)}
                 options={[
-                  { value: "none", label: "None" },
+                  { value: "none", label: labels?.none || "None" },
                   { value: "whatsapp", label: "WhatsApp" },
                   { value: "telegram", label: "Telegram" },
                   { value: "viber", label: "Viber" }
@@ -305,7 +341,7 @@ export function RentalBookingForm({
               />
             </div>
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Messenger contact</label>
+              <label className="text-sm font-medium">{labels?.messengerContact || "Messenger contact"}</label>
               <Input
                 value={messengerHandle}
                 onChange={(e) => setMessengerHandle(e.target.value)}
@@ -317,8 +353,8 @@ export function RentalBookingForm({
           </div>
 
           <div className="grid gap-2">
-            <label className="text-sm font-medium">Comment (optional)</label>
-            <Textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Any extra details..." />
+            <label className="text-sm font-medium">{labels?.comment || "Comment (optional)"}</label>
+            <Textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder={labels?.commentPlaceholder || "Any extra details..."} />
           </div>
 
           {status === "error" ? (
@@ -329,11 +365,11 @@ export function RentalBookingForm({
 
           <Button type="submit" disabled={!canSubmit || status === "submitting"} className="w-full sm:w-auto">
             {status === "submitting" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            Submit request
+            {labels?.submit || "Submit request"}
           </Button>
 
           <p className="text-xs text-muted-foreground">
-            This is a request, not an instant reservation. We&apos;ll confirm availability by email/phone.
+            {labels?.submitNote || "This is a request, not an instant reservation. We'll confirm availability by email/phone."}
           </p>
         </CardContent>
       </Card>

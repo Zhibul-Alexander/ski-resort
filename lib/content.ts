@@ -38,6 +38,7 @@ export type SiteContent = {
     verticalDrop?: string;
     length?: string;
     liftsSubtitle?: string;
+    [key: string]: string | undefined;
   };
   sections: {
     highlights: { title: string; items: { title: string; text: string }[] };
@@ -66,6 +67,10 @@ export type PricingContent = {
   lessons: {
     duration: string;
     packages: { label: string; price: string; note?: string }[];
+  };
+  services?: {
+    items: { name: string; price: number }[];
+    note?: string;
   };
 };
 
