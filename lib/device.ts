@@ -15,7 +15,7 @@ export function isMobileOrTablet(): boolean {
   
   // Дополнительная проверка для iPad на iOS 13+ (когда user agent не содержит "iPad")
   const isIOS = /iPad|iPhone|iPod/.test(userAgent);
-  const isIPad = isIOS && !window.MSStream && (window.screen.width >= 768 || window.screen.height >= 1024);
+  const isIPad = isIOS && !('MSStream' in window) && (window.screen.width >= 768 || window.screen.height >= 1024);
   
   if (isIPad) {
     return true;
