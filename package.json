@@ -8,7 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "node -e \"const fs=require('fs'); if(!fs.existsSync('out')){console.error('Error: Build output directory not found'); process.exit(1);} console.log('Build output directory exists');\""
   },
   "dependencies": {
     "@radix-ui/react-accordion": "1.2.2",
