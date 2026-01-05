@@ -85,6 +85,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
           <RentalBookingForm 
             lang={lang} 
             itemOptions={itemOptions}
+            bookingEndpoint={process.env.NEXT_PUBLIC_BOOKING_ENDPOINT}
             labels={{
               dates: (site.pageTitles as any)?.bookingFormDates,
               datesDesc: (site.pageTitles as any)?.bookingFormDatesDesc,

@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Select, type SelectOption } from "@/components/ui/select";
 import { DatePicker } from "@/components/ui/date-picker";
+import { BOOKING_ENDPOINT } from "@/lib/config";
 
 export type RentalItemType = string;
 export type Segment = "economy" | "premium" | "n/a";
@@ -140,7 +141,7 @@ export function RentalBookingForm({
       createdAtIso: new Date().toISOString()
     };
 
-    const endpoint = bookingEndpoint || process.env.NEXT_PUBLIC_BOOKING_ENDPOINT || "";
+    const endpoint = bookingEndpoint || BOOKING_ENDPOINT || "";
     if (!endpoint) {
       setStatus("error");
       setErrorText("Booking endpoint is not configured. Set NEXT_PUBLIC_BOOKING_ENDPOINT.");
