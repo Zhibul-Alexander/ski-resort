@@ -58,7 +58,7 @@ export function Header({
                 <Image src="/logo.png" alt={brandName} width={36} height={36} className="object-contain" />
               </div>
               <div className="leading-tight min-w-0">
-                <div className="font-semibold truncate">{brandName}</div>
+                <div className="font-semibold truncate">{brandName} <span className="text-muted-foreground">333</span></div>
               </div>
             </div>
           </Link>
