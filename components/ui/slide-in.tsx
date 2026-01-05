@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { isMobileOrTablet } from "@/lib/device";
 
 interface SlideInProps {
   children: React.ReactNode;
@@ -21,11 +22,19 @@ export function SlideIn({
   const hasAnimated = useRef(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isTriggeredRef = useRef(false); // Дополнительная защита от повторных срабатываний
+  const isMobile = isMobileOrTablet();
   
   // Определяем направление: четные индексы - слева, нечетные - справа
   const direction = index % 2 === 0 ? "left" : "right";
 
   useEffect(() => {
+    // Отключаем анимацию на мобилке и планшете
+    if (isMobile) {
+      setIsVisible(true);
+      hasAnimated.current = true;
+      return;
+    }
+
     if (hasAnimated.current || isTriggeredRef.current) return;
     if (!ref.current) return;
 
@@ -80,22 +89,25 @@ export function SlideIn({
         observerRef.current = null;
       }
     };
-  }, [index]);
+  }, [index, isMobile]);
 
-  const directionClass = direction === "left" 
-    ? (isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-[33%]")
-    : (isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-[33%]");
+  // На мобилке и планшете не применяем анимацию вообще
+  const directionClass = isMobile 
+    ? "" // На мобилке без анимации
+    : direction === "left" 
+      ? (isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-[33%]")
+      : (isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-[33%]");
 
   return (
     <div
       ref={ref}
       className={cn(
-        "transition-all duration-700 ease-out",
+        !isMobile && "transition-all duration-700 ease-out", // Переходы только на десктопе
         directionClass,
         className
       )}
       style={{
-        animationDelay: isVisible ? `${delay}ms` : "0ms"
+        animationDelay: isVisible && !isMobile ? `${delay}ms` : "0ms"
       }}
     >
       {children}
