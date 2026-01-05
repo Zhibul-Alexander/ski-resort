@@ -29,12 +29,13 @@ function SheetContent({
         className={cn(
           "fixed z-50 h-full w-[88vw] max-w-sm bg-background shadow-2xl outline-none",
           "transition-transform duration-200 ease-out",
+          "flex flex-col",
           sideClasses,
           className
         )}
         {...props}
       >
-        <div className="flex h-16 items-center justify-between border-b border-border px-4">
+        <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4">
           <Dialog.Title className="text-sm font-semibold">Menu</Dialog.Title>
           <SheetClose className="inline-flex h-9 w-9 items-center justify-center rounded-xl hover:bg-secondary/70">
             <X className="h-5 w-5" />
@@ -42,7 +43,7 @@ function SheetContent({
           </SheetClose>
         </div>
 
-        <div className="p-4">{children}</div>
+        <div className="flex-1 overflow-y-auto overscroll-contain p-4">{children}</div>
       </Dialog.Content>
     </Dialog.Portal>
   );
