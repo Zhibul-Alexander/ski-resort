@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { isMobileOrTablet } from "@/lib/device";
 
 interface SnowfallOptions {
   count?: number;
@@ -243,12 +244,6 @@ export function Snowfall({ count = 90, ...options }: SnowfallOptions = {}) {
   const snowRef = React.useRef<ReturnType<typeof createSnowfall> | null>(null);
   const resizeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  // Проверяем, является ли устройство мобильным или планшетом
-  const isMobileOrTablet = React.useCallback(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < 1024; // Отключаем на экранах меньше 1024px (планшеты и мобилки)
-  }, []);
-
   const createSnow = React.useCallback(() => {
     if (!containerRef.current) return;
     
@@ -278,7 +273,7 @@ export function Snowfall({ count = 90, ...options }: SnowfallOptions = {}) {
     }, 100);
 
     return () => clearTimeout(timeoutId);
-  }, [count, options, isMobileOrTablet]);
+  }, [count, options]);
 
   React.useEffect(() => {
     const cleanup = createSnow();
@@ -292,7 +287,7 @@ export function Snowfall({ count = 90, ...options }: SnowfallOptions = {}) {
 
       // Пересоздаем снежинки при изменении размера окна с debounce
       resizeTimeoutRef.current = setTimeout(() => {
-        // Проверяем размер экрана и пересоздаем снежинки
+        // Проверяем тип устройства и пересоздаем снежинки
         if (isMobileOrTablet()) {
           // Уничтожаем снежинки на мобилке/планшете
           if (snowRef.current) {
@@ -318,7 +313,7 @@ export function Snowfall({ count = 90, ...options }: SnowfallOptions = {}) {
         snowRef.current = null;
       }
     };
-  }, [createSnow, isMobileOrTablet]);
+  }, [createSnow]);
 
   return <div ref={containerRef} />;
 }

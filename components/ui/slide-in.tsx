@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { isMobileOrTablet } from "@/lib/device";
 
 interface SlideInProps {
   children: React.ReactNode;
@@ -17,32 +18,20 @@ export function SlideIn({
   delay = 0
 }: SlideInProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const isMobile = isMobileOrTablet();
   
   // Определяем направление: четные индексы - слева, нечетные - справа
   const direction = index % 2 === 0 ? "left" : "right";
-
-  // Проверяем размер экрана
-  useEffect(() => {
-    const checkSize = () => {
-      setIsMobileOrTablet(typeof window !== "undefined" && window.innerWidth < 1024);
-    };
-    
-    checkSize();
-    window.addEventListener("resize", checkSize);
-    
-    return () => window.removeEventListener("resize", checkSize);
-  }, []);
 
   useEffect(() => {
     if (hasAnimated.current) return;
     if (!ref.current) return;
 
     // Отключаем анимацию на мобилке и планшете
-    if (isMobileOrTablet) {
+    if (isMobile) {
       setIsVisible(true);
       hasAnimated.current = true;
       return;
@@ -51,28 +40,32 @@ export function SlideIn({
     // Создаем observer только один раз
     if (observerRef.current) {
       observerRef.current.disconnect();
+      observerRef.current = null;
     }
 
-    observerRef.current = new IntersectionObserver(
-      ([entry]) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Обрабатываем только первое вхождение
+        const entry = entries[0];
+        if (!entry) return;
+        
         // Проверяем, что элемент действительно виден и еще не анимировался
-        if (entry.isIntersecting && !hasAnimated.current && entry.intersectionRatio > 0) {
+        if (entry.isIntersecting && !hasAnimated.current && entry.intersectionRatio > 0.05) {
           setIsVisible(true);
           hasAnimated.current = true;
           // Отключаем observer сразу после срабатывания
-          if (observerRef.current && ref.current) {
-            observerRef.current.unobserve(ref.current);
-            observerRef.current.disconnect();
-          }
+          observer.unobserve(ref.current!);
+          observer.disconnect();
         }
       },
       {
-        threshold: [0, 0.1, 0.2], // Используем несколько порогов для более точного определения
-        rootMargin: "0px 0px -100px 0px" // Увеличиваем отступ, чтобы анимация начиналась раньше
+        threshold: 0.05, // Один порог для более стабильной работы
+        rootMargin: "0px 0px -50px 0px" // Уменьшаем отступ для более точного определения
       }
     );
 
-    observerRef.current.observe(ref.current);
+    observer.observe(ref.current);
+    observerRef.current = observer;
 
     return () => {
       if (observerRef.current) {
@@ -80,10 +73,10 @@ export function SlideIn({
         observerRef.current = null;
       }
     };
-  }, [index, isMobileOrTablet]);
+  }, [index, isMobile]);
 
   // На мобилке и планшете не применяем анимацию вообще
-  const directionClass = isMobileOrTablet 
+  const directionClass = isMobile 
     ? "" // На мобилке без анимации
     : direction === "left" 
       ? (isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-[33%]")
@@ -93,12 +86,12 @@ export function SlideIn({
     <div
       ref={ref}
       className={cn(
-        !isMobileOrTablet && "transition-all duration-700 ease-out", // Переходы только на десктопе
+        !isMobile && "transition-all duration-700 ease-out", // Переходы только на десктопе
         directionClass,
         className
       )}
       style={{
-        animationDelay: isVisible && !isMobileOrTablet ? `${delay}ms` : "0ms"
+        animationDelay: isVisible && !isMobile ? `${delay}ms` : "0ms"
       }}
     >
       {children}
