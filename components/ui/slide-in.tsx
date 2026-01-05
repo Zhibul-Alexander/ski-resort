@@ -17,34 +17,40 @@ export function SlideIn({
   index = 0,
   delay = 0
 }: SlideInProps) {
-  // Проверяем мобилку синхронно при первом рендере (только на клиенте)
-  const initialIsMobile = typeof window !== "undefined" ? isMobileOrTablet() : false;
-  const [isMobile, setIsMobile] = useState(initialIsMobile);
-  const [isVisible, setIsVisible] = useState(initialIsMobile); // На мобилке сразу видимые
+  // Изначально считаем, что это может быть мобильное устройство, чтобы не применять классы сдвига
+  const [isMobile, setIsMobile] = useState(true); // Начинаем с true для безопасности
+  const [isVisible, setIsVisible] = useState(true); // Начинаем с видимого состояния
+  const [mounted, setMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(initialIsMobile); // На мобилке уже "анимированы"
+  const hasAnimated = useRef(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const isTriggeredRef = useRef(false); // Дополнительная защита от повторных срабатываний
+  const isTriggeredRef = useRef(false);
   
   // Определяем направление: четные индексы - слева, нечетные - справа
   const direction = index % 2 === 0 ? "left" : "right";
 
-  // Дополнительная проверка в useEffect для надежности
+  // Проверяем устройство после монтирования компонента
   useEffect(() => {
     if (typeof window === "undefined") return;
+    
+    setMounted(true);
     const mobile = isMobileOrTablet();
-    if (mobile !== isMobile) {
-      setIsMobile(mobile);
-      if (mobile) {
-        setIsVisible(true);
-        hasAnimated.current = true;
-      }
+    setIsMobile(mobile);
+    
+    if (mobile) {
+      // На мобильном устройстве элементы всегда видимы без анимации
+      setIsVisible(true);
+      hasAnimated.current = true;
+    } else {
+      // На десктопе начинаем с невидимого состояния для анимации
+      setIsVisible(false);
+      hasAnimated.current = false;
     }
-  }, [isMobile]);
+  }, []);
 
   useEffect(() => {
-    // На мобилке и планшете блоки уже видимы, ничего не делаем
-    if (isMobile) {
+    // Не запускаем логику до монтирования или если это мобильное устройство
+    if (!mounted || isMobile) {
       return;
     }
 
@@ -115,11 +121,11 @@ export function SlideIn({
         observerRef.current = null;
       }
     };
-  }, [index, isMobile]);
+  }, [index, isMobile, mounted]);
 
-  // На мобилке и планшете не применяем анимацию вообще
-  const directionClass = isMobile 
-    ? "" // На мобилке без анимации
+  // Не применяем классы сдвига до монтирования или на мобильных устройствах
+  const directionClass = !mounted || isMobile 
+    ? "" // До монтирования или на мобилке без анимации
     : direction === "left" 
       ? (isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-[33%]")
       : (isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-[33%]");
@@ -128,7 +134,7 @@ export function SlideIn({
     <div
       ref={ref}
       className={cn(
-        !isMobile && "transition-all duration-700 ease-out", // Переходы только на десктопе
+        mounted && !isMobile && "transition-all duration-700 ease-out", // Переходы только на десктопе после монтирования
         directionClass,
         className
       )}
