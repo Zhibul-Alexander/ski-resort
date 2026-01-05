@@ -17,21 +17,20 @@ export function SlideIn({
   index = 0,
   delay = 0
 }: SlideInProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  // На мобилке сразу показываем блоки без анимации
+  const isMobile = typeof window !== "undefined" ? isMobileOrTablet() : false;
+  const [isVisible, setIsVisible] = useState(isMobile); // На мобилке сразу видимые
   const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
+  const hasAnimated = useRef(isMobile); // На мобилке уже "анимированы"
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isTriggeredRef = useRef(false); // Дополнительная защита от повторных срабатываний
-  const isMobile = isMobileOrTablet();
   
   // Определяем направление: четные индексы - слева, нечетные - справа
   const direction = index % 2 === 0 ? "left" : "right";
 
   useEffect(() => {
-    // Отключаем анимацию на мобилке и планшете
+    // На мобилке и планшете блоки уже видимы, ничего не делаем
     if (isMobile) {
-      setIsVisible(true);
-      hasAnimated.current = true;
       return;
     }
 
@@ -79,6 +78,19 @@ export function SlideIn({
         rootMargin: "0px 0px -80px 0px" // Отступ для начала анимации
       }
     );
+
+    // Проверяем, виден ли элемент сразу при загрузке
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (isInViewport) {
+        // Если элемент уже виден, показываем его сразу
+        setIsVisible(true);
+        hasAnimated.current = true;
+        return;
+      }
+    }
 
     observer.observe(ref.current);
     observerRef.current = observer;
