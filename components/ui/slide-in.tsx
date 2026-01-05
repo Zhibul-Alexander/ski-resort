@@ -17,16 +17,30 @@ export function SlideIn({
   index = 0,
   delay = 0
 }: SlideInProps) {
-  // На мобилке сразу показываем блоки без анимации
-  const isMobile = typeof window !== "undefined" ? isMobileOrTablet() : false;
-  const [isVisible, setIsVisible] = useState(isMobile); // На мобилке сразу видимые
+  // Проверяем мобилку синхронно при первом рендере (только на клиенте)
+  const initialIsMobile = typeof window !== "undefined" ? isMobileOrTablet() : false;
+  const [isMobile, setIsMobile] = useState(initialIsMobile);
+  const [isVisible, setIsVisible] = useState(initialIsMobile); // На мобилке сразу видимые
   const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(isMobile); // На мобилке уже "анимированы"
+  const hasAnimated = useRef(initialIsMobile); // На мобилке уже "анимированы"
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isTriggeredRef = useRef(false); // Дополнительная защита от повторных срабатываний
   
   // Определяем направление: четные индексы - слева, нечетные - справа
   const direction = index % 2 === 0 ? "left" : "right";
+
+  // Дополнительная проверка в useEffect для надежности
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mobile = isMobileOrTablet();
+    if (mobile !== isMobile) {
+      setIsMobile(mobile);
+      if (mobile) {
+        setIsVisible(true);
+        hasAnimated.current = true;
+      }
+    }
+  }, [isMobile]);
 
   useEffect(() => {
     // На мобилке и планшете блоки уже видимы, ничего не делаем
