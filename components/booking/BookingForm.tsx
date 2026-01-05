@@ -42,21 +42,23 @@ function segmentForType(t: ItemType): Segment[] {
 }
 
 function DateInputWrapper({ children }: { children: React.ReactNode }) {
-  const handleInputClick = React.useCallback((e: React.MouseEvent<HTMLInputElement>) => {
+  const handleInputClick = React.useCallback(async (e: React.MouseEvent<HTMLInputElement>) => {
     const input = e.currentTarget;
     if (input.type === "date") {
       if (typeof input.showPicker === "function") {
-        input.showPicker().catch(() => {
+        try {
+          await input.showPicker();
+        } catch {
           // Fallback если showPicker не поддерживается
           input.focus();
-        });
+        }
       }
     }
   }, []);
 
   return (
     <>
-      {React.cloneElement(children as React.ReactElement, {
+      {React.cloneElement(children as React.ReactElement<React.InputHTMLAttributes<HTMLInputElement>>, {
         onClick: handleInputClick
       })}
     </>

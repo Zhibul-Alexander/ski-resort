@@ -38,7 +38,43 @@ export type BookingPayload = {
   createdAtIso: string;
 };
 
-const getSegmentLabel = (segment: Segment, labels?: RentalBookingForm["labels"]): string => {
+type RentalBookingFormLabels = {
+  dates?: string;
+  datesDesc?: string;
+  from?: string;
+  to?: string;
+  items?: string;
+  itemsDesc?: string;
+  addItem?: string;
+  remove?: string;
+  equipment?: string;
+  segment?: string;
+  quantity?: string;
+  notes?: string;
+  notesPlaceholder?: string;
+  contacts?: string;
+  contactsDesc?: string;
+  email?: string;
+  phone?: string;
+  messenger?: string;
+  messengerContact?: string;
+  comment?: string;
+  commentPlaceholder?: string;
+  submit?: string;
+  submitNote?: string;
+  successTitle?: string;
+  successDesc?: string;
+  createAnother?: string;
+  adults?: string;
+  kids?: string;
+  accessories?: string;
+  none?: string;
+  economy?: string;
+  premium?: string;
+  na?: string;
+};
+
+const getSegmentLabel = (segment: Segment, labels?: RentalBookingFormLabels): string => {
   if (segment === "economy") return labels?.economy || "Economy";
   if (segment === "premium") return labels?.premium || "Premium";
   return labels?.na || "N/A";
@@ -56,41 +92,7 @@ export function RentalBookingForm({
   itemOptions: RentalItemOption[];
   bookingEndpoint?: string;
   formId?: string;
-  labels?: {
-    dates?: string;
-    datesDesc?: string;
-    from?: string;
-    to?: string;
-    items?: string;
-    itemsDesc?: string;
-    addItem?: string;
-    remove?: string;
-    equipment?: string;
-    segment?: string;
-    quantity?: string;
-    notes?: string;
-    notesPlaceholder?: string;
-    contacts?: string;
-    contactsDesc?: string;
-    email?: string;
-    phone?: string;
-    messenger?: string;
-    messengerContact?: string;
-    comment?: string;
-    commentPlaceholder?: string;
-    submit?: string;
-    submitNote?: string;
-    successTitle?: string;
-    successDesc?: string;
-    createAnother?: string;
-    adults?: string;
-    kids?: string;
-    accessories?: string;
-    none?: string;
-    economy?: string;
-    premium?: string;
-    na?: string;
-  };
+  labels?: RentalBookingFormLabels;
 }) {
   const [from, setFrom] = React.useState("");
   const [to, setTo] = React.useState("");
