@@ -7,6 +7,7 @@ import { Carousel } from "@/components/ui/carousel";
 import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
+import { GoogleMap } from "@/components/site/google-map";
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -69,16 +70,19 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="overflow-hidden rounded-2xl border border-border bg-white">
-                    <iframe
-                      title="Google map"
-                      src={site.location.mapEmbedUrl}
-                      width="100%"
-                      height="360"
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
+                  <GoogleMap
+                    embedUrl={site.location.mapEmbedUrl}
+                    openUrl={site.location.mapOpenUrl}
+                    title={site.pageTitles?.map || "Map"}
+                    labels={{
+                      loading: site.pageTitles?.mapLoading,
+                      error: site.pageTitles?.mapError,
+                      errorDescription: site.pageTitles?.mapErrorDescription,
+                      retry: site.pageTitles?.mapRetry,
+                      preparing: site.pageTitles?.mapPreparing,
+                      openInGoogleMaps: site.pageTitles?.openInGoogleMaps,
+                    }}
+                  />
                 </CardContent>
               </Card>
 

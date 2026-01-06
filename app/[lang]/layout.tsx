@@ -4,6 +4,7 @@ import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { ScrollToTop } from "@/components/site/scroll-to-top";
 import { ScrollToTopOnNavigate } from "@/components/site/scroll-to-top-on-navigate";
+import { ScrollUnlockOnRouteChange } from "@/components/site/scroll-unlock";
 import { Snowfall } from "@/components/site/snowfall";
 import { getSite } from "@/lib/content";
 import { LANGS, type Lang, langToHtmlLang } from "@/lib/i18n";
@@ -76,6 +77,7 @@ export default async function LangLayout({
       />
       <ScrollToTop />
       <ScrollToTopOnNavigate />
+      <ScrollUnlockOnRouteChange />
       <Snowfall count={90} />
     </>
   );
