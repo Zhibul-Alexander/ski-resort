@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { clearSlideInRegistry } from "@/components/ui/slide-in";
 
 export function ScrollToTopOnNavigate() {
   const pathname = usePathname();
@@ -73,6 +74,10 @@ export function ScrollToTopOnNavigate() {
     if (prevPathname === undefined) {
       return;
     }
+
+    // Очищаем реестр анимированных элементов при навигации
+    // Это позволяет элементам анимироваться снова на новых страницах
+    clearSlideInRegistry();
 
     // Не прокручиваем вверх, если в URL есть якорь (hash)
     // Позволяем браузеру обработать якорь для скролла к элементу
