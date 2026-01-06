@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useId } from "react";
 import { cn } from "@/lib/utils";
-import { isMobilePhone } from "@/lib/device";
+import { isMobileOrTablet } from "@/lib/device";
 
 interface SlideInProps {
   children: React.ReactNode;
@@ -69,18 +69,18 @@ export function SlideIn({
     if (typeof window === "undefined") return;
     
     setMounted(true);
-    const mobile = isMobilePhone(); // Используем функцию только для телефонов, планшеты получат анимацию
-    setIsMobile(mobile);
+    const mobileOrTablet = isMobileOrTablet(); // Проверяем и мобильные, и планшеты
+    setIsMobile(mobileOrTablet);
     
-    if (mobile) {
-      // На мобильном телефоне элементы всегда видимы без анимации
+    if (mobileOrTablet) {
+      // На мобильных устройствах и планшетах элементы всегда видимы без анимации
       setIsVisible(true);
       hasAnimated.current = true;
       if (elementIdRef.current) {
         animatedElementsRegistry.add(elementIdRef.current);
       }
     } else {
-      // На планшетах и десктопе начинаем с невидимого состояния для анимации
+      // Только на десктопе начинаем с невидимого состояния для анимации
       // Но только если элемент еще не был анимирован
       if (!hasAnimated.current) {
         setIsVisible(false);
@@ -90,7 +90,7 @@ export function SlideIn({
   }, []);
 
   useEffect(() => {
-    // Не запускаем логику до монтирования или если это мобильный телефон
+    // Не запускаем логику до монтирования или если это мобильное устройство/планшет
     if (!mounted || isMobile) {
       return;
     }
