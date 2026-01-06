@@ -54,20 +54,42 @@ export function SlideIn({
       return;
     }
 
-    if (hasAnimated.current || isTriggeredRef.current) return;
+    // Если уже анимировали, не запускаем снова
+    if (hasAnimated.current || isTriggeredRef.current) {
+      return;
+    }
+
     if (!ref.current) return;
 
-    // Очищаем предыдущий observer
+    // Очищаем предыдущий observer перед созданием нового
     if (observerRef.current) {
       observerRef.current.disconnect();
       observerRef.current = null;
     }
 
+    // Проверяем, виден ли элемент сразу при загрузке (до создания observer)
+    const checkInitialVisibility = () => {
+      if (!ref.current) return false;
+      const rect = ref.current.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      return isInViewport;
+    };
+
+    // Если элемент уже виден при загрузке, показываем его сразу и не создаем observer
+    if (checkInitialVisibility()) {
+      hasAnimated.current = true;
+      isTriggeredRef.current = true;
+      setIsVisible(true);
+      return;
+    }
+
+    // Создаем observer только если элемент не виден сразу
     const observer = new IntersectionObserver(
       (entries) => {
         // Проверяем все записи, но обрабатываем только если элемент виден
         for (const entry of entries) {
           // Строгая проверка: элемент должен быть виден достаточно хорошо
+          // И еще раз проверяем флаги внутри callback для защиты от двойного срабатывания
           if (
             entry.isIntersecting && 
             !hasAnimated.current && 
@@ -99,19 +121,6 @@ export function SlideIn({
       }
     );
 
-    // Проверяем, виден ли элемент сразу при загрузке
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-      
-      if (isInViewport) {
-        // Если элемент уже виден, показываем его сразу
-        setIsVisible(true);
-        hasAnimated.current = true;
-        return;
-      }
-    }
-
     observer.observe(ref.current);
     observerRef.current = observer;
 
@@ -121,7 +130,7 @@ export function SlideIn({
         observerRef.current = null;
       }
     };
-  }, [index, isMobile, mounted]);
+  }, [isMobile, mounted]); // Убрали index из зависимостей, так как он не должен меняться
 
   // Не применяем классы сдвига до монтирования или на мобильных устройствах
   const directionClass = !mounted || isMobile 

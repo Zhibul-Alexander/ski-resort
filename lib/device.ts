@@ -14,7 +14,17 @@ export function isMobileOrTablet(): boolean {
   }
   
   // Дополнительная проверка для iPad на iOS 13+ (когда user agent не содержит "iPad")
+  // На iOS 13+ iPad может иметь user agent как Mac, но с touch support
   const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+  const isMacLike = /Macintosh/.test(userAgent);
+  const hasTouchSupport = navigator.maxTouchPoints > 0;
+  
+  // Если это Mac-подобный user agent с touch support - вероятно iPad на iOS 13+
+  if (isMacLike && hasTouchSupport) {
+    return true;
+  }
+  
+  // Проверка для iPad по размерам экрана и touch support
   const isIPad = isIOS && !('MSStream' in window) && (window.screen.width >= 768 || window.screen.height >= 1024);
   
   if (isIPad) {
