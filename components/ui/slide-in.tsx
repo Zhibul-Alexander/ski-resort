@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { isMobileOrTablet } from "@/lib/device";
+import { isMobilePhone } from "@/lib/device";
 
 interface SlideInProps {
   children: React.ReactNode;
@@ -25,6 +25,7 @@ export function SlideIn({
   const hasAnimated = useRef(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isTriggeredRef = useRef(false);
+  const lastTriggerTimeRef = useRef<number>(0); // Время последнего срабатывания для защиты от повторных срабатываний
   
   // Определяем направление: четные индексы - слева, нечетные - справа
   const direction = index % 2 === 0 ? "left" : "right";
@@ -34,22 +35,22 @@ export function SlideIn({
     if (typeof window === "undefined") return;
     
     setMounted(true);
-    const mobile = isMobileOrTablet();
+    const mobile = isMobilePhone(); // Используем функцию только для телефонов, планшеты получат анимацию
     setIsMobile(mobile);
     
     if (mobile) {
-      // На мобильном устройстве элементы всегда видимы без анимации
+      // На мобильном телефоне элементы всегда видимы без анимации
       setIsVisible(true);
       hasAnimated.current = true;
     } else {
-      // На десктопе начинаем с невидимого состояния для анимации
+      // На планшетах и десктопе начинаем с невидимого состояния для анимации
       setIsVisible(false);
       hasAnimated.current = false;
     }
   }, []);
 
   useEffect(() => {
-    // Не запускаем логику до монтирования или если это мобильное устройство
+    // Не запускаем логику до монтирования или если это мобильный телефон
     if (!mounted || isMobile) {
       return;
     }
@@ -76,10 +77,16 @@ export function SlideIn({
     };
 
     // Если элемент уже виден при загрузке, показываем его сразу и не создаем observer
+    // Используем requestAnimationFrame для синхронизации с рендерингом
     if (checkInitialVisibility()) {
-      hasAnimated.current = true;
-      isTriggeredRef.current = true;
-      setIsVisible(true);
+      requestAnimationFrame(() => {
+        if (!hasAnimated.current && !isTriggeredRef.current && ref.current) {
+          hasAnimated.current = true;
+          isTriggeredRef.current = true;
+          lastTriggerTimeRef.current = Date.now();
+          setIsVisible(true);
+        }
+      });
       return;
     }
 
@@ -88,6 +95,16 @@ export function SlideIn({
       (entries) => {
         // Проверяем все записи, но обрабатываем только если элемент виден
         for (const entry of entries) {
+          // Защита от повторных срабатываний из-за изменения viewport на iOS
+          const now = Date.now();
+          const timeSinceLastTrigger = now - lastTriggerTimeRef.current;
+          
+          // Если прошло меньше 500ms с последнего срабатывания - игнорируем
+          // Это защищает от повторных срабатываний из-за изменения viewport на iOS Safari
+          if (timeSinceLastTrigger < 500 && lastTriggerTimeRef.current > 0) {
+            continue;
+          }
+          
           // Строгая проверка: элемент должен быть виден достаточно хорошо
           // И еще раз проверяем флаги внутри callback для защиты от двойного срабатывания
           if (
@@ -99,13 +116,17 @@ export function SlideIn({
             // Устанавливаем флаги ДО изменения состояния
             hasAnimated.current = true;
             isTriggeredRef.current = true;
+            lastTriggerTimeRef.current = now;
             
-            // Отключаем observer ДО изменения состояния
-            if (observerRef.current && ref.current) {
-              observerRef.current.unobserve(ref.current);
-              observerRef.current.disconnect();
-              observerRef.current = null;
-            }
+            // Отключаем observer ДО изменения состояния через requestAnimationFrame
+            // Это гарантирует, что observer отключится до следующего рендера
+            requestAnimationFrame(() => {
+              if (observerRef.current && ref.current) {
+                observerRef.current.unobserve(ref.current);
+                observerRef.current.disconnect();
+                observerRef.current = null;
+              }
+            });
             
             // Только после этого меняем состояние
             setIsVisible(true);

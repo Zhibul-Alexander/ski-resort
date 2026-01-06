@@ -43,3 +43,32 @@ export function isMobileOrTablet(): boolean {
   return false;
 }
 
+// Утилита для определения только мобильных телефонов (без планшетов)
+export function isMobilePhone(): boolean {
+  if (typeof window === "undefined") return false;
+  
+  const userAgent = window.navigator.userAgent || window.navigator.vendor || (window as any).opera;
+  
+  // Проверяем на iPhone и маленькие Android устройства
+  const isIPhone = /iPhone|iPod/.test(userAgent);
+  const isAndroid = /Android/.test(userAgent);
+  
+  // Для Android проверяем размер экрана - если меньше 768px, это телефон
+  if (isAndroid) {
+    const isSmallScreen = window.innerWidth < 768;
+    return isSmallScreen;
+  }
+  
+  // iPhone всегда считается мобильным телефоном
+  if (isIPhone) {
+    return true;
+  }
+  
+  // Для других устройств проверяем размер экрана
+  const isSmallScreen = window.innerWidth < 768;
+  const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  // Если маленький экран и есть touch - вероятно телефон
+  return isSmallScreen && hasTouchScreen;
+}
+
