@@ -353,6 +353,30 @@
           "src": "/images/resort/6.webp"
         }
       ]
+    },
+    "instructors": {
+      "title": "Our instructor team",
+      "subtitle": "Professionals with experience and passion for alpine skiing",
+      "items": [
+        {
+          "name": "Nika",
+          "title": "Certified instructor • 7+ years of experience",
+          "experience": "Nika is an experienced instructor with international certification, specializing in teaching basic technique and improving carving skills. Her approach is based on patience and individual attention to each student. Helps overcome the fear of first descents and confidently master the slopes of Gudauri.",
+          "specialties": ["Beginner training", "Carving technique", "Building confidence on the slope"]
+        },
+        {
+          "name": "Sandro",
+          "title": "Freeride coach • 10+ years of experience",
+          "experience": "Sandro is a professional freeride instructor with over ten years of experience. Trained in avalanche safety and off-piste skiing techniques. His passion is to show the beauty of untouched snow and teach safe skiing in the mountains. Works with both advanced riders and those just starting to explore freeride.",
+          "specialties": ["Freeride technique", "Avalanche safety", "Off-piste skiing"]
+        },
+        {
+          "name": "Mariam",
+          "title": "Children's instructor • 6+ years of experience",
+          "experience": "Mariam is a specialized instructor for working with children. Has special training in child psychology and teaching methods. Creates a safe and fun atmosphere in lessons where children not only learn to ski but also enjoy the process. Her lessons are structured, clear and adapted to each child's age.",
+          "specialties": ["Children's training", "Children's safety", "Play-based methodology"]
+        }
+      ]
     }
   }
 }

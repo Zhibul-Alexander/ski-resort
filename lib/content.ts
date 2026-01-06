@@ -48,6 +48,7 @@ export type SiteContent = {
     resortMap?: { title: string; src: string; alt: string };
     resortLifts?: { title: string; items: { name: string; type: string; capacity: string; startAltitude: string; verticalDrop: string; length: string }[] };
     liveStream?: { title: string; youtubeUrl?: string; videoUrl?: string };
+    instructors?: { title: string; subtitle: string; items: { name: string; title: string; experience: string; specialties: string[] }[] };
   };
 };
 
