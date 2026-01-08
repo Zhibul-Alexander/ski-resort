@@ -35,6 +35,7 @@ yarn build
 - `/ge` — ქართული (Georgian)
 - `/zh` — 中文 (Chinese)
 - `/kk` — Қазақша (Kazakh)
+- `/he` — עברית (Hebrew)
 
 ## Редактирование контента
 
