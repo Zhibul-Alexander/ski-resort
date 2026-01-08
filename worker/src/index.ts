@@ -225,7 +225,7 @@ export default {
       return new Response(null, { status: 204, headers: corsHeaders });
     }
 
-    if (url.pathname !== "/api/booking") {
+    if (url.pathname !== "/" && url.pathname !== "/api/booking") {
       return textResponse("Not found", 404, corsHeaders);
     }
 
