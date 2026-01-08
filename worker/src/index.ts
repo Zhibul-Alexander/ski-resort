@@ -177,14 +177,30 @@ function formatCustomerEmail(payload: BookingPayload) {
   };
 }
 
+function isValidEmail(email: string): boolean {
+  // Простая проверка формата email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 async function sendResend(env: Env, to: string, subject: string, text: string) {
   const apiKey = env.RESEND_API_KEY;
   if (!apiKey || !apiKey.startsWith("re_")) {
     throw new Error(`Invalid API key format. Key should start with "re_"`);
   }
 
+  const fromEmail = env.FROM_EMAIL?.trim();
+  if (!fromEmail) {
+    throw new Error(`FROM_EMAIL is not set`);
+  }
+  
+  // Проверяем формат email (должен быть либо просто email, либо "Name <email>")
+  if (!isValidEmail(fromEmail) && !fromEmail.includes("<") && !fromEmail.includes(">")) {
+    throw new Error(`Invalid FROM_EMAIL format: "${fromEmail}". Should be "email@example.com" or "Name <email@example.com>"`);
+  }
+
   const payload = {
-    from: env.FROM_EMAIL,
+    from: fromEmail,
     to,
     subject,
     text
