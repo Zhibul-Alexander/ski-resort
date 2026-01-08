@@ -10,7 +10,8 @@ const langs: { lang: Lang; label: string }[] = [
   { lang: "ru", label: "RU" },
   { lang: "ge", label: "GE" },
   { lang: "zh", label: "中文" },
-  { lang: "kk", label: "KK" }
+  { lang: "kk", label: "KK" },
+  { lang: "he", label: "עברית" }
 ];
 
 export function LanguageSwitcher({ currentLang }: { currentLang: Lang }) {
@@ -31,7 +32,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Lang }) {
   }
 
   return (
-    <div className="hidden sm:flex items-center gap-1 rounded-xl border border-border bg-card p-1">
+    <div className="hidden sm:flex items-center flex-wrap gap-1 rounded-xl border border-border bg-card p-1">
       {langs.map((l) => (
         <Link
           key={l.lang}
@@ -68,7 +69,7 @@ export function LanguageSwitcherMobile({ currentLang, onLanguageChange }: { curr
   return (
     <div className="space-y-2">
       <div className="text-xs font-medium text-muted-foreground">Language</div>
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {langs.map((l) => (
           <Link
             key={l.lang}

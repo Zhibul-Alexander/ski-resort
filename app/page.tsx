@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LANGS } from "@/lib/i18n";
 
-const labels: Record<string, string> = { en: "English", ru: "Русский", ge: "ქართული", zh: "中文", kk: "Қазақша" };
+const labels: Record<string, string> = { en: "English", ru: "Русский", ge: "ქართული", zh: "中文", kk: "Қазақша", he: "עברית" };
 
 export default function Root() {
   return (
