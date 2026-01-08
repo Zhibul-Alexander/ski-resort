@@ -27,7 +27,7 @@ export interface RentalItemOption {
 export type BookingPayload = {
   type: "rental";
   dates: { from: string; to: string };
-  items: { itemType: string; segment: Segment; quantity: number; note?: string }[];
+  items: { itemType: string; itemLabel?: string; segment: Segment; quantity: number; note?: string }[];
   contact: {
     email: string;
     phone: string;
@@ -134,7 +134,13 @@ export function RentalBookingForm({
     const payload: BookingPayload = {
       type: "rental",
       dates: { from, to },
-      items,
+      items: items.map(it => {
+        const option = itemOptions.find(o => o.id === it.itemType);
+        return {
+          ...it,
+          itemLabel: option?.label
+        };
+      }),
       contact: { email, phone, messenger, messengerHandle: messenger === "none" ? undefined : messengerHandle },
       comment: comment || undefined,
       locale: lang,
