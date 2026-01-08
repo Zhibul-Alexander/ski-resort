@@ -185,9 +185,6 @@ export function RentalBookingForm({
             {labels?.successDesc || "We've sent a confirmation email. We'll contact you soon to confirm availability."}
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex gap-2">
-          <Button variant="secondary" onClick={() => setStatus("idle")}>{labels?.createAnother || "Create another request"}</Button>
-        </CardContent>
       </Card>
     );
   }
