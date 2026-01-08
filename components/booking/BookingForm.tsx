@@ -156,6 +156,15 @@ export function BookingForm({
       }
 
       setStatus("success");
+      // Обнуляем данные после успешной отправки
+      setFrom("");
+      setTo("");
+      setItems([{ itemType: "ski_set", segment: "economy", quantity: 1 }]);
+      setEmail("");
+      setPhone("");
+      setMessenger("none");
+      setMessengerHandle("");
+      setComment("");
     } catch (err: any) {
       setStatus("error");
       setErrorText(err?.message ?? "Something went wrong");
@@ -171,9 +180,6 @@ export function BookingForm({
             We&apos;ve sent a confirmation email. We&apos;ll contact you soon to confirm availability.
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex gap-2">
-          <Button variant="secondary" onClick={() => setStatus("idle")}>Create another request</Button>
-        </CardContent>
       </Card>
     );
   }

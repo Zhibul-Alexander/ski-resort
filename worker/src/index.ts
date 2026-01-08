@@ -74,48 +74,65 @@ function getMessengerLabel(messenger: string): string {
 
 function formatOwnerEmail(payload: BookingPayload) {
   const lines: string[] = [];
-  lines.push(`═══════════════════════════════════════════════════════`);
-  lines.push(`NEW BOOKING REQUEST - ${getTypeLabel(payload.type).toUpperCase()}`);
-  lines.push(`═══════════════════════════════════════════════════════`);
+  
+  // Заголовок
+  lines.push(`╔═══════════════════════════════════════════════════════╗`);
+  lines.push(`║   NEW BOOKING REQUEST - ${getTypeLabel(payload.type).toUpperCase().padEnd(30)} ║`);
+  lines.push(`╚═══════════════════════════════════════════════════════╝`);
   lines.push("");
-  lines.push(`Request Type: ${getTypeLabel(payload.type)}`);
-  lines.push(`Created At: ${new Date(payload.createdAtIso).toLocaleString()}`);
-  lines.push(`Rental Period: From ${payload.dates.from} to ${payload.dates.to}`);
+  
+  // Основная информация
+  lines.push(`📋 REQUEST DETAILS`);
+  lines.push(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
+  lines.push(`Request Type:     ${getTypeLabel(payload.type)}`);
+  lines.push(`Created At:       ${new Date(payload.createdAtIso).toLocaleString()}`);
+  lines.push(`Rental Period:    ${payload.dates.from} → ${payload.dates.to}`);
   lines.push("");
-  lines.push(`───────────────────────────────────────────────────────`);
-  lines.push(`REQUESTED ITEMS (${payload.items.length} item${payload.items.length !== 1 ? "s" : ""})`);
-  lines.push(`───────────────────────────────────────────────────────`);
+  
+  // Запрошенные товары
+  lines.push(`📦 REQUESTED ITEMS (${payload.items.length} item${payload.items.length !== 1 ? "s" : ""})`);
+  lines.push(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
   payload.items.forEach((it, idx) => {
-    lines.push("");
+    if (idx > 0) lines.push("");
     lines.push(`Item ${idx + 1}:`);
-    lines.push(`  Type: ${getItemTypeLabel(it.itemType)}`);
-    lines.push(`  Segment: ${getSegmentLabel(it.segment)}`);
-    lines.push(`  Quantity: ${it.quantity}`);
+    lines.push(`  • Type:        ${getItemTypeLabel(it.itemType)}`);
+    lines.push(`  • Segment:     ${getSegmentLabel(it.segment)}`);
+    lines.push(`  • Quantity:    ${it.quantity}`);
     if (it.note && it.note.trim()) {
-      lines.push(`  Note: ${it.note}`);
+      lines.push(`  • Note:        ${it.note}`);
     }
   });
   lines.push("");
-  lines.push(`───────────────────────────────────────────────────────`);
-  lines.push(`CONTACT INFORMATION`);
-  lines.push(`───────────────────────────────────────────────────────`);
-  lines.push(`Email Address: ${payload.contact.email}`);
-  lines.push(`Phone Number: ${payload.contact.phone}`);
+  
+  // Контактная информация
+  lines.push(`📞 CONTACT INFORMATION`);
+  lines.push(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
+  lines.push(`Email:            ${payload.contact.email}`);
+  lines.push(`Phone:            ${payload.contact.phone}`);
   if (payload.contact.messenger && payload.contact.messenger !== "none") {
-    lines.push(`Messenger: ${getMessengerLabel(payload.contact.messenger)}`);
+    lines.push(`Messenger:        ${getMessengerLabel(payload.contact.messenger)}`);
     if (payload.contact.messengerHandle) {
-      lines.push(`Messenger Contact: ${payload.contact.messengerHandle}`);
+      lines.push(`Messenger Handle: ${payload.contact.messengerHandle}`);
     }
   }
+  
+  // Дополнительный комментарий
   if (payload.comment && payload.comment.trim()) {
     lines.push("");
-    lines.push(`───────────────────────────────────────────────────────`);
-    lines.push(`ADDITIONAL COMMENT`);
-    lines.push(`───────────────────────────────────────────────────────`);
-    lines.push(payload.comment);
+    lines.push(`💬 ADDITIONAL COMMENT`);
+    lines.push(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
+    // Переносим длинный текст на несколько строк для читаемости
+    const commentLines = payload.comment.split('\n');
+    commentLines.forEach(line => {
+      if (line.trim()) {
+        lines.push(`   ${line.trim()}`);
+      }
+    });
   }
+  
   lines.push("");
-  lines.push(`═══════════════════════════════════════════════════════`);
+  lines.push(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
+  
   return {
     subject: `New ${getTypeLabel(payload.type)} Request: ${payload.dates.from} to ${payload.dates.to}`,
     text: lines.join("\n")
