@@ -26,7 +26,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
       <div className="grid gap-6">
         {pricing.rental.tables.map((t, tableIdx) => (
           <SlideIn key={t.id} index={tableIdx + 1}>
-            <Section title={t.title} subtitle={t.subtitle}>
+            <Section title={t.title}>
               {/* Mobile: Card view */}
               <div className="px-0 md:px-6 md:hidden">
                 <div className="space-y-2 px-3">

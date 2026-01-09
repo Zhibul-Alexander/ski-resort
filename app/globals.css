@@ -116,6 +116,14 @@ a {
   .animate-shake-attention {
     animation: shake-attention 3.33s linear infinite;
   }
+
+  @keyframes rotate-slow {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  .animate-rotate-slow {
+    animation: rotate-slow 2s ease-in-out infinite;
+  }
 }
 
 /* Скрытие кнопки "static route" от Next.js DevOverlay */

@@ -152,8 +152,6 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
           {privacy.sections.contactUs.intro}
         </p>
         <div className="mt-4 text-sm text-muted-foreground space-y-2">
-          <p><strong>{site.brand.name}</strong></p>
-          <p>{site.location.addressLine}</p>
           <p>
             <strong>Email:</strong>{" "}
             <a href={`mailto:${site.contacts.email}`} className="hover:underline text-foreground">
@@ -166,19 +164,6 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
               {site.contacts.phone}
             </a>
           </p>
-          {site.contacts.telegram && (
-            <p>
-              <strong>Telegram:</strong>{" "}
-              <a
-                href={`https://t.me/${site.contacts.telegram.replace('@', '')}`}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:underline text-foreground"
-              >
-                {site.contacts.telegram}
-              </a>
-            </p>
-          )}
         </div>
         <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
           {privacy.sections.contactUs.contactPage.includes("{contactLink}") ? (

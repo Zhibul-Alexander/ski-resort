@@ -97,7 +97,7 @@ export function Header({
             );
           })}
           <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-            <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm animate-shake-attention">{navLabels?.requestBooking || "Booking"}</Button>
+            <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm animate-rotate-slow">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>
         </nav>
 
@@ -109,7 +109,7 @@ export function Header({
 
           {/* Tablet/Mobile primary action */}
           <Link href={`/${lang}/rental#booking-form`} className="lg:hidden no-underline">
-            <Button size="sm" className="whitespace-nowrap text-xs animate-shake-attention">{navLabels?.requestBooking || "Booking"}</Button>
+            <Button size="sm" className="whitespace-nowrap text-xs animate-rotate-slow">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>
 
           {/* Mobile menu */}
@@ -171,7 +171,7 @@ export function Header({
                 <div className="pt-2 border-t border-border">
                   <SheetClose asChild>
                     <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-                      <Button className="w-full h-auto py-3 px-4 animate-shake-attention">{navLabels?.requestBooking || "Booking"}</Button>
+                      <Button className="w-full h-auto py-3 px-4 animate-rotate-slow">{navLabels?.requestBooking || "Booking"}</Button>
                     </Link>
                   </SheetClose>
                 </div>

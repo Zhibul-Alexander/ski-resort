@@ -1,7 +1,6 @@
 import type { Lang } from "@/lib/i18n";
 import { getPricing, getSite } from "@/lib/content";
 import { Section } from "@/components/site/section";
-import { Card, CardContent } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
 import { SlideIn } from "@/components/ui/slide-in";
@@ -45,28 +44,42 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
           title={(site.pageTitles as any)?.servicePrices || "Service Prices"} 
           subtitle={services.note ? `${(site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair"}. ${services.note}` : ((site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair")}
         >
-          <Card>
-            <CardContent className="pt-6">
-              <div className="overflow-x-auto rounded-2xl border border-border">
-                <Table>
-                  <THead>
-                    <TR>
-                      <TH>{(site.pageTitles as any)?.service || "Service"}</TH>
-                      <TH className="text-right">{(site.pageTitles as any)?.price || "Price"}</TH>
+          {/* Mobile: Card view */}
+          <div className="px-0 md:px-6 md:hidden">
+            <div className="space-y-2 px-3">
+              {services.items.map((service, idx) => (
+                <div key={idx} className="rounded-xl border border-border bg-card p-2.5">
+                  <div className="font-medium text-xs mb-2 break-words leading-snug">{service.name}</div>
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-muted-foreground text-[11px] shrink-0 leading-tight pt-0.5">{(site.pageTitles as any)?.price || "Price"}:</span>
+                    <span className="font-medium text-xs text-right break-words leading-tight">{formatPrice(String(service.price), exchangeRate)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: Table view */}
+          <div className="hidden md:block">
+            <div className="overflow-x-auto rounded-2xl border border-border bg-card">
+              <Table className="w-full">
+                <THead>
+                  <TR>
+                    <TH>{(site.pageTitles as any)?.service || "Service"}</TH>
+                    <TH className="text-right">{(site.pageTitles as any)?.price || "Price"}</TH>
+                  </TR>
+                </THead>
+                <TBody>
+                  {services.items.map((service, idx) => (
+                    <TR key={idx}>
+                      <TD className="font-medium">{service.name}</TD>
+                      <TD className="text-right">{formatPrice(String(service.price), exchangeRate)}</TD>
                     </TR>
-                  </THead>
-                  <TBody>
-                    {services.items.map((service, idx) => (
-                      <TR key={idx}>
-                        <TD className="font-medium">{service.name}</TD>
-                        <TD className="text-right">{formatPrice(String(service.price), exchangeRate)}</TD>
-                      </TR>
-                    ))}
-                  </TBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </TBody>
+              </Table>
+            </div>
+          </div>
         </Section>
       </SlideIn>
     </div>

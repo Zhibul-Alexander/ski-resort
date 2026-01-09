@@ -27,7 +27,7 @@ export default async function ResortPage({ params }: { params: Promise<{ lang: L
 
       {site.sections.resortMap && (
         <SlideIn index={sectionIndex++}>
-          <Section title={site.sections.resortMap.title} subtitle={site.pageTitles?.resortMap || "Resort map"}>
+          <Section title={site.sections.resortMap.title}>
             <ImageZoom src={site.sections.resortMap.src} alt={site.sections.resortMap.alt} lang={lang}>
               <div />
             </ImageZoom>
@@ -56,20 +56,6 @@ export default async function ResortPage({ params }: { params: Promise<{ lang: L
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </Carousel>
-          </Section>
-        </SlideIn>
-      )}
-
-      {site.sections.resortPhotos && (
-        <SlideIn index={sectionIndex++}>
-          <Section title={site.sections.resortPhotos.title} subtitle={site.pageTitles?.resortPhotos || "Resort photos"}>
-            <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
-              {site.sections.resortPhotos.items.map((photo, idx) => (
-                <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card flex items-center justify-center h-[600px]">
-                  <img src={photo.src} alt={photo.title} className="max-h-full max-w-full object-cover w-full h-full" />
-                </div>
               ))}
             </Carousel>
           </Section>
@@ -109,6 +95,20 @@ export default async function ResortPage({ params }: { params: Promise<{ lang: L
                 </div>
               )}
             </div>
+          </Section>
+        </SlideIn>
+      )}
+
+      {site.sections.resortPhotos && (
+        <SlideIn index={sectionIndex++}>
+          <Section title={site.sections.resortPhotos.title}>
+            <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
+              {site.sections.resortPhotos.items.map((photo, idx) => (
+                <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card flex items-center justify-center h-[600px]">
+                  <img src={photo.src} alt={photo.title} className="max-h-full max-w-full object-cover w-full h-full" />
+                </div>
+              ))}
+            </Carousel>
           </Section>
         </SlideIn>
       )}
