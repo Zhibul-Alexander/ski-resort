@@ -375,3 +375,82 @@ input[type="date"][lang="en-GB"]::-webkit-datetime-edit-year-field {
   }
 }
 
+/* Скрытие заголовка виджета Elfsight Google Reviews */
+.es-widget-title-container,
+[class*="WidgetTitle__Container"] {
+  display: none !important;
+}
+
+/* Замена background в блоках отзывов Elfsight на цвет из таблиц (card) */
+.elfsight-app [style*="rgb(246, 246, 248)"],
+.elfsight-app [style*="rgb(246,246,248)"],
+.elfsight-app [style*="#f6f6f8"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* Альтернативный способ - через селекторы элементов виджета */
+.elfsight-app [class*="review"],
+.elfsight-app [class*="Review"],
+.elfsight-app [class*="item"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* Замена background в HeaderContainer */
+.elfsight-app .es-header-container,
+.elfsight-app [class*="HeaderContainer__Inner"],
+.elfsight-app [class*="HeaderComponent__StyledHeader"],
+.elfsight-app [class*="es-header-container"],
+[class*="HeaderContainer__Inner"],
+[class*="HeaderComponent__StyledHeader"],
+.es-header-container {
+  background-color: hsl(var(--card)) !important;
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+}
+
+/* Замена background в ReviewBackground */
+.elfsight-app .es-review-background-container,
+.elfsight-app [class*="ReviewBackground__Container"],
+.elfsight-app [class*="es-review-background-container"],
+[class*="ReviewBackground__Container"],
+.es-review-background-container {
+  background-color: hsl(var(--card)) !important;
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+}
+
+/* Скрытие рекламной ссылки "Free Google Reviews Widget" */
+.elfsight-app a[href*="elfsight"],
+.elfsight-app a[href*="google-reviews"],
+a[href*="elfsight"][style*="translateX(-50%)"],
+a[href*="elfsight"][style*="z-index:999999999"],
+.elfsight-app a[style*="z-index:999999999"],
+.elfsight-app a[style*="background-color:rgba(238, 238, 238, 0.9)"],
+a[style*="z-index:999999999"][style*="translateX(-50%)"],
+/* Универсальные селекторы для ссылки вне .elfsight-app */
+a[href*="elfsight"],
+a[href*="google-reviews-widget"],
+a[style*="z-index:999999999"],
+a[style*="height:24px"][style*="z-index:999999999"],
+a[style*="height:16px"][style*="z-index:999999999"],
+a[style*="translateX(-50%)"][style*="z-index:999999999"],
+a[style*="background-color:rgba(238, 238, 238, 0.9)"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+

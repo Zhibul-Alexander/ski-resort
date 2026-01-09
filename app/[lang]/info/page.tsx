@@ -8,6 +8,7 @@ import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink, Fac
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { GoogleMap } from "@/components/site/google-map";
+import { ElfsightGoogleReviews } from "@/components/site/elfsight-google-reviews";
 
 export default async function InfoPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -167,17 +168,7 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
 
       <SlideIn index={5}>
         <Section title={reviews.title}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
-            {reviews.items.map((r, idx) => (
-              <Card key={idx} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-base">{r.name}</CardTitle>
-                  <CardDescription>{"★".repeat(Math.max(1, Math.min(5, r.rating)))}</CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">{r.text}</CardContent>
-              </Card>
-            ))}
-          </Carousel>
+          <ElfsightGoogleReviews widgetId="5d1b2428-0a62-4de5-aeae-5315335a978f" />
         </Section>
       </SlideIn>
     </div>
