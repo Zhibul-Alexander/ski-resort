@@ -72,28 +72,30 @@ export function Header({
         </div>
 
         <nav className="hidden lg:flex items-center gap-2 text-sm">
-          {nav.map((l) => {
-            // Нормализуем пути для сравнения (убираем trailing slash и якорь)
-            const normalizedPathname = pathname.replace(/\/$/, "") || "/";
-            const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
-            // Для главной страницы проверяем только точное совпадение, для остальных - startsWith
-            const isMainPage = normalizedHref === `/${lang}`;
-            const isActive = isMainPage 
-              ? normalizedPathname === normalizedHref
-              : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
-            return (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={cn(
-                  "header-nav-link px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap text-xs lg:text-sm font-semibold",
-                  isActive ? "header-nav-active" : "text-muted-foreground"
-                )}
-              >
-                {l.label}
-              </Link>
-            );
-          })}
+          <div className="flex items-center gap-1 rounded-xl border border-border bg-card p-1">
+            {nav.map((l) => {
+              // Нормализуем пути для сравнения (убираем trailing slash и якорь)
+              const normalizedPathname = pathname.replace(/\/$/, "") || "/";
+              const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
+              // Для главной страницы проверяем только точное совпадение, для остальных - startsWith
+              const isMainPage = normalizedHref === `/${lang}`;
+              const isActive = isMainPage 
+                ? normalizedPathname === normalizedHref
+                : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={cn(
+                    "no-underline px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap text-xs lg:text-sm font-semibold",
+                    isActive ? "bg-brand/15 text-brand" : "text-muted-foreground hover:bg-brand-hover/10 hover:text-brand"
+                  )}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
+          </div>
           <Link href={`/${lang}/rental#booking-form`} className="no-underline">
             <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm animate-rotate-slow font-semibold">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>

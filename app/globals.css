@@ -192,7 +192,7 @@ a {
 /* Sunny Ski Header styles */
 .sunny-ski-header {
   /* Прозрачный фон с легким светлым слоем для читаемости */
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
