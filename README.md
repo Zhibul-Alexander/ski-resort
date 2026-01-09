@@ -1,4 +1,4 @@
-# Ski №1 Rental — Gudauri
+# Ski Rental IRISH-GEORGIA — Gudauri
 
 Статический многоязычный сайт для проката лыжного оборудования.
 

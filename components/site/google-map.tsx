@@ -4,9 +4,17 @@ import { useState, useEffect, useRef } from "react";
 import { AlertCircle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+interface MapPoint {
+  name: string;
+  address: string;
+  lat: number;
+  lng: number;
+  mapOpenUrl: string;
+}
+
 interface GoogleMapProps {
-  embedUrl: string;
-  openUrl: string;
+  point?: MapPoint;
+  points?: MapPoint[];
   title?: string;
   labels?: {
     loading?: string;
@@ -19,11 +27,52 @@ interface GoogleMapProps {
 }
 
 export function GoogleMap({ 
-  embedUrl, 
-  openUrl, 
+  point,
+  points,
   title = "Google map",
   labels = {}
 }: GoogleMapProps) {
+  // Определяем, используем ли одну точку или массив точек
+  const pointsArray = points || (point ? [point] : []);
+  
+  // Генерируем URL для карты
+  const generateEmbedUrl = (): string => {
+    if (pointsArray.length === 0) return "";
+    if (pointsArray.length === 1) {
+      return `https://www.google.com/maps?q=${pointsArray[0].lat},${pointsArray[0].lng}&z=17&output=embed`;
+    }
+    // Для нескольких точек используем формат с центром и правильным zoom
+    // Вычисляем центр всех точек
+    const centerLat = pointsArray.reduce((sum, p) => sum + p.lat, 0) / pointsArray.length;
+    const centerLng = pointsArray.reduce((sum, p) => sum + p.lng, 0) / pointsArray.length;
+    
+    // Вычисляем оптимальный zoom на основе расстояния между точками
+    const lats = pointsArray.map(p => p.lat);
+    const lngs = pointsArray.map(p => p.lng);
+    const latDiff = Math.max(...lats) - Math.min(...lats);
+    const lngDiff = Math.max(...lngs) - Math.min(...lngs);
+    const maxDiff = Math.max(latDiff, lngDiff);
+    
+    // Определяем zoom на основе разницы координат
+    let zoom = 15;
+    if (maxDiff > 0.1) zoom = 10;
+    else if (maxDiff > 0.05) zoom = 11;
+    else if (maxDiff > 0.02) zoom = 12;
+    else if (maxDiff > 0.01) zoom = 13;
+    else if (maxDiff > 0.005) zoom = 14;
+    else if (maxDiff > 0.001) zoom = 15;
+    else zoom = 16;
+    
+    // Для нескольких точек используем формат со всеми координатами через |
+    // Google Maps embed iframe имеет ограничения, но попробуем использовать все координаты
+    const allCoordinates = pointsArray.map(p => `${p.lat},${p.lng}`).join('|');
+    // Используем формат с координатами и zoom
+    return `https://www.google.com/maps?q=${allCoordinates}&z=${zoom}&output=embed`;
+  };
+
+  const embedUrl = generateEmbedUrl();
+  const openUrl = pointsArray.length === 1 ? pointsArray[0].mapOpenUrl : 
+    (pointsArray.length > 1 ? `https://www.google.com/maps?q=${pointsArray.map(p => `${p.lat},${p.lng}`).join('|')}` : "");
   const {
     loading = "Загрузка карты...",
     error = "Ошибка",

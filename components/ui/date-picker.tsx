@@ -228,7 +228,7 @@ export function DatePicker({
                       "hover:bg-secondary focus:bg-secondary focus:outline-none",
                       disabled && "cursor-not-allowed opacity-50",
                       selected &&
-                        "bg-primary text-primary-foreground hover:bg-primary/90",
+                        "bg-brand text-white hover:bg-brand/90",
                       !selected &&
                         !disabled &&
                         "hover:bg-secondary",

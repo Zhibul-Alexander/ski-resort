@@ -37,7 +37,7 @@ function SheetContent({
       >
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4">
           <Dialog.Title className="text-sm font-semibold">Menu</Dialog.Title>
-          <SheetClose className="inline-flex h-9 w-9 items-center justify-center rounded-xl hover:bg-secondary/70">
+          <SheetClose className="inline-flex h-9 w-9 items-center justify-center rounded-xl hover:bg-brand-hover/15 hover:text-brand">
             <X className="h-5 w-5" />
             <span className="sr-only">Close</span>
           </SheetClose>

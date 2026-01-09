@@ -4,7 +4,7 @@ import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel } from "@/components/ui/carousel";
-import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { GoogleMap } from "@/components/site/google-map";
@@ -56,23 +56,81 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
       <SlideIn index={3}>
         <div className="scroll-mt-32 md:scroll-mt-24">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="space-y-6">
+              <div className="grid gap-6 lg:grid-cols-2">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <div className="space-y-4">
+                      {site.location.points.map((point, index) => (
+                        <div key={index} className="flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-3 flex-1">
+                            <MapPin className="h-5 w-5 text-accent shrink-0" />
+                            <span className="text-sm">{point.address}</span>
+                          </div>
+                          <a href={point.mapOpenUrl} target="_blank" rel="noreferrer" className="no-underline shrink-0">
+                            <Button variant="outline" size="sm" className="gap-2">
+                              {site.pageTitles?.openInGoogleMaps || "Open in Google Maps"}
+                              <ExternalLink className="h-4 w-4" />
+                            </Button>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card id="contacts" className="scroll-mt-32 md:scroll-mt-24">
+                  <CardHeader>
+                    <CardTitle>Contacts</CardTitle>
+                    <CardDescription>{site.pageTitles?.contactsDescription || "Phone, email and messengers"}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="grid gap-2 text-sm">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a className="hover:underline flex items-center gap-2" href={`tel:${site.contacts.phone}`}>
+                        <Phone className="h-4 w-4" />{site.contacts.phone}
+                      </a>
+                      <span className="text-muted-foreground">WhatsApp | Telegram | Viber</span>
+                    </div>
+                    <a className="hover:underline flex items-center gap-2" href={`mailto:${site.contacts.email}`}>
+                      <Mail className="h-4 w-4" />{site.contacts.email}
+                    </a>
+                    {site.contacts.instagram ? (
+                      <a className="hover:underline flex items-center gap-2" href={site.contacts.instagram} target="_blank" rel="noreferrer">
+                        <Instagram className="h-4 w-4" />Instagram
+                      </a>
+                    ) : null}
+                    {site.contacts.telegram ? (
+                      <a className="hover:underline flex items-center gap-2" href={`https://t.me/${site.contacts.telegram.replace('@', '')}`} target="_blank" rel="noreferrer">
+                        <MessageCircle className="h-4 w-4" />Telegram
+                      </a>
+                    ) : null}
+                    {site.contacts.facebook ? (
+                      <a className="hover:underline flex items-center gap-2" href={site.contacts.facebook} target="_blank" rel="noreferrer">
+                        <Facebook className="h-4 w-4" />Facebook
+                      </a>
+                    ) : null}
+                    <div className="flex items-center gap-2 mt-3">
+                      <Clock className="h-4 w-4" />
+                      <span>{(site.pageTitles as any)?.hoursLabel || "Время работы:"} {site.hours.value}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              
               <Card>
                 <CardHeader>
-                  <div className="flex items-center justify-between gap-4">
-                    <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}</CardTitle>
-                    <a href={site.location.mapOpenUrl} target="_blank" rel="noreferrer" className="no-underline">
-                      <Button variant="outline" size="sm" className="gap-2">
-                        {site.pageTitles?.openInGoogleMaps || "Open in Google Maps"}
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    </a>
-                  </div>
+                  <CardTitle className="flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <GoogleMap
-                    embedUrl={site.location.mapEmbedUrl}
-                    openUrl={site.location.mapOpenUrl}
+                    point={site.location.points[0]}
                     title={site.pageTitles?.map || "Map"}
                     labels={{
                       loading: site.pageTitles?.mapLoading,
@@ -85,40 +143,8 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
                   />
                 </CardContent>
               </Card>
-
-              <Card id="contacts" className="scroll-mt-32 md:scroll-mt-24">
-              <CardHeader>
-                <CardTitle>Contacts</CardTitle>
-                <CardDescription>{site.pageTitles?.contactsDescription || "Phone, email and messengers"}</CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-2 text-sm">
-                <div className="flex flex-wrap items-center gap-2">
-                  <a className="hover:underline flex items-center gap-2" href={`tel:${site.contacts.phone}`}>
-                    <Phone className="h-4 w-4" />{site.contacts.phone}
-                  </a>
-                  <span className="text-muted-foreground">WhatsApp | Telegram | Viber</span>
-                </div>
-                <a className="hover:underline flex items-center gap-2" href={`mailto:${site.contacts.email}`}>
-                  <Mail className="h-4 w-4" />{site.contacts.email}
-                </a>
-                {site.contacts.instagram ? (
-                  <a className="hover:underline flex items-center gap-2" href={site.contacts.instagram} target="_blank" rel="noreferrer">
-                    <Instagram className="h-4 w-4" />Instagram
-                  </a>
-                ) : null}
-                {site.contacts.telegram ? (
-                  <a className="hover:underline flex items-center gap-2" href={`https://t.me/${site.contacts.telegram.replace('@', '')}`} target="_blank" rel="noreferrer">
-                    <MessageCircle className="h-4 w-4" />Telegram
-                  </a>
-                ) : null}
-                <div className="flex items-center gap-2 mt-3">
-                  <Clock className="h-4 w-4" />
-                  <span>{(site.pageTitles as any)?.hoursLabel || "Время работы:"} {site.hours.value}</span>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </Section>
+            </div>
+          </Section>
         </div>
       </SlideIn>
 

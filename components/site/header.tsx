@@ -52,13 +52,20 @@ export function Header({
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-3 min-w-0">
-          <Link href={`/${lang}`} className="no-underline min-w-0">
+          <Link href={`/${lang}`} className="no-underline min-w-0 hover:underline hover:decoration-brand hover:!text-inherit">
             <div className="flex items-center gap-2 min-w-0">
               <div className="h-9 w-9 rounded-xl shrink-0 relative overflow-hidden">
                 <Image src="/logo.png" alt={brandName} width={36} height={36} className="object-contain" />
               </div>
               <div className="leading-tight min-w-0">
-                <div className="font-semibold truncate">{brandName}!</div>
+                {brandName.includes('IRISH-GEORGIA') ? (
+                  <div className="font-semibold">
+                    <div>{brandName.split('IRISH-GEORGIA')[0].trim()}</div>
+                    <div><span style={{ color: '#fa4634' }}>IRISH-GEORGIA</span></div>
+                  </div>
+                ) : (
+                  <div className="font-semibold truncate">{brandName}</div>
+                )}
               </div>
             </div>
           </Link>
@@ -81,8 +88,8 @@ export function Header({
                 className={cn(
                   "px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap text-xs lg:text-sm",
                   isActive
-                    ? "bg-secondary text-foreground font-medium"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                    ? "bg-brand/15 text-brand font-medium"
+                    : "text-muted-foreground hover:text-brand hover:bg-brand-hover/10"
                 )}
               >
                 {l.label}
@@ -95,7 +102,7 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-brand transition-colors whitespace-nowrap">
             {navLabels?.contacts || "Contacts"}
           </Link>
           <LanguageSwitcher currentLang={lang} />
@@ -116,7 +123,14 @@ export function Header({
             <SheetContent side="right">
               <div className="space-y-4 pt-4">
                 <div className="pb-2 border-b border-border">
-                  <div className="font-semibold text-lg">{brandName}!</div>
+                  {brandName.includes('IRISH-GEORGIA') ? (
+                    <div className="font-semibold text-lg">
+                      <div>{brandName.split('IRISH-GEORGIA')[0].trim()}</div>
+                      <div><span style={{ color: '#fa4634' }}>IRISH-GEORGIA</span></div>
+                    </div>
+                  ) : (
+                    <div className="font-semibold text-lg">{brandName}</div>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -131,7 +145,7 @@ export function Header({
                     return (
                       <SheetClose key={l.href} asChild>
                         <Link href={l.href} className="no-underline block">
-                          <Button variant="secondary" className={cn("w-full justify-start h-auto py-3 px-4", isActive && "bg-secondary")}>
+                          <Button variant="secondary" className={cn("w-full justify-start h-auto py-3 px-4", isActive && "bg-brand/15 text-brand")}>
                             {l.label}
                           </Button>
                         </Link>

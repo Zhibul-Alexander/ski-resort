@@ -8,14 +8,14 @@ export default function Root() {
     <main className="min-h-screen grid place-items-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100">
       <div className="max-w-lg w-full p-6">
         <div className="rounded-3xl border border-border bg-card shadow-sm p-8">
-          <div className="text-3xl font-semibold">Ski №1 Rental</div>
+          <div className="text-3xl font-semibold">Ski Rental IRISH-GEORGIA</div>
           <div className="text-sm text-muted-foreground mt-2">Choose your language</div>
           <div className="mt-6 grid gap-2">
             {LANGS.map(l => (
               <Link
                 key={l}
                 href={`/${l}`}
-                className="no-underline rounded-xl border border-border bg-background px-4 py-3 hover:bg-secondary/60 transition-colors"
+                className="no-underline rounded-xl border border-border bg-background px-4 py-3 hover:bg-brand-hover/10 hover:text-brand hover:border-brand-hover/30 transition-colors"
               >
                 {labels[l]}
               </Link>

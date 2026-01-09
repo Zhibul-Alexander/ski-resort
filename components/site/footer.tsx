@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, Instagram, MessageCircle, Clock } from "lucide-react";
+import { Phone, Mail, Instagram, MessageCircle, Clock, Facebook } from "lucide-react";
 
 export function Footer({
   lang,
@@ -10,6 +10,7 @@ export function Footer({
   whatsapp,
   telegram,
   viber,
+  facebook,
   hours,
   footerLabels
 }: {
@@ -21,6 +22,7 @@ export function Footer({
   whatsapp?: string;
   telegram?: string;
   viber?: string;
+  facebook?: string;
   hours?: string;
   footerLabels?: {
     description?: string;
@@ -60,6 +62,11 @@ export function Footer({
             {telegram ? (
               <a className="no-underline hover:underline flex items-center gap-2 md:justify-end" href={`https://t.me/${telegram.replace('@', '')}`} target="_blank" rel="noreferrer">
                 <MessageCircle className="h-4 w-4" />Telegram
+              </a>
+            ) : null}
+            {facebook ? (
+              <a className="no-underline hover:underline flex items-center gap-2 md:justify-end" href={facebook} target="_blank" rel="noreferrer">
+                <Facebook className="h-4 w-4" />Facebook
               </a>
             ) : null}
             {hours ? (

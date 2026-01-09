@@ -11,13 +11,19 @@ export type SiteContent = {
     telegram?: string;
     viber?: string;
     instagram?: string;
+    facebook?: string;
   };
   hours: { label: string; value: string; };
   location: {
     addressLine: string;
     directions: string;
-    mapEmbedUrl: string;
-    mapOpenUrl: string;
+    points: {
+      name: string;
+      address: string;
+      lat: number;
+      lng: number;
+      mapOpenUrl: string;
+    }[];
   };
   pageTitles?: {
     aboutShop?: string;

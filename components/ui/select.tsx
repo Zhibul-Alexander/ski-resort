@@ -75,7 +75,7 @@ export function Select({
           "flex h-10 w-full items-center justify-between rounded-lg border border-input bg-card px-3 text-sm shadow-sm",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
           "disabled:cursor-not-allowed disabled:opacity-50",
-          "cursor-pointer hover:bg-secondary/60"
+          "cursor-pointer hover:bg-brand-hover/10 hover:text-brand"
         )}
         suppressHydrationWarning
       >
@@ -107,8 +107,8 @@ export function Select({
                     onClick={() => handleSelect(option.value)}
                     className={cn(
                       "relative flex w-full cursor-pointer select-none items-start rounded-md px-2 py-1.5 text-sm",
-                      "outline-none hover:bg-secondary focus:bg-secondary",
-                      value === option.value && "bg-secondary font-medium"
+                      "outline-none hover:bg-brand-hover/10 hover:text-brand focus:bg-brand-hover/15 focus:text-brand",
+                      value === option.value && "bg-brand/15 text-brand font-medium"
                     )}
                   >
                     {value === option.value ? (

@@ -66,6 +66,7 @@ export default async function LangLayout({
         whatsapp={site.contacts.whatsapp}
         telegram={site.contacts.telegram}
         viber={site.contacts.viber}
+        facebook={site.contacts.facebook}
         hours={site.hours.value}
         footerLabels={{
           description: (site.pageTitles as any)?.footerDescription,

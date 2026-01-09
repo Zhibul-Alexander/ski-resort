@@ -39,7 +39,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Lang }) {
           href={getLanguagePath(l.lang)}
           className={cn(
             "no-underline px-2.5 py-1 text-xs rounded-lg transition-colors",
-            l.lang === currentLang ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-secondary/60"
+            l.lang === currentLang ? "bg-brand/15 text-brand" : "text-muted-foreground hover:bg-brand-hover/10 hover:text-brand"
           )}
         >
           {l.label}
@@ -77,7 +77,7 @@ export function LanguageSwitcherMobile({ currentLang, onLanguageChange }: { curr
             onClick={onLanguageChange}
             className={cn(
               "no-underline text-center text-xs rounded-xl border border-border py-2 transition-colors",
-              l.lang === currentLang ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-secondary/60"
+              l.lang === currentLang ? "bg-brand/15 text-brand" : "text-muted-foreground hover:bg-brand-hover/10 hover:text-brand"
             )}
           >
             {l.label}

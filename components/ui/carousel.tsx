@@ -204,7 +204,7 @@ export function Carousel({
               type="button"
               className={cn(
                 "h-2 rounded-full transition-all cursor-pointer",
-                currentIndex === index ? "w-8 bg-primary" : "w-2 bg-muted"
+                currentIndex === index ? "w-8 bg-brand" : "w-2 bg-muted"
               )}
               onClick={(e) => {
                 e.preventDefault();
