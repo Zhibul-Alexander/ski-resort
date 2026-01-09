@@ -449,6 +449,13 @@ a {
   }
 }
 
+/* Скрытие облаков на мобильных устройствах */
+@media (max-width: 768px) {
+  .sunny-ski-clouds {
+    display: none;
+  }
+}
+
 /* Sunny Ski Header styles */
 .sunny-ski-header {
   /* Прозрачный фон с легким светлым слоем для читаемости */
