@@ -37,8 +37,8 @@ export function SlideIn({
   const reactId = useId(); // Стабильный ID от React
   const elementIdRef = useRef<string | null>(null); // Уникальный ID элемента
   
-  // Определяем направление: четные индексы - слева, нечетные - справа
-  const direction = index % 2 === 0 ? "left" : "right";
+  // На десктопе все блоки выезжают снизу
+  const direction = "bottom";
 
   // Генерируем уникальный ID для элемента на основе его позиции в DOM
   useEffect(() => {
@@ -217,9 +217,9 @@ export function SlideIn({
   // Не применяем классы сдвига до монтирования или на мобильных устройствах
   const directionClass = !mounted || isMobile 
     ? "" // До монтирования или на мобилке без анимации
-    : direction === "left" 
-      ? (isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-[33%]")
-      : (isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-[33%]");
+    : isVisible 
+      ? "animate-slide-in-bottom" 
+      : "opacity-0 translate-y-[33%]";
 
   return (
     <div
