@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { SunnySkiBackdrop } from "@/components/site/sunny-ski-backdrop";
 
 export const metadata: Metadata = {
   title: "Ski Rental IRISH-GEORGIA — Gudauri",
@@ -21,8 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {children}
+      <body className="relative">
+        <SunnySkiBackdrop />
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );

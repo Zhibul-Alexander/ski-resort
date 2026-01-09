@@ -49,7 +49,7 @@ export function Header({
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/20 sunny-ski-header">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-3 min-w-0">
           <Link href={`/${lang}`} className="no-underline min-w-0 hover:underline hover:decoration-brand hover:!text-inherit">
@@ -86,10 +86,8 @@ export function Header({
                 key={l.href}
                 href={l.href}
                 className={cn(
-                  "px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap text-xs lg:text-sm",
-                  isActive
-                    ? "bg-brand/15 text-brand font-medium"
-                    : "text-muted-foreground hover:text-brand hover:bg-brand-hover/10"
+                  "header-nav-link px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap text-xs lg:text-sm font-semibold",
+                  isActive ? "header-nav-active" : "text-muted-foreground"
                 )}
               >
                 {l.label}
@@ -97,19 +95,19 @@ export function Header({
             );
           })}
           <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-            <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm animate-rotate-slow">{navLabels?.requestBooking || "Booking"}</Button>
+            <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm animate-rotate-slow font-semibold">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-brand transition-colors whitespace-nowrap">
+          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-brand transition-colors whitespace-nowrap font-semibold">
             {navLabels?.contacts || "Contacts"}
           </Link>
           <LanguageSwitcher currentLang={lang} />
 
           {/* Tablet/Mobile primary action */}
           <Link href={`/${lang}/rental#booking-form`} className="lg:hidden no-underline">
-            <Button size="sm" className="whitespace-nowrap text-xs animate-rotate-slow">{navLabels?.requestBooking || "Booking"}</Button>
+            <Button size="sm" className="whitespace-nowrap text-xs animate-rotate-slow font-semibold">{navLabels?.requestBooking || "Booking"}</Button>
           </Link>
 
           {/* Mobile menu */}
@@ -145,7 +143,7 @@ export function Header({
                     return (
                       <SheetClose key={l.href} asChild>
                         <Link href={l.href} className="no-underline block">
-                          <Button variant="secondary" className={cn("w-full justify-start h-auto py-3 px-4", isActive && "bg-brand/15 text-brand")}>
+                          <Button variant="secondary" className={cn("w-full justify-start h-auto py-3 px-4 header-nav-link", isActive && "header-nav-active", !isActive && "hover:bg-[rgba(250,70,52,0.85)]")}>
                             {l.label}
                           </Button>
                         </Link>

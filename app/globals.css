@@ -29,7 +29,8 @@ html, body {
 }
 
 body {
-  @apply bg-background text-foreground antialiased;
+  @apply text-foreground antialiased;
+  background: transparent;
 }
 
 a {
@@ -124,6 +125,105 @@ a {
   .animate-rotate-slow {
     animation: rotate-slow 2s ease-in-out infinite;
   }
+
+  /* Sunny Ski Backdrop animations */
+  @keyframes sunny-ski-glide {
+    0%   { transform: translate3d(-6%, -2%, 0) scale(1.02); opacity: 0.55; }
+    50%  { transform: translate3d( 6%,  2%, 0) scale(1.06); opacity: 0.65; }
+    100% { transform: translate3d(-6%, -2%, 0) scale(1.02); opacity: 0.55; }
+  }
+
+  @keyframes sunny-ski-haze-move {
+    0%   { transform: translate3d(-3%, 0, 0); opacity: 0.22; }
+    50%  { transform: translate3d( 3%, 0, 0); opacity: 0.28; }
+    100% { transform: translate3d(-3%, 0, 0); opacity: 0.22; }
+  }
+}
+
+/* Sunny Ski Backdrop styles */
+.sunny-ski-backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sunny-ski-bg {
+  position: absolute;
+  inset: 0;
+  /* Небо + лёгкий холодный градиент */
+  background: linear-gradient(180deg, #78bfff 0%, #cfeaff 38%, #f6fbff 100%);
+}
+
+.sunny-ski-sun-glare {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(700px 500px at 70% 18%, rgba(255, 220, 140, 0.55), transparent 60%),
+    radial-gradient(520px 420px at 35% 22%, rgba(255, 255, 255, 0.35), transparent 62%);
+  filter: blur(22px);
+  mix-blend-mode: soft-light;
+  animation: sunny-ski-glide 26s ease-in-out infinite;
+}
+
+.sunny-ski-haze {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -20%;
+  height: 55%;
+  background:
+    radial-gradient(900px 220px at 50% 30%, rgba(255,255,255,0.55), transparent 65%),
+    linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.25) 65%, rgba(255,255,255,0.35) 100%);
+  filter: blur(20px);
+  animation: sunny-ski-haze-move 22s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunny-ski-sun-glare,
+  .sunny-ski-haze {
+    animation: none;
+  }
+}
+
+/* Sunny Ski Header styles */
+.sunny-ski-header {
+  /* Прозрачный фон с легким светлым слоем для читаемости */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Стили для навигационных ссылок в header */
+.header-nav-link {
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.header-nav-link:hover {
+  background-color: rgba(250, 70, 52, 0.85) !important;
+  color: #ffffff !important;
+}
+
+.header-nav-link.header-nav-active {
+  background-color: rgba(250, 70, 52, 0.85) !important;
+  color: #ffffff !important;
+}
+
+.header-nav-link.header-nav-active.text-muted-foreground {
+  color: #ffffff !important;
+}
+
+/* Стили для кнопок в мобильном меню */
+.header-nav-link.header-nav-active button {
+  color: #ffffff !important;
+}
+
+.header-nav-link:hover button {
+  color: #ffffff !important;
 }
 
 /* Скрытие кнопки "static route" от Next.js DevOverlay */
@@ -144,6 +244,23 @@ select option {
   color: hsl(var(--foreground));
   padding: 0.5rem;
   border-radius: calc(var(--radius) - 2px);
+}
+
+/* Более яркий фон при наведении */
+select option:hover {
+  background-color: #ff0d00 !important;
+  color: white !important;
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem;
+}
+
+/* Более яркий фон для выбранного элемента */
+select option:checked,
+select option:selected {
+  background-color: #ff0d00 !important;
+  color: white !important;
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem;
 }
 
 select optgroup {
