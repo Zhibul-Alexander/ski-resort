@@ -138,6 +138,57 @@ a {
     50%  { transform: translate3d( 3%, 0, 0); opacity: 0.28; }
     100% { transform: translate3d(-3%, 0, 0); opacity: 0.22; }
   }
+
+  @keyframes cloud-drift-left-right {
+    0% {
+      left: -20%;
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      left: 120%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes cloud-drift-right-left {
+    0% {
+      right: -20%;
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      right: 120%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes snow-fall {
+    0% {
+      transform: translateY(-100vh) translateX(0);
+      opacity: 0;
+    }
+    5% {
+      opacity: 0.9;
+    }
+    95% {
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(100vh) translateX(30px);
+      opacity: 0;
+    }
+  }
 }
 
 /* Sunny Ski Backdrop styles */
@@ -182,9 +233,218 @@ a {
   animation: sunny-ski-haze-move 22s ease-in-out infinite;
 }
 
+/* Контейнер для облаков */
+.sunny-ski-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Облака */
+.sunny-ski-cloud {
+  position: absolute;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.65);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.sunny-ski-cloud::before,
+.sunny-ski-cloud::after {
+  content: '';
+  position: absolute;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.65);
+  filter: blur(18px);
+}
+
+.sunny-ski-cloud-1 {
+  width: 280px;
+  height: 85px;
+  top: 15%;
+  right: -20%;
+  animation: cloud-drift-right-left 50s linear infinite;
+}
+
+.sunny-ski-cloud-1::before {
+  width: 160px;
+  height: 65px;
+  top: -20px;
+  left: 40px;
+}
+
+.sunny-ski-cloud-1::after {
+  width: 200px;
+  height: 75px;
+  top: 10px;
+  right: -40px;
+}
+
+.sunny-ski-cloud-2 {
+  width: 120px;
+  height: 55px;
+  top: 25%;
+  right: -20%;
+  animation: cloud-drift-right-left 55s linear infinite;
+  animation-delay: 5s;
+}
+
+.sunny-ski-cloud-2::before {
+  width: 70px;
+  height: 40px;
+  top: -12px;
+  left: 15px;
+}
+
+.sunny-ski-cloud-2::after {
+  width: 85px;
+  height: 45px;
+  top: 8px;
+  right: -20px;
+}
+
+.sunny-ski-cloud-3 {
+  width: 240px;
+  height: 75px;
+  top: 8%;
+  right: -20%;
+  animation: cloud-drift-right-left 60s linear infinite;
+  animation-delay: 10s;
+}
+
+.sunny-ski-cloud-3::before {
+  width: 140px;
+  height: 55px;
+  top: -18px;
+  left: 35px;
+}
+
+.sunny-ski-cloud-3::after {
+  width: 170px;
+  height: 65px;
+  top: 5px;
+  right: -35px;
+}
+
+.sunny-ski-cloud-4 {
+  width: 150px;
+  height: 60px;
+  top: 35%;
+  right: -20%;
+  animation: cloud-drift-right-left 65s linear infinite;
+  animation-delay: 15s;
+}
+
+.sunny-ski-cloud-4::before {
+  width: 85px;
+  height: 42px;
+  top: -12px;
+  left: 20px;
+}
+
+.sunny-ski-cloud-4::after {
+  width: 105px;
+  height: 52px;
+  top: 8px;
+  right: -20px;
+}
+
+.sunny-ski-cloud-5 {
+  width: 320px;
+  height: 90px;
+  top: 20%;
+  right: -20%;
+  animation: cloud-drift-right-left 58s linear infinite;
+  animation-delay: 20s;
+}
+
+.sunny-ski-cloud-5::before {
+  width: 180px;
+  height: 70px;
+  top: -25px;
+  left: 50px;
+}
+
+.sunny-ski-cloud-5::after {
+  width: 220px;
+  height: 80px;
+  top: 12px;
+  right: -50px;
+}
+
+.sunny-ski-cloud-6 {
+  width: 190px;
+  height: 70px;
+  top: 12%;
+  right: -20%;
+  animation: cloud-drift-right-left 52s linear infinite;
+  animation-delay: 25s;
+}
+
+.sunny-ski-cloud-6::before {
+  width: 110px;
+  height: 50px;
+  top: -18px;
+  left: 30px;
+}
+
+.sunny-ski-cloud-6::after {
+  width: 135px;
+  height: 60px;
+  top: 8px;
+  right: -28px;
+}
+
+.sunny-ski-cloud-7 {
+  width: 260px;
+  height: 80px;
+  top: 30%;
+  right: -20%;
+  animation: cloud-drift-right-left 62s linear infinite;
+  animation-delay: 30s;
+}
+
+.sunny-ski-cloud-7::before {
+  width: 150px;
+  height: 60px;
+  top: -22px;
+  left: 45px;
+}
+
+.sunny-ski-cloud-7::after {
+  width: 185px;
+  height: 70px;
+  top: 10px;
+  right: -45px;
+}
+
+/* Снегопад */
+.sunny-ski-snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sunny-ski-snowflake {
+  position: absolute;
+  top: -10px;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  filter: blur(0.8px);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+  animation: snow-fall linear infinite;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sunny-ski-sun-glare,
-  .sunny-ski-haze {
+  .sunny-ski-haze,
+  .sunny-ski-cloud,
+  .sunny-ski-snowflake {
     animation: none;
   }
 }
