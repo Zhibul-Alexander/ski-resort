@@ -36,7 +36,16 @@ export function Footer({
     <footer className="border-t border-border mt-[80px]">
       <div className="container py-10 grid gap-6 md:grid-cols-2">
         <div>
-          <div className="font-semibold">{brandName}</div>
+          <div className="font-semibold">
+            {brandName.includes('IRISH-GEORGIA') ? (
+              <>
+                {brandName.split('IRISH-GEORGIA')[0].trim()}{' '}
+                <span style={{ color: '#fa4634' }}>IRISH-GEORGIA</span>
+              </>
+            ) : (
+              brandName
+            )}
+          </div>
           <div className="text-sm text-muted-foreground mt-2">
             {footerLabels?.description || "Premium rentals & lessons in Gudauri. Quick pickup, fresh gear, and a friendly team."}
           </div>
@@ -84,7 +93,14 @@ export function Footer({
           <Link href={`/${lang}/privacy`} className="no-underline hover:underline">
             {footerLabels?.privacyPolicy || "Privacy Policy"}
           </Link>
-          <div>© {new Date().getFullYear()} {brandName}. {footerLabels?.rights || "All rights reserved."}</div>
+          <div>© {new Date().getFullYear()} {brandName.includes('IRISH-GEORGIA') ? (
+            <>
+              {brandName.split('IRISH-GEORGIA')[0].trim()}{' '}
+              <span style={{ color: '#fa4634' }}>IRISH-GEORGIA</span>
+            </>
+          ) : (
+            brandName
+          )}. {footerLabels?.rights || "All rights reserved."}</div>
         </div>
       </div>
     </footer>

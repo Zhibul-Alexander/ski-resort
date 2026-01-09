@@ -52,11 +52,6 @@ export default async function LangLayout({
         }}
       />
       <main className="container pt-16">{children}</main>
-      <div className="container">
-        <div className="mt-0 mb-[48px] rounded-2xl border border-border bg-card p-6">
-          <p className="text-center text-base font-medium">{site.pageTitles?.thankYouMessage || "Thank you for trusting us with your vacation!"}</p>
-        </div>
-      </div>
       <Footer
         lang={lang}
         brandName={site.brand.name}

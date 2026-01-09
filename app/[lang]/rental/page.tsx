@@ -1,7 +1,6 @@
 import type { Lang } from "@/lib/i18n";
 import { getPricing, getSite } from "@/lib/content";
 import { Section } from "@/components/site/section";
-import { Card, CardContent } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
 import { RentalBookingForm } from "@/components/booking/RentalBookingForm";
@@ -28,9 +27,8 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
         {pricing.rental.tables.map((t, tableIdx) => (
           <SlideIn key={t.id} index={tableIdx + 1}>
             <Section title={t.title} subtitle={t.subtitle}>
-            <Card>
               {/* Mobile: Card view */}
-              <CardContent className="pt-6 px-0 md:px-6 md:hidden">
+              <div className="px-0 md:px-6 md:hidden">
                 <div className="space-y-2 px-3">
                   {t.rows.map((r) => (
                     <div key={r.label} className="rounded-xl border border-border bg-card p-2.5">
@@ -46,11 +44,11 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                     </div>
                   ))}
                 </div>
-              </CardContent>
+              </div>
 
               {/* Desktop: Table view */}
-              <CardContent className="pt-6 hidden md:block">
-                <div className="overflow-x-auto rounded-2xl border border-border">
+              <div className="hidden md:block">
+                <div className="overflow-x-auto rounded-2xl border border-border bg-card">
                   <Table className="w-full">
                     <THead>
                       <TR>
@@ -72,9 +70,8 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                     </TBody>
                   </Table>
                 </div>
-              </CardContent>
-            </Card>
-          </Section>
+              </div>
+            </Section>
           </SlideIn>
         ))}
       </div>

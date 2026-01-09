@@ -7,7 +7,6 @@ import { Carousel } from "@/components/ui/carousel";
 import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
-import { GoogleMap } from "@/components/site/google-map";
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -25,23 +24,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
       </SlideIn>
 
       <SlideIn index={1}>
-        <Section title={site.sections.highlights.title} subtitle={site.pageTitles?.whyChooseUs || "Why guests choose us"}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
-            {site.sections.highlights.items.map((it, idx) => (
-              <Card key={idx} className="h-full">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-xl">{it.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">{it.text}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </Carousel>
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={2}>
         <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
             {site.sections.shopPhotos.items.map((p, idx) => (
@@ -53,15 +35,15 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </Section>
       </SlideIn>
 
-      <SlideIn index={3}>
+      <SlideIn index={2}>
         <div className="scroll-mt-32 md:scroll-mt-24">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="space-y-6">
               <div className="grid gap-6 lg:grid-cols-2">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}
+                    <CardTitle>
+                      {site.pageTitles?.addresses || "Addresses:"}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -121,31 +103,25 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
                   </CardContent>
                 </Card>
               </div>
-              
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <GoogleMap
-                    point={site.location.points[0]}
-                    title={site.pageTitles?.map || "Map"}
-                    labels={{
-                      loading: site.pageTitles?.mapLoading,
-                      error: site.pageTitles?.mapError,
-                      errorDescription: site.pageTitles?.mapErrorDescription,
-                      retry: site.pageTitles?.mapRetry,
-                      preparing: site.pageTitles?.mapPreparing,
-                      openInGoogleMaps: site.pageTitles?.openInGoogleMaps,
-                    }}
-                  />
-                </CardContent>
-              </Card>
             </div>
           </Section>
         </div>
+      </SlideIn>
+
+      <SlideIn index={3}>
+        <Section title={reviews.title}>
+          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
+            {reviews.items.map((r, idx) => (
+              <Card key={idx} className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-base">{r.name}</CardTitle>
+                  <CardDescription>{"★".repeat(Math.max(1, Math.min(5, r.rating)))}</CardDescription>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground">{r.text}</CardContent>
+              </Card>
+            ))}
+          </Carousel>
+        </Section>
       </SlideIn>
 
       <SlideIn index={4}>
@@ -162,22 +138,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
               </Accordion>
             </CardContent>
           </Card>
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={5}>
-        <Section title={reviews.title}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
-            {reviews.items.map((r, idx) => (
-              <Card key={idx} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-base">{r.name}</CardTitle>
-                  <CardDescription>{"★".repeat(Math.max(1, Math.min(5, r.rating)))}</CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">{r.text}</CardContent>
-              </Card>
-            ))}
-          </Carousel>
         </Section>
       </SlideIn>
     </div>

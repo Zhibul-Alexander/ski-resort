@@ -55,7 +55,7 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
 
       <SlideIn index={3}>
         <div className="scroll-mt-32 md:scroll-mt-24">
-          <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
+          <Section title={site.pageTitles?.addresses || "Addresses:"} subtitle={site.location.addressLine}>
             <div className="space-y-6">
               <div className="grid gap-6 lg:grid-cols-2">
                 <Card>
