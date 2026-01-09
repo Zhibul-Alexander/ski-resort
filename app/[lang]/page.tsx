@@ -8,6 +8,7 @@ import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink, Fac
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { ElfsightGoogleReviews } from "@/components/site/elfsight-google-reviews";
+import { GoogleMap } from "@/components/site/google-map";
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -44,7 +45,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
                 <Card>
                   <CardHeader>
                     <CardTitle>
-                      {site.pageTitles?.addresses || "Addresses:"}
+                      {site.pageTitles?.addresses || "Addresses"}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -104,6 +105,28 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
                   </CardContent>
                 </Card>
               </div>
+              
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-accent" /> {site.pageTitles?.map || "Map"}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <GoogleMap
+                    point={site.location.points[0]}
+                    title={site.pageTitles?.map || "Map"}
+                    labels={{
+                      loading: site.pageTitles?.mapLoading,
+                      error: site.pageTitles?.mapError,
+                      errorDescription: site.pageTitles?.mapErrorDescription,
+                      retry: site.pageTitles?.mapRetry,
+                      preparing: site.pageTitles?.mapPreparing,
+                      openInGoogleMaps: site.pageTitles?.openInGoogleMaps,
+                    }}
+                  />
+                </CardContent>
+              </Card>
             </div>
           </Section>
         </div>

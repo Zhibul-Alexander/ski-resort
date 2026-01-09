@@ -29,7 +29,7 @@
         "address": "Georgia, Gudauri, Rental - 1",
         "lat": 42.4661767,
         "lng": 44.4830638,
-        "mapOpenUrl": "https://maps.app.goo.gl/fARn6o6TKBZYvzY28"
+        "mapOpenUrl": "https://maps.app.goo.gl/v8qPTzwTvr15Y6D28"
       },
       {
         "name": "გაქირავება 2",
@@ -50,7 +50,7 @@
   "pageTitles": {
     "aboutShop": "ჩვენს შესახებ",
     "findUs": "როგორ გვიპოვოთ",
-    "addresses": "მისამართები:",
+    "addresses": "მისამართები",
     "quickAnswers": "სწრაფი პასუხები",
     "reviews": "შეფასებები",
     "whyChooseUs": "რატომ გვირჩევენ",
