@@ -171,7 +171,7 @@ export function Header({
                 <div className="pt-2 border-t border-border">
                   <SheetClose asChild>
                     <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-                      <Button className="w-full h-auto py-3 px-4 animate-rotate-slow">{navLabels?.requestBooking || "Booking"}</Button>
+                      <Button className="w-full h-auto py-3 px-4">{navLabels?.requestBooking || "Booking"}</Button>
                     </Link>
                   </SheetClose>
                 </div>
