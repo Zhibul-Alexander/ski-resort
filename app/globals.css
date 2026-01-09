@@ -377,8 +377,21 @@ input[type="date"][lang="en-GB"]::-webkit-datetime-edit-year-field {
 
 /* Скрытие заголовка виджета Elfsight Google Reviews */
 .es-widget-title-container,
-[class*="WidgetTitle__Container"] {
+[class*="WidgetTitle__Container"],
+.elfsight-app .es-widget-title-container,
+.elfsight-app [class*="WidgetTitle__Container"],
+.elfsight-app [class*="es-widget-title-container"],
+[class*="WidgetTitle__Container"]:hover,
+.es-widget-title-container:hover,
+.elfsight-app [class*="WidgetTitle__Container"]:hover,
+.elfsight-app .es-widget-title-container:hover {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Замена background в блоках отзывов Elfsight на цвет из таблиц (card) */
@@ -452,5 +465,101 @@ a[style*="background-color:rgba(238, 238, 238, 0.9)"] {
   pointer-events: none !important;
   line-height: 0 !important;
   font-size: 0 !important;
+}
+
+/* Скрытие последнего дочернего элемента (ссылки) в WidgetBackground__Content */
+[class*="WidgetBackground__Content"] > a:last-child,
+[class*="WidgetBackground__ContentContainer"] > a:last-child,
+.es-widget-background-content > a:last-child,
+[class*="WidgetBackground__Content"] > *:last-child:is(a),
+[class*="WidgetBackground__ContentContainer"] > *:last-child:is(a),
+.es-widget-background-content > *:last-child:is(a),
+/* Скрытие ссылок с характерными стилями внутри WidgetBackground__Content */
+[class*="WidgetBackground__Content"] a[style*="z-index:999999999"],
+[class*="WidgetBackground__ContentContainer"] a[style*="z-index:999999999"],
+.es-widget-background-content a[style*="z-index:999999999"],
+[class*="WidgetBackground__Content"] a[style*="translateX(-50%)"],
+[class*="WidgetBackground__ContentContainer"] a[style*="translateX(-50%)"],
+.es-widget-background-content a[style*="translateX(-50%)"],
+[class*="WidgetBackground__Content"] a[style*="background-color:rgba(238, 238, 238, 0.9)"],
+[class*="WidgetBackground__ContentContainer"] a[style*="background-color:rgba(238, 238, 238, 0.9)"],
+.es-widget-background-content a[style*="background-color:rgba(238, 238, 238, 0.9)"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Накрытие ссылки элементом с нашим цветом фона (только на саму ссылку, на 5% больше) */
+[class*="WidgetBackground__Content"] a[style*="z-index:999999999"]::after,
+[class*="WidgetBackground__ContentContainer"] a[style*="z-index:999999999"]::after,
+.es-widget-background-content a[style*="z-index:999999999"]::after,
+[class*="WidgetBackground__Content"] a[style*="translateX(-50%)"]::after,
+[class*="WidgetBackground__ContentContainer"] a[style*="translateX(-50%)"]::after,
+.es-widget-background-content a[style*="translateX(-50%)"]::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: hsl(var(--background)) !important;
+  background: hsl(var(--background)) !important;
+  z-index: 1000000000 !important;
+  pointer-events: none !important;
+  transform: scale(1.05) !important;
+  transform-origin: center !important;
+}
+
+/* Стили для overlay элемента, созданного через JavaScript */
+.elfsight-link-overlay {
+  background-color: hsl(var(--background)) !important;
+  background: hsl(var(--background)) !important;
+  z-index: 1000000000 !important;
+  pointer-events: none !important;
+}
+
+/* Убеждаемся, что родительские блоки имеют position: relative */
+[class*="WidgetBackground__Content"],
+[class*="WidgetBackground__ContentContainer"],
+.es-widget-background-content {
+  position: relative !important;
+}
+
+/* Скрытие элемента eapps-widget-toolbar */
+.eapps-widget-toolbar,
+[class*="eapps-widget-toolbar"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Стилизация кнопки Write Review как кнопки Booking */
+.es-header-write-review-button,
+[class*="HeaderWriteReviewButton__WriteReviewButton"],
+[class*="ButtonBase__ButtonContainer"][class*="es-header-write-review-button"],
+.es-button-base-container[class*="es-header-write-review-button"] {
+  background-color: #fa4634 !important;
+  background: #fa4634 !important;
+  color: white !important;
+  border-color: #fa4634 !important;
+  border-radius: var(--radius) !important;
+}
+
+.es-header-write-review-button:hover,
+[class*="HeaderWriteReviewButton__WriteReviewButton"]:hover,
+[class*="ButtonBase__ButtonContainer"][class*="es-header-write-review-button"]:hover,
+.es-button-base-container[class*="es-header-write-review-button"]:hover {
+  background-color: rgba(250, 70, 52, 0.9) !important;
+  background: rgba(250, 70, 52, 0.9) !important;
 }
 
