@@ -58,7 +58,7 @@ export function Header({
                 <Image src="/logo.png" alt={brandName} width={36} height={36} className="object-contain" />
               </div>
               <div className="leading-tight min-w-0">
-                <div className="font-semibold truncate">{brandName}</div>
+                <div className="font-semibold truncate">{brandName}!</div>
               </div>
             </div>
           </Link>
@@ -116,7 +116,7 @@ export function Header({
             <SheetContent side="right">
               <div className="space-y-4 pt-4">
                 <div className="pb-2 border-b border-border">
-                  <div className="font-semibold text-lg">{brandName}</div>
+                  <div className="font-semibold text-lg">{brandName}!</div>
                 </div>
 
                 <div className="space-y-2">
