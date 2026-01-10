@@ -5,11 +5,7 @@
   },
   "contacts": {
     "phone": "+995 551 532 661",
-    "email": "zhibul.alexander.work@gmail.com",
-    "whatsapp": "+995 551 532 661",
-    "telegram": "@ski1rental",
-    "viber": "+995 551 532 661",
-    "instagram": "https://instagram.com/"
+    "whatsapp": "+995 551 532 661"
   },
   "hours": {
     "label": "营业时间",
@@ -36,7 +32,8 @@
     "mapErrorDescription": "加载 Google 地图时出现问题。",
     "mapRetry": "重试",
     "mapPreparing": "正在准备地图...",
-    "contactsDescription": "电话、邮箱与通讯软件",
+    "contactsDescription": "电话和 WhatsApp",
+    "phoneAndWhatsApp": "电话 | WhatsApp",
     "thankYouMessage": "感谢你把假期托付给我们！",
     "rentalPrices": "租赁价格",
     "rentalSubtitle": "适合任何水平的专业装备。",
@@ -68,7 +65,7 @@
     "navServices": "服务",
     "navContacts": "联系方式",
     "hoursLabel": "营业时间：",
-    "footerDescription": "Gudauri 高端租赁与私教。快速取装备、状态新、团队友好。",
+    "footerDescription": "Gudauri 高端租赁与课程——快速配齐装备，无需久等。干净、保养到位的装备，加上真正愿意帮你的友好团队。",
     "footerContacts": "联系方式",
     "footerPrivacyPolicy": "隐私政策",
     "footerRights": "版权所有。",
@@ -94,9 +91,9 @@
     "bookingFormComment": "补充说明（可选）",
     "bookingFormCommentPlaceholder": "任何额外信息...",
     "bookingFormSubmit": "提交申请",
-    "bookingFormSubmitNote": "这是申请，不是即时确认。我们会通过 email/电话确认库存。",
+    "bookingFormSubmitNote": "这是申请，不是即时确认。我们会通过电话或 WhatsApp 确认库存。",
     "bookingFormSuccessTitle": "已收到申请",
-    "bookingFormSuccessDesc": "我们已发送确认邮件。很快会联系你确认库存。",
+    "bookingFormSuccessDesc": "很快会联系你确认库存。",
     "bookingFormCreateAnother": "再建一单",
     "bookingFormAdults": "成人",
     "bookingFormKids": "儿童",
@@ -111,32 +108,28 @@
       "title": "亮点",
       "items": [
         {
-          "title": "专业租赁",
-          "text": "专注于高品质双板与单板装备。"
+          "title": "古道里 2 家门店",
+          "text": "取还更方便——选择离你更近的门店。"
         },
         {
-          "title": "精准匹配",
-          "text": "按水平与滑行风格匹配，确保防护可靠与贴合舒适。"
+          "title": "贴心服务与关怀",
+          "text": "不只是发放装备——会为你精确匹配，确保舒适与安全。"
         },
         {
-          "title": "成人与儿童",
-          "text": "所需一应俱全：双板、单板、雪靴、固定器与儿童套装。"
+          "title": "适合任何水平的丰富选择",
+          "text": "从入门到进阶——成人与儿童套装齐全。"
         },
         {
-          "title": "服装与配件",
-          "text": "夹克、滑雪裤、头盔、雪镜、手套——应对各种天气。"
+          "title": "上雪道前调试检查",
+          "text": "调好固定器，检查雪鞋贴合度，并讲清关键要点。"
         },
         {
-          "title": "新手到高手",
-          "text": "首次体验给你最合适方案，进阶滑手提供更高阶装备。"
+          "title": "一站式配齐",
+          "text": "装备 + 服装与配件（外套/裤子、头盔、面镜/护目镜、手套）。"
         },
         {
-          "title": "经验教练",
-          "text": "帮助提升技术、掌握基础，并在任何水平上继续进步。"
-        },
-        {
-          "title": "品质与关怀",
-          "text": "重视服务、装备品质与氛围，让每一天都留下最佳回忆。"
+          "title": "经验丰富的教练",
+          "text": "帮助新手快速上手，也帮助有经验的滑手提升技术、更安全地进步。"
         }
       ]
     },

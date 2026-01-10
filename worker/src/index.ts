@@ -77,8 +77,6 @@ function getTypeLabel(type: string): string {
 function getMessengerLabel(messenger: string): string {
   const labels: Record<string, string> = {
     whatsapp: "WhatsApp",
-    telegram: "Telegram",
-    viber: "Viber",
     none: "None"
   };
   return labels[messenger] || messenger;

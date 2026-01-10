@@ -5,11 +5,7 @@ export type SiteContent = {
   brand: { name: string; tagline: string; };
   contacts: {
     phone: string;
-    email: string;
     whatsapp?: string;
-    telegram?: string;
-    viber?: string;
-    instagram?: string;
   };
   hours: { label: string; value: string; };
   location: {

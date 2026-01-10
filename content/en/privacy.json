@@ -15,7 +15,7 @@
       "items": [
         {
           "title": "Contact Information:",
-          "text": "Name, email address, phone number, and optional messenger handles (WhatsApp, Telegram, Viber) for communication purposes."
+          "text": "Name, phone number, and optional WhatsApp contact for communication purposes."
         },
         {
           "title": "Booking Details:",
@@ -27,7 +27,7 @@
         },
         {
           "title": "Communication Records:",
-          "text": "Correspondence, messages, and feedback you send to us via email, phone, or messaging platforms."
+          "text": "Correspondence, messages, and feedback you send to us via phone or WhatsApp."
         }
       ],
       "automaticallyCollected": {

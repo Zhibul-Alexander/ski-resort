@@ -1,26 +1,18 @@
 import Link from "next/link";
-import { Phone, Mail, Instagram, MessageCircle, Clock } from "lucide-react";
+import { Phone, Clock } from "lucide-react";
 
 export function Footer({
   lang,
   brandName,
   phone,
-  email,
-  instagram,
   whatsapp,
-  telegram,
-  viber,
   hours,
   footerLabels
 }: {
   lang: string;
   brandName: string;
   phone: string;
-  email: string;
-  instagram?: string;
   whatsapp?: string;
-  telegram?: string;
-  viber?: string;
   hours?: string;
   footerLabels?: {
     description?: string;
@@ -28,6 +20,7 @@ export function Footer({
     hoursLabel?: string;
     privacyPolicy?: string;
     rights?: string;
+    phoneAndWhatsApp?: string;
   };
 }) {
   return (
@@ -45,23 +38,11 @@ export function Footer({
           <div className="grid gap-2 text-muted-foreground md:justify-items-end">
             <div className="flex flex-wrap items-center gap-2 md:justify-end">
               <a className="no-underline hover:underline flex items-center gap-2" href={`tel:${phone}`}>
-                <Phone className="h-4 w-4" />{phone}
+                <Phone className="h-4 w-4" />
+                {phone}
               </a>
-              <span className="text-xs">WhatsApp | Telegram | Viber</span>
+              <span className="text-xs">{footerLabels?.phoneAndWhatsApp || "Phone | WhatsApp"}</span>
             </div>
-            <a className="no-underline hover:underline flex items-center gap-2 md:justify-end" href={`mailto:${email}`}>
-              <Mail className="h-4 w-4" />{email}
-            </a>
-            {instagram ? (
-              <a className="no-underline hover:underline flex items-center gap-2 md:justify-end" href={instagram} target="_blank" rel="noreferrer">
-                <Instagram className="h-4 w-4" />Instagram
-              </a>
-            ) : null}
-            {telegram ? (
-              <a className="no-underline hover:underline flex items-center gap-2 md:justify-end" href={`https://t.me/${telegram.replace('@', '')}`} target="_blank" rel="noreferrer">
-                <MessageCircle className="h-4 w-4" />Telegram
-              </a>
-            ) : null}
             {hours ? (
               <div className="flex items-center gap-2 md:justify-end mt-2">
                 <Clock className="h-4 w-4" />

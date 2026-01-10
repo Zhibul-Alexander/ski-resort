@@ -5,11 +5,7 @@
   },
   "contacts": {
     "phone": "+995 551 532 661",
-    "email": "zhibul.alexander.work@gmail.com",
-    "whatsapp": "+995 551 532 661",
-    "telegram": "@ski1rental",
-    "viber": "+995 551 532 661",
-    "instagram": "https://instagram.com/"
+    "whatsapp": "+995 551 532 661"
   },
   "hours": {
     "label": "Hours",
@@ -36,7 +32,8 @@
     "mapErrorDescription": "A problem occurred while loading Google Maps on this page.",
     "mapRetry": "Try again",
     "mapPreparing": "Preparing map...",
-    "contactsDescription": "Phone, email and messengers",
+    "contactsDescription": "Phone and WhatsApp",
+    "phoneAndWhatsApp": "Phone | WhatsApp",
     "thankYouMessage": "Thank you for trusting us with your vacation!",
     "rentalPrices": "Rental prices",
     "rentalSubtitle": "Professional gear for any skill level.",
@@ -68,7 +65,7 @@
     "navServices": "Services",
     "navContacts": "Contacts",
     "hoursLabel": "Hours:",
-    "footerDescription": "Premium rentals & lessons in Gudauri. Quick pickup, fresh gear, and a friendly team.",
+    "footerDescription": "Premium rentals and lessons in Gudauri — we'll gear you up fast with no unnecessary waiting. Clean, well-serviced equipment and a friendly team that truly helps.",
     "footerContacts": "Contacts",
     "footerPrivacyPolicy": "Privacy Policy",
     "footerRights": "All rights reserved.",
@@ -94,9 +91,9 @@
     "bookingFormComment": "Comment (optional)",
     "bookingFormCommentPlaceholder": "Any extra details...",
     "bookingFormSubmit": "Submit request",
-    "bookingFormSubmitNote": "This is a request, not an instant reservation. We'll confirm availability by email/phone.",
+    "bookingFormSubmitNote": "This is a request, not an instant reservation. We'll confirm availability by phone or WhatsApp.",
     "bookingFormSuccessTitle": "Request received",
-    "bookingFormSuccessDesc": "We've sent a confirmation email. We'll contact you soon to confirm availability.",
+    "bookingFormSuccessDesc": "We'll contact you soon to confirm availability.",
     "bookingFormCreateAnother": "Create another request",
     "bookingFormAdults": "Adults",
     "bookingFormKids": "Kids",
@@ -111,32 +108,28 @@
       "title": "Highlights",
       "items": [
         {
-          "title": "Professional rental",
-          "text": "We specialize in quality equipment for skiing and snowboarding."
+          "title": "Two shops in Gudauri",
+          "text": "Easier pickup and return — choose the location closer to you."
         },
         {
-          "title": "Right selection",
-          "text": "We select equipment based on skill level and skiing style, ensuring reliable protection and comfortable fit."
+          "title": "Strong service and care",
+          "text": "Not just handing out a set — we fit gear to you for comfort and safety."
         },
         {
-          "title": "For adults and kids",
-          "text": "Everything you need: skis, snowboards, boots, bindings, and kids' sets."
+          "title": "Big selection for any level",
+          "text": "From first steps to confident riding — adult and kids' sets."
         },
         {
-          "title": "Clothing and accessories",
-          "text": "Jackets, pants, helmets, goggles, and gloves — fully prepared for any weather conditions."
+          "title": "Setup before you ride",
+          "text": "We adjust bindings, check boot fit, and explain the key points."
         },
         {
-          "title": "For beginners and pros",
-          "text": "We'll help you choose the best option for your first experience or advanced equipment for confident skiers."
+          "title": "Everything in one place",
+          "text": "Gear + clothing and accessories (jackets/pants, helmets, masks/goggles, gloves)."
         },
         {
           "title": "Experienced instructors",
-          "text": "They'll help you develop technique, master the basics, or improve your skills at any level."
-        },
-        {
-          "title": "Quality care",
-          "text": "We care about service, equipment quality, and your mood, so every day on the slopes is remembered for the best impressions."
+          "text": "We help beginners get started fast and riders improve technique and progress safer."
         }
       ]
     },
