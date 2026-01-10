@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import type { Lang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import { LanguageSwitcher, LanguageSwitcherMobile } from "./language-switcher";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function Header({
   lang,
@@ -27,7 +27,6 @@ export function Header({
     rentalPrices?: string;
     lessons?: string;
     services?: string;
-    skiResort?: string;
     contacts?: string;
     requestBooking?: string;
   };
@@ -45,7 +44,7 @@ export function Header({
     { href: `/${lang}/rental`, label: navLabels?.rentalPrices || "Rental Prices" },
     { href: `/${lang}/lessons`, label: navLabels?.lessons || "Lessons" },
     { href: `/${lang}/services`, label: navLabels?.services || "Services" },
-    { href: `/${lang}/resort`, label: navLabels?.skiResort || "Ski Resort" }
+    { href: `/${lang}#contacts`, label: navLabels?.contacts || "Contacts" }
   ];
 
   return (
@@ -68,9 +67,13 @@ export function Header({
             const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
             // Для главной страницы проверяем только точное совпадение, для остальных - startsWith
             const isMainPage = normalizedHref === `/${lang}`;
-            const isActive = isMainPage 
-              ? normalizedPathname === normalizedHref
-              : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
+            // Для якорных ссылок (contacts) никогда не выделяем
+            const isContactsLink = l.href.includes("#contacts");
+            const isActive = isContactsLink
+              ? false
+              : isMainPage 
+                ? normalizedPathname === normalizedHref
+                : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
             return (
               <Link
                 key={l.href}
@@ -89,9 +92,6 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
-            {navLabels?.contacts || "Contacts"}
-          </Link>
           <LanguageSwitcher currentLang={lang} />
 
           {/* Mobile menu */}
@@ -111,9 +111,13 @@ export function Header({
                     const normalizedHref = l.href.replace(/#.*$/, "").replace(/\/$/, "");
                     // Для главной страницы проверяем только точное совпадение, для остальных - startsWith
                     const isMainPage = normalizedHref === `/${lang}`;
-                    const isActive = isMainPage 
-                      ? normalizedPathname === normalizedHref
-                      : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
+                    // Для якорных ссылок (contacts) никогда не выделяем
+                    const isContactsLink = l.href.includes("#contacts");
+                    const isActive = isContactsLink
+                      ? false
+                      : isMainPage 
+                        ? normalizedPathname === normalizedHref
+                        : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
                     return (
                       <SheetClose key={l.href} asChild>
                         <Link href={l.href} className="no-underline block">
@@ -124,20 +128,6 @@ export function Header({
                       </SheetClose>
                     );
                   })}
-                </div>
-
-                <div className="pt-2 border-t border-border">
-                  <SheetClose asChild>
-                    <Link href={`/${lang}#contacts`} className="no-underline">
-                      <Button variant="secondary" className="w-full justify-start h-auto py-3 px-4">
-                        {navLabels?.contacts || "Contacts"}
-                      </Button>
-                    </Link>
-                  </SheetClose>
-                </div>
-
-                <div className="pt-2">
-                  <LanguageSwitcherMobile currentLang={lang} onLanguageChange={() => setIsMenuOpen(false)} />
                 </div>
               </div>
             </SheetContent>

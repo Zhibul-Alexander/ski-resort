@@ -3,7 +3,6 @@ import { toLocaleKey } from "./i18n";
 
 export type SiteContent = {
   brand: { name: string; tagline: string; };
-  resort: { name: string; description?: string; };
   contacts: {
     phone: string;
     email: string;
@@ -31,23 +30,12 @@ export type SiteContent = {
     openInGoogleMaps?: string;
     contactsDescription?: string;
     thankYouMessage?: string;
-    resortMap?: string;
-    resortPhotos?: string;
-    capacity?: string;
-    start?: string;
-    verticalDrop?: string;
-    length?: string;
-    liftsSubtitle?: string;
     [key: string]: string | undefined;
   };
   sections: {
     highlights: { title: string; items: { title: string; text: string }[] };
     shopPhotos: { title: string; items: { title: string; src: string }[] };
     certificates: { title: string; items: { title: string; text: string }[] };
-    resortPhotos?: { title: string; items: { title: string; src: string }[] };
-    resortMap?: { title: string; src: string; alt: string };
-    resortLifts?: { title: string; items: { name: string; type: string; capacity: string; startAltitude: string; verticalDrop: string; length: string }[] };
-    liveStream?: { title: string; youtubeUrl?: string; videoUrl?: string };
     instructors?: { title: string; subtitle: string; items: { name: string; title: string; experience: string; specialties: string[] }[] };
   };
 };

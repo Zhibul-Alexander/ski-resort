@@ -45,7 +45,7 @@ yarn build
 - **FAQ:** `/content/*/faq.json`
 - **Отзывы:** `/content/*/reviews.json`
 - **Контакты/часы работы/карта:** `/content/*/site.json`
-- **Изображения:** `/public/images/shop/*` и `/public/images/resort/*`
+- **Изображения:** `/public/images/shop/*`
 
 ### Карта
 

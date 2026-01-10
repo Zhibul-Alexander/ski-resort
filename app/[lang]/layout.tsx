@@ -5,7 +5,6 @@ import { Footer } from "@/components/site/footer";
 import { ScrollToTop } from "@/components/site/scroll-to-top";
 import { ScrollToTopOnNavigate } from "@/components/site/scroll-to-top-on-navigate";
 import { ScrollUnlockOnRouteChange } from "@/components/site/scroll-unlock";
-import { Snowfall } from "@/components/site/snowfall";
 import { getSite } from "@/lib/content";
 import { LANGS, type Lang, langToHtmlLang } from "@/lib/i18n";
 
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
   const site = await getSite(lang);
   return {
     title: `${site.brand.name} — ${site.brand.tagline}`,
-    description: `Premium rental & lessons in ${site.resort.name}.`
+    description: `${site.brand.tagline}`
   };
 }
 
@@ -46,7 +45,6 @@ export default async function LangLayout({
           rentalPrices: (site.pageTitles as any)?.navRentalPrices,
           lessons: (site.pageTitles as any)?.navLessons,
           services: (site.pageTitles as any)?.navServices,
-          skiResort: (site.pageTitles as any)?.navSkiResort,
           contacts: (site.pageTitles as any)?.navContacts,
           requestBooking: (site.pageTitles as any)?.requestBooking
         }}
@@ -78,7 +76,6 @@ export default async function LangLayout({
       <ScrollToTop />
       <ScrollToTopOnNavigate />
       <ScrollUnlockOnRouteChange />
-      <Snowfall count={90} />
     </>
   );
 }
