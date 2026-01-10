@@ -49,12 +49,12 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
               {/* Desktop: Table view */}
               <CardContent className="pt-6 hidden md:block">
                 <div className="overflow-x-auto rounded-2xl border border-border">
-                  <Table className="w-full">
+                  <Table className="w-full table-fixed">
                     <THead>
                       <TR>
-                        <TH>{t.columns[0]}</TH>
+                        <TH className="w-[60%]">{t.columns[0]}</TH>
                         {t.columns.slice(1).map((c) => (
-                          <TH key={c}>{c}</TH>
+                          <TH key={c} className="w-[20%] text-right">{c}</TH>
                         ))}
                       </TR>
                     </THead>
@@ -63,7 +63,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                         <TR key={r.label}>
                           <TD className="font-medium">{r.label}</TD>
                           {r.values.map((v, idx) => (
-                            <TD key={idx}>{formatPrice(v, exchangeRate)}</TD>
+                            <TD key={idx} className="text-right">{formatPrice(v, exchangeRate)}</TD>
                           ))}
                         </TR>
                       ))}

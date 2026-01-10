@@ -5,110 +5,109 @@
       {
         "id": "adults",
         "title": "Adults",
-        "subtitle": "Equipment for adults",
         "columns": [
           "Equipment type",
           "1–2 days",
-          "3–5 days",
-          "6–10 days",
-          "11+ days"
+          "3+ days"
         ],
         "rows": [
           {
-            "label": "Full ski set (skis, boots, poles) — Economy / Premium",
-            "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
+            "label": "Full ski set (skis, boots, poles)",
+            "values": ["50", "45"]
           },
           {
-            "label": "Full snowboard set (board, boots) — Economy / Premium",
-            "values": ["60 / 100", "55 / 100", "50 / 100", "50 / 100"]
+            "label": "Full snowboard set (board, boots)",
+            "values": ["70", "63"]
           },
           {
             "label": "Freeride set (skis/snowboard, boots, poles)",
-            "values": ["100", "100", "100", "100"]
+            "values": ["140", "126"]
           },
           {
             "label": "Freeride skis / snowboard",
-            "values": ["100", "100", "100", "100"]
+            "values": ["100", "90"]
           },
           {
-            "label": "Skis / snowboard — Economy / Premium",
-            "values": ["45 / 100", "40 / 100", "35 / 100", "35 / 100"]
+            "label": "Skis",
+            "values": ["40", "36"]
+          },
+          {
+            "label": "Snowboard",
+            "values": ["50", "45"]
           },
           {
             "label": "Boots (ski / snowboard)",
-            "values": ["40", "35", "30", "30"]
+            "values": ["30", "27"]
           },
           {
             "label": "Poles",
-            "values": ["10", "8", "5", "5"]
+            "values": ["10", "9"]
           }
         ]
       },
       {
         "id": "kids",
         "title": "Kids",
-        "subtitle": "Equipment for children",
         "columns": [
           "Equipment type",
           "1–2 days",
-          "3–5 days",
-          "6–10 days",
-          "11+ days"
+          "3+ days"
         ],
         "rows": [
           {
             "label": "Full ski set (skis, boots, poles)",
-            "values": ["55", "50", "45", "45"]
+            "values": ["40", "36"]
           },
           {
             "label": "Full snowboard set (board, boots)",
-            "values": ["55", "50", "45", "45"]
+            "values": ["60", "54"]
           },
           {
-            "label": "Skis / snowboard",
-            "values": ["40", "35", "30", "30"]
+            "label": "Skis",
+            "values": ["40", "36"]
+          },
+          {
+            "label": "Snowboard",
+            "values": ["50", "45"]
           },
           {
             "label": "Boots (ski / snowboard)",
-            "values": ["35", "30", "25", "25"]
+            "values": ["30", "27"]
           },
           {
             "label": "Poles",
-            "values": ["8", "7", "4", "4"]
+            "values": ["10", "9"]
           }
         ]
       },
       {
         "id": "accessories",
         "title": "Accessories & clothing",
-        "subtitle": "Additional equipment",
         "columns": [
           "Equipment type",
           "1–2 days",
-          "3–5 days",
-          "6–10 days",
-          "11+ days"
+          "3+ days"
         ],
         "rows": [
           {
             "label": "Helmet",
-            "values": ["15", "12", "10", "10"]
+            "values": ["10", "9"]
           },
           {
-            "label": "Goggles",
-            "values": ["15", "12", "10", "10"]
+            "label": "Goggles / Mask — Economy / Premium",
+            "values": ["10 / 20", "9 / 18"]
           },
           {
             "label": "Jacket",
-            "values": ["25", "23", "20", "20"]
+            "values": ["20", "18"]
           },
           {
             "label": "Pants",
-            "values": ["20", "18", "15", "15"]
+            "values": ["20", "18"]
           },
           {
             "label": "Gloves",
-            "values": ["15", "12", "10", "10"]
+            "values": ["10", "9"]
           }
         ]
       }
