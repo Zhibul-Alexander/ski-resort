@@ -50,15 +50,12 @@ export function Header({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-[70px] items-center justify-between">
         <div className="flex items-center gap-3 min-w-0">
           <Link href={`/${lang}`} className="no-underline min-w-0">
             <div className="flex items-center gap-2 min-w-0">
-              <div className="h-9 w-9 rounded-xl shrink-0 relative overflow-hidden">
-                <Image src="/logo.png" alt={brandName} width={36} height={36} className="object-contain" />
-              </div>
-              <div className="leading-tight min-w-0">
-                <div className="font-semibold truncate">{brandName}</div>
+              <div className="h-[75px] w-[75px] rounded-xl shrink-0 relative overflow-hidden">
+                <Image src="/logo.png" alt={brandName} width={75} height={75} className="object-contain" />
               </div>
             </div>
           </Link>
@@ -107,9 +104,6 @@ export function Header({
             </SheetTrigger>
             <SheetContent side="right">
               <div className="space-y-4 pt-4">
-                <div className="pb-2 border-b border-border">
-                  <div className="font-semibold text-lg">{brandName}</div>
-                </div>
 
                 <div className="space-y-2">
                   {nav.map((l) => {

@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ski №1 Rental — Gudauri",
+  title: "SKI HOUSE+ — Gudauri",
   description: "Premium ski rental & lessons in Gudauri",
   icons: {
     icon: [
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

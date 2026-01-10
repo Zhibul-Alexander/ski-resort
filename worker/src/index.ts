@@ -231,7 +231,7 @@ function formatCustomerEmail(payload: BookingPayload) {
   const lines: string[] = [];
   lines.push(`✅ YOUR REQUEST HAS BEEN RECEIVED`);
   lines.push("");
-  lines.push(`Thank you for your interest in Ski №1 Rental!`);
+  lines.push(`Thank you for your interest in SKI HOUSE+!`);
   lines.push("");
   lines.push(`We have received your ${getTypeLabel(payload.type).toLowerCase()} request and will process it shortly.`);
   lines.push("");
@@ -272,7 +272,7 @@ function formatCustomerEmail(payload: BookingPayload) {
   }
   lines.push("");
   lines.push(`Best regards,`);
-  lines.push(`Ski №1 Rental Team`);
+  lines.push(`SKI HOUSE+ Team`);
   lines.push(`Gudauri, Georgia`);
   
   // HTML версия
@@ -300,7 +300,7 @@ function formatCustomerEmail(payload: BookingPayload) {
     <h2>✅ YOUR REQUEST HAS BEEN RECEIVED</h2>
   </div>`);
   
-  htmlParts.push(`<p>Thank you for your interest in Ski №1 Rental!</p>
+  htmlParts.push(`<p>Thank you for your interest in SKI HOUSE+!</p>
   <p>We have received your ${escapeHtml(getTypeLabel(payload.type).toLowerCase())} request and will process it shortly.</p>`);
   
   htmlParts.push(`<div class="section">
@@ -341,14 +341,14 @@ function formatCustomerEmail(payload: BookingPayload) {
   
   htmlParts.push(`<div class="footer">
     <p><strong>Best regards,</strong><br>
-    Ski №1 Rental Team<br>
+    SKI HOUSE+ Team<br>
     Gudauri, Georgia</p>
   </div>`);
   
   htmlParts.push(`</body></html>`);
   
   return {
-    subject: `Ski №1 Rental — Your ${getTypeLabel(payload.type)} Request Has Been Received`,
+    subject: `SKI HOUSE+ — Your ${getTypeLabel(payload.type)} Request Has Been Received`,
     text: lines.join("\n"),
     html: htmlParts.join("\n")
   };

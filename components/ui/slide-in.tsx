@@ -26,8 +26,10 @@ export function SlideIn({
   delay = 0
 }: SlideInProps) {
   // Изначально считаем, что это может быть мобильное устройство, чтобы не применять классы сдвига
-  const [isMobile, setIsMobile] = useState(true); // Начинаем с true для безопасности
-  const [isVisible, setIsVisible] = useState(true); // Начинаем с видимым состоянием
+  // Начинаем с true для безопасности - на сервере всегда считаем мобильным, чтобы избежать различий
+  const [isMobile, setIsMobile] = useState(true); 
+  // Начинаем с видимым состоянием на сервере, чтобы избежать различий
+  const [isVisible, setIsVisible] = useState(true); 
   const [mounted, setMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
@@ -41,12 +43,13 @@ export function SlideIn({
   const direction = index % 2 === 0 ? "left" : "right";
 
   // Генерируем уникальный ID для элемента на основе его позиции в DOM
+  // Выполняем только на клиенте после монтирования, чтобы избежать различий при гидратации
   useEffect(() => {
-    if (!ref.current || elementIdRef.current) return;
+    if (typeof window === "undefined" || !ref.current || elementIdRef.current) return;
     
     // Создаем уникальный ID на основе пути страницы, индекса и React ID
     // Используем React useId для стабильности при hydration
-    const path = typeof window !== "undefined" ? window.location.pathname : "";
+    const path = window.location.pathname;
     elementIdRef.current = `slide-in-${path}-${index}-${reactId}`;
     
     // Устанавливаем data-атрибут для отслеживания
@@ -57,7 +60,7 @@ export function SlideIn({
     
     // Проверяем, не был ли этот элемент уже анимирован (защита от двойного рендеринга)
     // Но только если это не первый рендер (mounted уже true)
-    if (mounted && animatedElementsRegistry.has(elementIdRef.current)) {
+    if (mounted && elementIdRef.current && animatedElementsRegistry.has(elementIdRef.current)) {
       hasAnimated.current = true;
       isTriggeredRef.current = true;
       setIsVisible(true);
@@ -215,6 +218,7 @@ export function SlideIn({
   }, [isMobile, mounted]); // Убрали index из зависимостей, так как он не должен меняться
 
   // Не применяем классы сдвига до монтирования или на мобильных устройствах
+  // На сервере всегда рендерим без анимационных классов, чтобы избежать различий при гидратации
   const directionClass = !mounted || isMobile 
     ? "" // До монтирования или на мобилке без анимации
     : direction === "left" 
@@ -225,12 +229,14 @@ export function SlideIn({
     <div
       ref={ref}
       className={cn(
-        mounted && !isMobile && "transition-all duration-700 ease-out", // Переходы только на десктопе после монтирования
+        // Переходы только на десктопе после монтирования - избегаем различий при гидратации
+        mounted && !isMobile && "transition-all duration-700 ease-out",
         directionClass,
         className
       )}
       style={{
-        animationDelay: isVisible && !isMobile ? `${delay}ms` : "0ms"
+        // Используем undefined вместо "0ms" для избежания различий при гидратации
+        animationDelay: mounted && isVisible && !isMobile ? `${delay}ms` : undefined
       }}
     >
       {children}
