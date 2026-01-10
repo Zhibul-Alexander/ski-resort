@@ -1,8 +1,7 @@
 import type { Lang } from "@/lib/i18n";
-import { getSite, getFaq, getReviews } from "@/lib/content";
+import { getSite, getReviews } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel } from "@/components/ui/carousel";
 import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,6 @@ import { GoogleMap } from "@/components/site/google-map";
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const site = await getSite(lang);
-  const faq = await getFaq(lang);
   const reviews = await getReviews(lang);
 
   return (
@@ -123,23 +121,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
       </SlideIn>
 
       <SlideIn index={4}>
-        <Section title={faq.title} subtitle={site.pageTitles?.quickAnswers || "Quick answers"}>
-          <Card>
-            <CardContent className="pt-6">
-              <Accordion type="single" collapsible className="w-full">
-                {faq.items.map((it, idx) => (
-                  <AccordionItem key={idx} value={`item-${idx}`}>
-                    <AccordionTrigger>{it.q}</AccordionTrigger>
-                    <AccordionContent>{it.a}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={5}>
         <Section title={reviews.title}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
             {reviews.items.map((r, idx) => (
