@@ -100,6 +100,18 @@ a {
   .animate-shake-attention {
     animation: shake-attention 3.33s linear infinite;
   }
+
+  @keyframes logo-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  .animate-logo-pulse {
+    animation: logo-pulse 2s linear infinite;
+  }
 }
 
 /* Скрытие кнопки "static route" от Next.js DevOverlay */
