@@ -3,6 +3,7 @@ import { getSite, getReviews } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Carousel } from "@/components/ui/carousel";
+import { ShopPhotosCarousel } from "@/components/ui/shop-photos-carousel";
 import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
@@ -41,18 +42,12 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
 
       <SlideIn index={2}>
         <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
-            {site.sections.shopPhotos.items.map((p, idx) => (
-              <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card h-[500px]">
-                <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </Carousel>
+          <ShopPhotosCarousel images={site.sections.shopPhotos.items} />
         </Section>
       </SlideIn>
 
       <SlideIn index={3}>
-        <div className="scroll-mt-32 md:scroll-mt-24" id="contacts">
+        <div className="scroll-mt-[86px]" id="contacts">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
               <Card>

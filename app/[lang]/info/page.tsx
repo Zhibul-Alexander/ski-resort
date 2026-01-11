@@ -4,6 +4,7 @@ import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel } from "@/components/ui/carousel";
+import { ShopPhotosCarousel } from "@/components/ui/shop-photos-carousel";
 import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
@@ -43,18 +44,12 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
 
       <SlideIn index={2}>
         <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
-            {site.sections.shopPhotos.items.map((p, idx) => (
-              <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card h-[500px]">
-                <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </Carousel>
+          <ShopPhotosCarousel images={site.sections.shopPhotos.items} />
         </Section>
       </SlideIn>
 
       <SlideIn index={3}>
-        <div className="scroll-mt-32 md:scroll-mt-24">
+        <div className="scroll-mt-[86px]">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2">
               <Card>
@@ -86,7 +81,7 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
                 </CardContent>
               </Card>
 
-              <Card id="contacts" className="scroll-mt-32 md:scroll-mt-24">
+              <Card id="contacts" className="scroll-mt-[86px]">
               <CardHeader>
                 <CardTitle>Contacts</CardTitle>
               </CardHeader>
