@@ -13,6 +13,7 @@ export type SiteContent = {
     directions: string;
     mapEmbedUrl: string;
     mapOpenUrl: string;
+    addresses?: { name: string; mapUrl: string }[];
   };
   pageTitles?: {
     aboutShop?: string;
