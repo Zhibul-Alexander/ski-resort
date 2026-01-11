@@ -4,8 +4,8 @@
     "tagline": "השכרת סקי וסנואובורד ברמת Premium ושיעורים פרטיים בגודאורי."
   },
   "contacts": {
-    "phone": "+995 551 532 661",
-    "whatsapp": "+995 551 532 661"
+    "phone": "+995 599 180 733",
+    "whatsapp": "+995 599 180 733"
   },
   "hours": {
     "label": "שעות פעילות",
@@ -174,6 +174,18 @@
         {
           "title": "תמונה מהחנות 7",
           "src": "/images/shop/7.webp"
+        },
+        {
+          "title": "תמונה מהחנות 8",
+          "src": "/images/shop/8.webp"
+        },
+        {
+          "title": "תמונה מהחנות 9",
+          "src": "/images/shop/9.webp"
+        },
+        {
+          "title": "תמונה מהחנות 10",
+          "src": "/images/shop/10.webp"
         }
       ]
     },
