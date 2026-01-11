@@ -6,11 +6,8 @@ export type SiteContent = {
   resort: { name: string; description?: string; };
   contacts: {
     phone: string;
-    email: string;
     whatsapp?: string;
-    telegram?: string;
-    viber?: string;
-    instagram?: string;
+    facebook?: string;
   };
   hours: { label: string; value: string; };
   location: {

@@ -4,7 +4,7 @@ import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel } from "@/components/ui/carousel";
-import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { GoogleMap } from "@/components/site/google-map";
@@ -25,23 +25,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
       </SlideIn>
 
       <SlideIn index={1}>
-        <Section title={site.sections.highlights.title} subtitle={site.pageTitles?.whyChooseUs || "Why guests choose us"}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
-            {site.sections.highlights.items.map((it, idx) => (
-              <Card key={idx} className="h-full">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-xl">{it.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">{it.text}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </Carousel>
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={2}>
         <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
             {site.sections.shopPhotos.items.map((p, idx) => (
@@ -53,7 +36,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </Section>
       </SlideIn>
 
-      <SlideIn index={3}>
+      <SlideIn index={2}>
         <div className="scroll-mt-32 md:scroll-mt-24">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2">
@@ -89,26 +72,18 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
               <Card id="contacts" className="scroll-mt-32 md:scroll-mt-24">
               <CardHeader>
                 <CardTitle>{site.pageTitles?.navContacts || "Contacts"}</CardTitle>
-                <CardDescription>{site.pageTitles?.contactsDescription || "Phone, email and messengers"}</CardDescription>
+                <CardDescription>{site.pageTitles?.contactsDescription || "Phone and messengers"}</CardDescription>
               </CardHeader>
               <CardContent className="grid gap-2 text-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   <a className="hover:underline flex items-center gap-2" href={`tel:${site.contacts.phone}`}>
                     <Phone className="h-4 w-4" />{site.contacts.phone}
                   </a>
-                  <span className="text-muted-foreground">WhatsApp | Telegram | Viber</span>
+                  <span className="text-muted-foreground">{site.pageTitles?.phoneWhatsAppLabel || "Phone | WhatsApp"}</span>
                 </div>
-                <a className="hover:underline flex items-center gap-2" href={`mailto:${site.contacts.email}`}>
-                  <Mail className="h-4 w-4" />{site.contacts.email}
-                </a>
-                {site.contacts.instagram ? (
-                  <a className="hover:underline flex items-center gap-2" href={site.contacts.instagram} target="_blank" rel="noreferrer">
-                    <Instagram className="h-4 w-4" />Instagram
-                  </a>
-                ) : null}
-                {site.contacts.telegram ? (
-                  <a className="hover:underline flex items-center gap-2" href={`https://t.me/${site.contacts.telegram.replace('@', '')}`} target="_blank" rel="noreferrer">
-                    <MessageCircle className="h-4 w-4" />Telegram
+                {site.contacts.facebook ? (
+                  <a className="hover:underline flex items-center gap-2" href={site.contacts.facebook} target="_blank" rel="noreferrer">
+                    <ExternalLink className="h-4 w-4" />Facebook
                   </a>
                 ) : null}
                 <div className="flex items-center gap-2 mt-3">
@@ -122,7 +97,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </div>
       </SlideIn>
 
-      <SlideIn index={4}>
+      <SlideIn index={3}>
         <Section title={faq.title} subtitle={site.pageTitles?.quickAnswers || "Quick answers"}>
           <Card>
             <CardContent className="pt-6">
@@ -139,7 +114,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </Section>
       </SlideIn>
 
-      <SlideIn index={5}>
+      <SlideIn index={4}>
         <Section title={reviews.title}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
             {reviews.items.map((r, idx) => (

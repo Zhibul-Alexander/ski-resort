@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ski №1 Rental — Gudauri",
+  title: "SKI FAN — Gudauri",
   description: "Premium ski rental & lessons in Gudauri",
   icons: {
     icon: [

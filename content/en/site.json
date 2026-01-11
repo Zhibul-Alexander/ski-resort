@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "Ski №1 Rental",
+    "name": "SKI FAN",
     "tagline": "Premium ski & snowboard rental and private lessons in Gudauri."
   },
   "resort": {
@@ -8,22 +8,19 @@
     "description": "Popular ski resort in Georgia in the Greater Caucasus Mountains, approximately 120–130 km from Tbilisi, on the Georgian Military Road. There are slopes for different levels — from beginner training to confident skiing, as well as large areas near the slopes for freeride enthusiasts. The resort is compact and convenient: accommodation, cafes and services are usually located near the lifts. In winter, road conditions can change due to weather, so it's better to plan your trip with extra time."
   },
   "contacts": {
-    "phone": "+995 551 532 661",
-    "email": "zhibul.alexander.work@gmail.com",
-    "whatsapp": "+995 551 532 661",
-    "telegram": "@ski1rental",
-    "viber": "+995 551 532 661",
-    "instagram": "https://instagram.com/"
+    "phone": "+995 599 172 771",
+    "whatsapp": "+995 599 172 771",
+    "facebook": "https://www.facebook.com/profile.php?id=100041307559013"
   },
   "hours": {
     "label": "Hours",
-    "value": "09:00–19:00"
+    "value": "09:30–19:00"
   },
   "location": {
     "addressLine": "Georgia, Gudauri",
     "directions": "We are a professional ski and snowboard rental service. We specialize in quality equipment that helps you get the most out of your skiing — with comfort, safety, and great experiences.\n\nWe understand how important it is to choose the right equipment for your skill level and skiing style, as well as to ensure reliable protection and a comfortable fit — so you feel confident on the slopes from the first minutes. In our rental, you'll find everything you need for adults and children: skis, snowboards, boots, bindings, and kids' sets. You can also rent clothing and accessories: jackets and pants, helmets, goggles, and gloves — so you're fully prepared for any weather conditions.\n\nOur goal is simple: to make your winter vacation as easy and enjoyable as possible. Are you a beginner and want to try for the first time — we'll help you choose the best option and explain everything. Already confident on the slopes — we'll select more advanced equipment for your style and mountain conditions. And if you want to progress faster and ski more safely, we have experienced instructors: they'll help you develop technique, confidently master the basics, or improve your skills at any level. We care about service, equipment quality, and your mood, so every day on the slopes is remembered only for the best impressions.",
     "mapEmbedUrl": "https://www.google.com/maps?q=42.4661767,44.4830638&z=17&output=embed",
-    "mapOpenUrl": "https://www.google.com/maps/place/%D0%9F%D0%B0%D1%81%D0%B0%D0%BD%D0%B0%D1%83%D1%80%D0%B8/@42.4659349,44.4830925,17.25z/data=!4m6!3m5!1s0x404529d8333dd5e3:0x8ec9ffc4962978a2!8m2!3d42.4661767!4d44.4830638!16s%2Fg%2F11pzvl7bp9"
+    "mapOpenUrl": "https://maps.app.goo.gl/EaExrjFrRgdZNtmH8"
   },
   "pageTitles": {
     "aboutShop": "About us",
@@ -40,7 +37,8 @@
     "mapErrorDescription": "A problem occurred while loading Google Maps on this page.",
     "mapRetry": "Try again",
     "mapPreparing": "Preparing map...",
-    "contactsDescription": "Phone, email and messengers",
+    "contactsDescription": "Phone and messengers",
+    "phoneWhatsAppLabel": "Phone | WhatsApp",
     "thankYouMessage": "Thank you for trusting us with your vacation!",
     "resortMap": "Resort map",
     "resortPhotos": "Resort photos",

@@ -15,13 +15,11 @@ export function Header({
   lang,
   brandName,
   phone,
-  email,
   navLabels
 }: {
   lang: Lang;
   brandName: string;
   phone: string;
-  email: string;
   navLabels?: {
     aboutUs?: string;
     rentalPrices?: string;

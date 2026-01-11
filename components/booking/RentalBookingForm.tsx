@@ -14,7 +14,7 @@ import { getBookingEndpoint } from "@/lib/config";
 export type RentalItemType = string;
 export type Segment = "economy" | "premium" | "n/a";
 
-type Messenger = "none" | "whatsapp" | "telegram" | "viber";
+type Messenger = "none" | "whatsapp";
 
 export interface RentalItemOption {
   id: string;
@@ -343,9 +343,7 @@ export function RentalBookingForm({
                 onChange={(value) => setMessenger(value as Messenger)}
                 options={[
                   { value: "none", label: labels?.none || "None" },
-                  { value: "whatsapp", label: "WhatsApp" },
-                  { value: "telegram", label: "Telegram" },
-                  { value: "viber", label: "Viber" }
+                  { value: "whatsapp", label: "WhatsApp" }
                 ]}
               />
             </div>
@@ -354,7 +352,7 @@ export function RentalBookingForm({
               <Input
                 value={messengerHandle}
                 onChange={(e) => setMessengerHandle(e.target.value)}
-                placeholder={messenger === "telegram" ? "@username" : ""}
+                placeholder=""
                 disabled={messenger === "none"}
                 required={messenger !== "none"}
               />
