@@ -136,26 +136,11 @@
   },
   "services": {
     "items": [
-      { "name": "Ski binding mounting", "price": 50 },
-      { "name": "Touring /Freeride ski bindings mounting", "price": 70 },
-      { "name": "Snowboard binding mounting", "price": 30 },
-      { "name": "Splitboard binding mounting", "price": 70 },
-      { "name": "Remounting ski bindings", "price": 70 },
-      { "name": "Remounting Touring/Freeride ski binding", "price": 70 },
-      { "name": "Remounting Splitboard bindings", "price": 60 },
-      { "name": "Ski edge grinding", "price": 45 },
-      { "name": "Snowboard edge grinding", "price": 35 },
-      { "name": "Ski/Touring ski base repair", "price": 35 },
-      { "name": "Snowboard/Splitboard base repair", "price": 35 },
-      { "name": "Ski waxing", "price": 35 },
-      { "name": "Touring ski waxing", "price": 35 },
-      { "name": "Snowboard waxing", "price": 45 },
-      { "name": "Splitboard waxing", "price": 35 },
-      { "name": "Full ski service", "price": 100 },
-      { "name": "Full touring Ski service", "price": 100 },
-      { "name": "Full Snowboard service", "price": 100 },
-      { "name": "Full Split board service", "price": 100 },
-      { "name": "Touring Ski, Splitboard skin trimming", "price": 50 }
+      { "name": "Ski / Snowboard waxing", "price": 30 },
+      { "name": "Ski / Snowboard edge sharpening", "price": 30 },
+      { "name": "Ski / Snowboard edge grinding", "price": 40 },
+      { "name": "Full ski / snowboard service (waxing, edge sharpening, edge grinding)", "price": 90 },
+      { "name": "Ski / Snowboard bindings remounting", "price": 20 }
     ],
     "note": "Prices may vary depending on the damage"
   }
