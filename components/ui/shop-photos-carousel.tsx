@@ -19,7 +19,7 @@ export function ShopPhotosCarousel({ images }: ShopPhotosCarouselProps) {
 
   return (
     <>
-      <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
+      <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }} autoPlay={!lightboxOpen}>
         {images.map((p, idx) => (
           <div
             key={idx}

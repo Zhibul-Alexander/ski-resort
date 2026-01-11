@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -30,6 +30,7 @@ export function Header({
   };
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   // Закрываем меню при изменении URL
@@ -116,6 +117,74 @@ export function Header({
                       : isMainPage 
                         ? normalizedPathname === normalizedHref
                         : normalizedPathname === normalizedHref || normalizedPathname.startsWith(normalizedHref + "/");
+                    
+                    // Обработчик для ссылки "Контакты" на мобильных
+                    const handleContactsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+                      if (isContactsLink) {
+                        e.preventDefault();
+                        setIsMenuOpen(false);
+                        
+                        // Проверяем, находимся ли мы на главной странице
+                        const isOnHomePage = normalizedPathname === `/${lang}`;
+                        
+                        if (isOnHomePage) {
+                          // Если на главной странице, закрываем меню и скроллим
+                          setTimeout(() => {
+                            const element = document.getElementById("contacts");
+                            if (element) {
+                              const headerHeight = 70;
+                              const mobileOffset = 50;
+                              const totalOffset = headerHeight + mobileOffset;
+                              
+                              const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+                              const scrollPosition = elementTop - totalOffset;
+                              
+                              window.scrollTo({
+                                top: Math.max(0, scrollPosition),
+                                behavior: "smooth"
+                              });
+                            } else {
+                              // Если элемент не найден, используем стандартную навигацию
+                              window.location.hash = "contacts";
+                              // Принудительно скроллим после установки хеша
+                              setTimeout(() => {
+                                const el = document.getElementById("contacts");
+                                if (el) {
+                                  const headerHeight = 70;
+                                  const mobileOffset = 50;
+                                  const totalOffset = headerHeight + mobileOffset;
+                                  const elementTop = el.getBoundingClientRect().top + window.pageYOffset;
+                                  const scrollPosition = elementTop - totalOffset;
+                                  window.scrollTo({
+                                    top: Math.max(0, scrollPosition),
+                                    behavior: "smooth"
+                                  });
+                                }
+                              }, 100);
+                            }
+                          }, 200);
+                        } else {
+                          // Если не на главной странице, переходим на главную с якорем
+                          window.location.href = `/${lang}#contacts`;
+                        }
+                      }
+                    };
+                    
+                    // Для ссылки "Контакты" используем Button без SheetClose, чтобы контролировать поведение
+                    if (isContactsLink) {
+                      return (
+                        <Button
+                          key={l.href}
+                          variant="secondary"
+                          className={cn("w-full justify-start h-auto py-3 px-4", isActive && "bg-secondary")}
+                          onClick={handleContactsClick}
+                        >
+                          {l.label}
+                        </Button>
+                      );
+                    }
+                    
+                    // Для остальных ссылок используем стандартный SheetClose
                     return (
                       <SheetClose key={l.href} asChild>
                         <Link href={l.href} className="no-underline block">

@@ -53,7 +53,7 @@ export function ImageLightbox({ images, initialIndex = 0, open, onOpenChange }: 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm" />
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm" />
         <Dialog.Content
           className="fixed inset-0 z-50 flex items-center justify-center outline-none"
           onPointerDownOutside={(e) => {

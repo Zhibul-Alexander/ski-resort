@@ -47,7 +47,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
       </SlideIn>
 
       <SlideIn index={3}>
-        <div className="scroll-mt-[86px]" id="contacts">
+        <div className="scroll-mt-[120px] lg:scroll-mt-[86px]" id="contacts">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
               <Card>
