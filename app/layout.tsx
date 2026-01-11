@@ -6,10 +6,17 @@ export const metadata: Metadata = {
   description: "Premium ski rental & lessons in Gudauri",
   icons: {
     icon: [
-      { url: "/logo.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "192x192" },
+      { url: "/logo.png", type: "image/png", sizes: "96x96" },
+      { url: "/logo.png", type: "image/png", sizes: "64x64" },
+      { url: "/logo.png", type: "image/png", sizes: "32x32" },
     ],
     apple: [
-      { url: "/logo.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png", sizes: "180x180" },
+    ],
+    shortcut: [
+      { url: "/icon.png", type: "image/png" },
     ],
   },
 };
