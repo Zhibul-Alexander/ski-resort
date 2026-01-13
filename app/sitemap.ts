@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { LANGS } from '@/lib/i18n'
 
+export const dynamic = 'force-static'
+
 // Базовый URL сайта
 const baseUrl = 'https://ski-rental-house-plus.com'
 
