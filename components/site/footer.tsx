@@ -41,7 +41,31 @@ export function Footer({
                 <Phone className="h-4 w-4" />
                 {phone}
               </a>
-              <span className="text-xs">{footerLabels?.phoneAndWhatsApp || "Phone | WhatsApp"}</span>
+              <span className="text-xs">
+                {(() => {
+                  const phoneAndWhatsApp = footerLabels?.phoneAndWhatsApp || "Phone | WhatsApp";
+                  const parts = phoneAndWhatsApp.split(' | ');
+                  const phonePart = parts[0] || "Phone";
+                  const whatsappPart = parts[1] || "WhatsApp";
+                  return (
+                    <>
+                      {phonePart} |{" "}
+                      {whatsapp ? (
+                        <a
+                          href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, '')}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="hover:underline text-foreground"
+                        >
+                          {whatsappPart}
+                        </a>
+                      ) : (
+                        whatsappPart
+                      )}
+                    </>
+                  );
+                })()}
+              </span>
             </div>
             {hours ? (
               <div className="flex items-center gap-2 md:justify-end mt-2">

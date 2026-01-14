@@ -79,10 +79,10 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
 
       <SlideIn index={pricing.rental.tables.length + 1}>
         <div id="booking-form" className="scroll-mt-24">
-          <Section title="Бронирование экипировки" subtitle="Чтобы забронировать экипировку, свяжитесь с нами удобным способом.">
+          <Section title={(site.pageTitles as any)?.equipmentBookingTitle || "Equipment Booking"} subtitle={(site.pageTitles as any)?.equipmentBookingSubtitle || "To book equipment, contact us in any convenient way."}>
             <Card>
               <CardHeader>
-                <CardTitle>Контакты</CardTitle>
+                <CardTitle>{site.pageTitles?.footerContacts || "Contacts"}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-2 text-sm">
                 <div className="flex flex-wrap items-center gap-2">
@@ -90,11 +90,35 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                     <Phone className="h-4 w-4" />
                     {site.contacts.phone}
                   </a>
-                  <span className="text-muted-foreground">{site.pageTitles?.phoneAndWhatsApp || "Phone | WhatsApp"}</span>
+                  <span className="text-muted-foreground">
+                    {(() => {
+                      const phoneAndWhatsApp = site.pageTitles?.phoneAndWhatsApp || "Phone | WhatsApp";
+                      const parts = phoneAndWhatsApp.split(' | ');
+                      const phonePart = parts[0] || "Phone";
+                      const whatsappPart = parts[1] || "WhatsApp";
+                      return (
+                        <>
+                          {phonePart} |{" "}
+                          {site.contacts.whatsapp ? (
+                            <a
+                              href={`https://wa.me/${site.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="hover:underline text-foreground"
+                            >
+                              {whatsappPart}
+                            </a>
+                          ) : (
+                            whatsappPart
+                          )}
+                        </>
+                      );
+                    })()}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 mt-3">
                   <Clock className="h-4 w-4" />
-                  <span>Часы: {site.hours.value}</span>
+                  <span>{site.pageTitles?.hoursLabel || "Hours:"} {site.hours.value}</span>
                 </div>
               </CardContent>
             </Card>

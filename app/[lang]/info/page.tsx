@@ -91,7 +91,31 @@ export default async function InfoPage({ params }: { params: Promise<{ lang: Lan
                     <Phone className="h-4 w-4" />
                     {site.contacts.phone}
                   </a>
-                  <span className="text-muted-foreground">{site.pageTitles?.phoneAndWhatsApp || "Phone | WhatsApp"}</span>
+                  <span className="text-muted-foreground">
+                    {(() => {
+                      const phoneAndWhatsApp = site.pageTitles?.phoneAndWhatsApp || "Phone | WhatsApp";
+                      const parts = phoneAndWhatsApp.split(' | ');
+                      const phonePart = parts[0] || "Phone";
+                      const whatsappPart = parts[1] || "WhatsApp";
+                      return (
+                        <>
+                          {phonePart} |{" "}
+                          {site.contacts.whatsapp ? (
+                            <a
+                              href={`https://wa.me/${site.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="hover:underline text-foreground"
+                            >
+                              {whatsappPart}
+                            </a>
+                          ) : (
+                            whatsappPart
+                          )}
+                        </>
+                      );
+                    })()}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 mt-3">
                   <Clock className="h-4 w-4" />
