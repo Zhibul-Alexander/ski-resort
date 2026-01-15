@@ -40,7 +40,7 @@ export default async function LangLayout({
         brandName={site.brand.name} 
         phone={site.contacts.phone}
         navLabels={{
-          aboutUs: (site.pageTitles as any)?.navAboutUs,
+          info: (site.pageTitles as any)?.navInfo,
           rentalPrices: (site.pageTitles as any)?.navRentalPrices,
           lessons: (site.pageTitles as any)?.navLessons,
           services: (site.pageTitles as any)?.navServices,
