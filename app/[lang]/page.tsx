@@ -1,5 +1,5 @@
 import type { Lang } from "@/lib/i18n";
-import { getSite, getReviews } from "@/lib/content";
+import { getSite, getReviews, getPricing } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Carousel } from "@/components/ui/carousel";
@@ -8,21 +8,80 @@ import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { GoogleMap } from "@/components/site/google-map";
+import { formatPrice } from "@/lib/currency";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const site = await getSite(lang);
   const reviews = await getReviews(lang);
+  const pricing = await getPricing(lang);
+  const exchangeRate = pricing.exchangeRate ?? 2.7;
+
+  // Находим таблицу "adults" и извлекаем нужные позиции по индексам
+  // Порядок в таблице: 0=Full ski set, 1=Full snowboard set, 4=Skis, 5=Snowboard, 6=Boots, 7=Poles
+  const adultsTable = pricing.rental.tables.find(t => t.id === "adults");
+  const rowIndices = [0, 1, 4, 5, 6, 7]; // Индексы нужных строк в таблице "adults"
+  const images = [
+    "/images/shop/1.webp",
+    "/images/shop/2.webp",
+    "/images/shop/3.webp",
+    "/images/shop/4.webp",
+    "/images/shop/5.webp",
+    "/images/shop/6.webp",
+  ];
+  
+  const equipmentItems = rowIndices.map((rowIdx, idx) => {
+    const row = adultsTable?.rows[rowIdx];
+    return {
+      label: row?.label || "",
+      price: row?.values[0] || "", // Берем цену за 1-2 дня
+      image: images[idx] || "/images/shop/1.webp",
+    };
+  }).filter(item => item.label); // Фильтруем пустые элементы
 
   return (
     <div>
       <SlideIn index={0}>
+        <Section title={(site.pageTitles as any)?.ourEquipment || "Our equipment"} titleLevel="h1">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {equipmentItems.map((item, idx) => (
+              <Card key={idx} className="w-full">
+                <div className="flex items-center gap-4 p-4">
+                  <div className="flex-shrink-0 w-32 h-32 relative rounded-lg overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.label}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 flex flex-col justify-between text-right">
+                    <h3 className="text-lg font-semibold">{item.label}</h3>
+                    <span className="text-2xl font-bold">{formatPrice(item.price, exchangeRate)}</span>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-6 flex justify-center">
+            <Link href={`/${lang}/rental`} className="no-underline">
+              <Button>
+                {(site.pageTitles as any)?.viewAll || "View all"}
+              </Button>
+            </Link>
+          </div>
+        </Section>
+      </SlideIn>
+
+      <SlideIn index={1}>
         <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
           <ShopPhotosCarousel images={site.sections.shopPhotos.items} />
         </Section>
       </SlideIn>
 
-      <SlideIn index={1}>
+      <SlideIn index={2}>
         <Section title={site.sections.highlights.title} subtitle={site.pageTitles?.whyChooseUs || "Why guests choose us"}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
             {site.sections.highlights.items.map((it, idx) => (
@@ -39,7 +98,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </Section>
       </SlideIn>
 
-      <SlideIn index={2}>
+      <SlideIn index={3}>
         <div className="scroll-mt-[120px] lg:scroll-mt-[86px]" id="contacts">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
@@ -130,14 +189,14 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </div>
       </SlideIn>
 
-      <SlideIn index={3}>
+      <SlideIn index={4}>
         <div className="py-10">
           <h1 className="text-3xl font-semibold tracking-tight">{site.pageTitles?.aboutShop || "About the shop"}</h1>
           <p className="mt-2 text-muted-foreground whitespace-pre-line">{site.location.directions}</p>
         </div>
       </SlideIn>
 
-      <SlideIn index={4}>
+      <SlideIn index={5}>
         <Section title={reviews.title}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
             {reviews.items.map((r, idx) => (
