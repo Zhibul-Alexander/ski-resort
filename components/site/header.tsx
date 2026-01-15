@@ -75,8 +75,8 @@ export function Header({
         <div className="flex items-center gap-3 min-w-0">
           <Link href={`/${lang}`} className="no-underline min-w-0">
             <div className="flex items-center gap-2 min-w-0">
-              <div className="h-[60px] w-[60px] rounded-xl shrink-0 relative overflow-hidden animate-logo-pulse">
-                <Image src="/logo.webp" alt={brandName} width={60} height={60} className="object-contain" />
+              <div className="h-[55px] w-[55px] rounded-xl shrink-0 relative overflow-hidden animate-logo-pulse">
+                <Image src="/logo.webp" alt={brandName} width={55} height={55} className="object-contain" />
               </div>
             </div>
           </Link>
