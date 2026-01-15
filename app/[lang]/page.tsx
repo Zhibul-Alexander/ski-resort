@@ -15,12 +15,11 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
   const reviews = await getReviews(lang);
 
   return (
-    <div className="py-10">
+    <div>
       <SlideIn index={0}>
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight">{site.pageTitles?.aboutShop || "About the shop"}</h1>
-          <p className="mt-2 text-muted-foreground whitespace-pre-line">{site.location.directions}</p>
-        </div>
+        <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
+          <ShopPhotosCarousel images={site.sections.shopPhotos.items} />
+        </Section>
       </SlideIn>
 
       <SlideIn index={1}>
@@ -41,12 +40,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
       </SlideIn>
 
       <SlideIn index={2}>
-        <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
-          <ShopPhotosCarousel images={site.sections.shopPhotos.items} />
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={3}>
         <div className="scroll-mt-[120px] lg:scroll-mt-[86px]" id="contacts">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2 mb-6">
@@ -134,6 +127,13 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
               />
             </div>
           </Section>
+        </div>
+      </SlideIn>
+
+      <SlideIn index={3}>
+        <div className="py-10">
+          <h1 className="text-3xl font-semibold tracking-tight">{site.pageTitles?.aboutShop || "About the shop"}</h1>
+          <p className="mt-2 text-muted-foreground whitespace-pre-line">{site.location.directions}</p>
         </div>
       </SlideIn>
 

@@ -79,7 +79,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
 
       <SlideIn index={pricing.rental.tables.length + 1}>
         <div id="booking-form" className="scroll-mt-24">
-          <Section title={(site.pageTitles as any)?.equipmentBookingTitle || "Equipment Booking"} subtitle={(site.pageTitles as any)?.equipmentBookingSubtitle || "To book equipment, contact us in any convenient way."}>
+          <Section title={(site.pageTitles as any)?.equipmentBookingTitle || "Equipment Booking"} subtitle={(site.pageTitles as any)?.equipmentBookingSubtitle || "To book equipment, contact us in any convenient way."} className="pb-0">
             <Card>
               <CardHeader>
                 <CardTitle>{site.pageTitles?.footerContacts || "Contacts"}</CardTitle>

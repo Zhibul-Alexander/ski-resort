@@ -44,6 +44,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
         <Section 
           title={(site.pageTitles as any)?.servicePrices || "Service Prices"} 
           subtitle={services.note ? `${(site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair"}. ${services.note}` : ((site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair")}
+          className="pb-0"
         >
           <Card>
             <CardContent className="pt-6">

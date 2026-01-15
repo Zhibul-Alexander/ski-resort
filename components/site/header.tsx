@@ -62,10 +62,10 @@ export function Header({
   }, [isMenuOpen, pathname, lang]);
 
   const nav = [
+    { href: `/${lang}`, label: navLabels?.info || "Info" },
     { href: `/${lang}/rental`, label: navLabels?.rentalPrices || "Rental Prices" },
     { href: `/${lang}/lessons`, label: navLabels?.lessons || "Lessons" },
     { href: `/${lang}/services`, label: navLabels?.services || "Services" },
-    { href: `/${lang}`, label: navLabels?.info || "Info" },
     { href: `/${lang}#contacts`, label: navLabels?.contacts || "Contacts" }
   ];
 
