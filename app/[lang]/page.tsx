@@ -47,22 +47,24 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         <Section title={(site.pageTitles as any)?.ourEquipment || "Our equipment"} titleLevel="h1">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {equipmentItems.map((item, idx) => (
-              <Card key={idx} className="w-full">
-                <div className="flex items-center gap-4 p-4">
-                  <div className="flex-shrink-0 w-32 h-32 relative rounded-lg overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.label}
-                      fill
-                      className="object-cover"
-                    />
+              <Link key={idx} href={`/${lang}/rental`} className="no-underline">
+                <Card className="w-full cursor-pointer hover:shadow-lg transition-shadow">
+                  <div className="flex items-center gap-4 p-4">
+                    <div className="flex-shrink-0 w-32 h-32 relative rounded-lg overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.label}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 flex flex-col justify-between text-right">
+                      <h3 className="text-lg font-semibold">{item.label}</h3>
+                      <span className="text-2xl font-bold">{formatPrice(item.price, exchangeRate)}</span>
+                    </div>
                   </div>
-                  <div className="flex-1 flex flex-col justify-between text-right">
-                    <h3 className="text-lg font-semibold">{item.label}</h3>
-                    <span className="text-2xl font-bold">{formatPrice(item.price, exchangeRate)}</span>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
           <div className="mt-6 flex justify-center">
