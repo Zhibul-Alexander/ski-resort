@@ -24,12 +24,12 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
   const adultsTable = pricing.rental.tables.find(t => t.id === "adults");
   const rowIndices = [0, 1, 4, 5, 6, 7]; // Индексы нужных строк в таблице "adults"
   const images = [
-    "/images/shop/1.webp",
-    "/images/shop/2.webp",
-    "/images/shop/3.webp",
-    "/images/shop/4.webp",
-    "/images/shop/5.webp",
-    "/images/shop/6.webp",
+    "/images/cards/1.webp",
+    "/images/cards/2.webp",
+    "/images/cards/3.webp",
+    "/images/cards/4.webp",
+    "/images/cards/5.webp",
+    "/images/cards/6.webp",
   ];
   
   const equipmentItems = rowIndices.map((rowIdx, idx) => {
