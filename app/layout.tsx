@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Premium ski rental & lessons in Gudauri",
   icons: {
     icon: [
-      { url: "/icon.webp", type: "image/webp", sizes: "any" },
+      { url: "/logo.webp", type: "image/webp", sizes: "any" },
       { url: "/logo.webp", type: "image/webp", sizes: "192x192" },
       { url: "/logo.webp", type: "image/webp", sizes: "96x96" },
       { url: "/logo.webp", type: "image/webp", sizes: "64x64" },
