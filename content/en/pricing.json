@@ -36,8 +36,12 @@
             "values": ["50", "45"]
           },
           {
-            "label": "Boots (ski / snowboard)",
+            "label": "Ski boots",
             "values": ["30", "27"]
+          },
+          {
+            "label": "Snowboard boots",
+            "values": ["40", "36"]
           },
           {
             "label": "Poles",

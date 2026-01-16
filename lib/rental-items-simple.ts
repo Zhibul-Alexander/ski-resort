@@ -26,7 +26,8 @@ export function extractRentalItemOptions(pricing: {
     { id: "adult_freeride_full", hasSegments: false },
     { id: "adult_freeride_skis", hasSegments: false },
     { id: "adult_skis_snowboard", hasSegments: true },
-    { id: "adult_boots", hasSegments: false },
+    { id: "adult_ski_boots", hasSegments: false },
+    { id: "adult_snowboard_boots", hasSegments: false },
     { id: "adult_poles", hasSegments: false }
   ];
   

@@ -20,9 +20,9 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
   const exchangeRate = pricing.exchangeRate ?? 2.7;
 
   // Находим таблицу "adults" и извлекаем нужные позиции по индексам
-  // Порядок в таблице: 0=Full ski set, 1=Full snowboard set, 4=Skis, 5=Snowboard, 6=Boots, 7=Poles
+  // Порядок в таблице: 0=Full ski set, 1=Full snowboard set, 4=Skis, 5=Snowboard, 6=Ski boots, 7=Snowboard boots, 8=Poles
   const adultsTable = pricing.rental.tables.find(t => t.id === "adults");
-  const rowIndices = [0, 1, 4, 5, 6, 7]; // Индексы нужных строк в таблице "adults"
+  const rowIndices = [0, 1, 4, 5, 6, 8]; // Индексы нужных строк в таблице "adults" (6=Ski boots для карточки)
   const images = [
     "/images/cards/1.webp",
     "/images/cards/2.webp",
