@@ -29,21 +29,59 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
             <Card>
               {/* Mobile: Card view */}
               <CardContent className="pt-6 px-0 md:px-6 md:hidden">
-                <div className="space-y-2 px-3">
-                  {t.rows.map((r) => (
-                    <div key={r.label} className="rounded-xl border border-border bg-card p-2.5">
-                      <div className="font-medium text-xs mb-2 break-words leading-snug">{r.label}</div>
-                      <div className="space-y-1.5">
-                        {t.columns.slice(1).map((col, idx) => (
-                          <div key={idx} className="flex items-start justify-between gap-2">
-                            <span className="text-muted-foreground text-[11px] shrink-0 leading-tight pt-0.5">{col}:</span>
-                            <span className="font-medium text-xs text-right break-words leading-tight">{formatPrice(r.values[idx], exchangeRate)}</span>
+                {t.id === "adults" ? (
+                  <div className="space-y-3 px-3">
+                    {t.rows.map((r, rowIdx) => {
+                      // Получаем первую цену (1-2 дня)
+                      const firstPrice = r.values[0] || "";
+                      // Если цена содержит "/", берем первую часть
+                      const priceValue = firstPrice.includes("/") 
+                        ? firstPrice.split("/")[0].trim() 
+                        : firstPrice.trim();
+                      
+                      return (
+                        <div key={r.label} className="rounded-xl border border-border bg-card overflow-hidden">
+                          {/* Название */}
+                          <div className="font-medium text-lg px-4 pt-4 pb-4">{r.label}</div>
+                          
+                          {/* Картинка */}
+                          <div className="px-4 pb-4">
+                            <div className="relative w-full aspect-square">
+                              <Image
+                                src={`/images/shop/${(rowIdx % 7) + 1}.webp`}
+                                alt={r.label}
+                                fill
+                                className="object-cover rounded-lg"
+                              />
+                            </div>
                           </div>
-                        ))}
+                          
+                          {/* От и цена */}
+                          <div className="font-semibold px-4 pb-4 text-right">
+                            <span>{(site.pageTitles as any)?.priceFrom || "От"} </span>
+                            <span className="text-lg">{priceValue} GEL</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="space-y-2 px-3">
+                    {t.rows.map((r) => (
+                      <div key={r.label} className="rounded-xl border border-border bg-card p-2.5">
+                        <div className="font-medium text-xs mb-2 break-words leading-snug">{r.label}</div>
+                        <div className="space-y-1.5">
+                          {t.columns.slice(1).map((col, idx) => (
+                            <div key={idx} className="flex items-start justify-between gap-2">
+                              <span className="text-muted-foreground text-[11px] shrink-0 leading-tight pt-0.5">{col}:</span>
+                              <span className="font-medium text-xs text-right break-words leading-tight">{formatPrice(r.values[idx], exchangeRate)}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
 
               {/* Desktop: Table view or Cards for Adults */}
@@ -64,13 +102,15 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                           className="flex gap-4 rounded-xl border border-border bg-card overflow-hidden"
                         >
                           {/* Левая колонка: картинка */}
-                          <div className="relative w-48 h-32 flex-shrink-0">
-                            <Image
-                              src={`/images/shop/${(rowIdx % 7) + 1}.webp`}
-                              alt={r.label}
-                              fill
-                              className="object-cover"
-                            />
+                          <div className="flex-shrink-0 p-4">
+                            <div className="relative w-48 h-48">
+                              <Image
+                                src={`/images/shop/${(rowIdx % 7) + 1}.webp`}
+                                alt={r.label}
+                                fill
+                                className="object-cover rounded-lg"
+                              />
+                            </div>
                           </div>
                           
                           {/* Правая колонка: название и цена */}
