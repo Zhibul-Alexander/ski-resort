@@ -53,8 +53,7 @@ export default async function LangLayout({
       <Header 
         lang={lang} 
         brandName={site.brand.name} 
-        phone={site.contacts.phone} 
-        email={site.contacts.email}
+        phone={site.contacts.phone}
         navLabels={{
           aboutUs: (site.pageTitles as any)?.navAboutUs,
           rentalPrices: (site.pageTitles as any)?.navRentalPrices,
@@ -69,18 +68,16 @@ export default async function LangLayout({
         lang={lang}
         brandName={site.brand.name}
         phone={site.contacts.phone}
-        email={site.contacts.email}
         instagram={site.contacts.instagram}
         whatsapp={site.contacts.whatsapp}
-        telegram={site.contacts.telegram}
-        viber={site.contacts.viber}
         hours={site.hours.value}
         footerLabels={{
           description: (site.pageTitles as any)?.footerDescription,
           contacts: (site.pageTitles as any)?.footerContacts,
           hoursLabel: (site.pageTitles as any)?.hoursLabel,
           privacyPolicy: (site.pageTitles as any)?.footerPrivacyPolicy,
-          rights: (site.pageTitles as any)?.footerRights
+          rights: (site.pageTitles as any)?.footerRights,
+          phoneLabel: (site.pageTitles as any)?.phoneLabel
         }}
       />
       <ScrollToTop />

@@ -40,7 +40,7 @@
     "mapErrorDescription": "A problem occurred while loading Google Maps on this page.",
     "mapRetry": "Try again",
     "mapPreparing": "Preparing map...",
-    "contactsDescription": "Phone, email and messengers",
+    "phoneLabel": "Phone",
     "resortMap": "Resort map",
     "resortPhotos": "Resort photos",
     "capacity": "Capacity:",

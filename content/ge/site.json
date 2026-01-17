@@ -40,7 +40,7 @@
     "mapErrorDescription": "Google Maps-ის ჩატვირთვისას პრობლემა წარმოიქმნა.",
     "mapRetry": "ხელახლა ცდა",
     "mapPreparing": "რუკის მომზადება...",
-    "contactsDescription": "ტელეფონი, ელფოსტა და მესენჯერები",
+    "phoneLabel": "ტელეფონი",
     "resortMap": "კურორტის რუკა",
     "resortPhotos": "კურორტის ფოტოები",
     "capacity": "გამტარობა:",

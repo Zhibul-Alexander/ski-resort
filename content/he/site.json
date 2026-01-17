@@ -40,7 +40,7 @@
     "mapErrorDescription": "אירעה בעיה בטעינת Google Maps בעמוד זה.",
     "mapRetry": "נסה שוב",
     "mapPreparing": "מכין מפה...",
-    "contactsDescription": "טלפון, email ומסרים",
+    "phoneLabel": "טלפון",
     "resortMap": "מפת האתר",
     "resortPhotos": "תמונות מהאתר",
     "capacity": "קיבולת:",

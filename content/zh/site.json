@@ -40,7 +40,7 @@
     "mapErrorDescription": "加载 Google 地图时出现问题。",
     "mapRetry": "重试",
     "mapPreparing": "正在准备地图...",
-    "contactsDescription": "电话、邮箱与通讯软件",
+    "phoneLabel": "电话",
     "resortMap": "度假区地图",
     "resortPhotos": "度假区照片",
     "capacity": "运力：",

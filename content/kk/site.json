@@ -40,7 +40,7 @@
     "mapErrorDescription": "Google Карталарды жүктеу кезінде мәселе туындады.",
     "mapRetry": "Қайталау",
     "mapPreparing": "Карта дайындалуда...",
-    "contactsDescription": "Телефон, email және мессенджерлер",
+    "phoneLabel": "Телефон",
     "resortMap": "Курорт картасы",
     "resortPhotos": "Курорт фотолары",
     "capacity": "Өткізу қабілеті:",

@@ -40,7 +40,7 @@
     "mapErrorDescription": "При загрузке Google Карт на этой странице возникла проблема.",
     "mapRetry": "Попробовать снова",
     "mapPreparing": "Подготовка карты...",
-    "contactsDescription": "Телефон, email и мессенджеры",
+    "phoneLabel": "Телефон",
     "resortMap": "Карта курорта",
     "resortPhotos": "Фото курорта",
     "capacity": "Пропускная способность:",
