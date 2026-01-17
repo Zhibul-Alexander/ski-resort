@@ -1,8 +1,7 @@
 import type { Lang } from "@/lib/i18n";
-import { getSite, getFaq, getReviews } from "@/lib/content";
+import { getSite, getReviews } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel } from "@/components/ui/carousel";
 import { MapPin, Phone, Mail, Instagram, MessageCircle, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,49 +11,28 @@ import { GoogleMap } from "@/components/site/google-map";
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
   const site = await getSite(lang);
-  const faq = await getFaq(lang);
   const reviews = await getReviews(lang);
 
   return (
     <div className="py-10">
       <SlideIn index={0}>
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">{site.pageTitles?.aboutShop || "About the shop"}</h1>
-          <p className="mt-2 text-muted-foreground whitespace-pre-line">{site.location.directions}</p>
+          <h1 className="text-3xl font-semibold tracking-tight">{site.sections.shopPhotos.title}</h1>
+          {site.pageTitles?.insideOutside ? <p className="mt-2 text-muted-foreground">{site.pageTitles.insideOutside}</p> : null}
+          <div className="mt-6">
+            <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
+              {site.sections.shopPhotos.items.map((p, idx) => (
+                <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card h-[500px]">
+                  <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </Carousel>
+          </div>
         </div>
       </SlideIn>
 
       <SlideIn index={1}>
-        <Section title={site.sections.highlights.title} subtitle={site.pageTitles?.whyChooseUs || "Why guests choose us"}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
-            {site.sections.highlights.items.map((it, idx) => (
-              <Card key={idx} className="h-full">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-xl">{it.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">{it.text}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </Carousel>
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={2}>
-        <Section title={site.sections.shopPhotos.title} subtitle={site.pageTitles?.insideOutside || "Inside & outside"}>
-          <Carousel slidesPerView={{ mobile: 1, desktop: 1.5 }}>
-            {site.sections.shopPhotos.items.map((p, idx) => (
-              <div key={idx} className="overflow-hidden rounded-2xl border border-border bg-card h-[500px]">
-                <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </Carousel>
-        </Section>
-      </SlideIn>
-
-      <SlideIn index={3}>
-        <div className="scroll-mt-32 md:scroll-mt-24">
+        <div className="scroll-mt-32 md:scroll-mt-24 mt-10">
           <Section title={site.pageTitles?.findUs || "Find us"} subtitle={site.location.addressLine}>
             <div className="grid gap-6 lg:grid-cols-2">
               <Card>
@@ -122,25 +100,35 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
         </div>
       </SlideIn>
 
-      <SlideIn index={4}>
-        <Section title={faq.title} subtitle={site.pageTitles?.quickAnswers || "Quick answers"}>
-          <Card>
-            <CardContent className="pt-6">
-              <Accordion type="single" collapsible className="w-full">
-                {faq.items.map((it, idx) => (
-                  <AccordionItem key={idx} value={`item-${idx}`}>
-                    <AccordionTrigger>{it.q}</AccordionTrigger>
-                    <AccordionContent>{it.a}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
+      <SlideIn index={2}>
+        <div className="mt-10">
+          <Section title={site.sections.highlights.title} subtitle={site.pageTitles?.whyChooseUs || "Why guests choose us"}>
+          <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
+            {site.sections.highlights.items.map((it, idx) => (
+              <Card key={idx} className="h-full">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-xl">{it.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed">{it.text}</CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </Carousel>
         </Section>
+        </div>
       </SlideIn>
 
-      <SlideIn index={5}>
-        <Section title={reviews.title}>
+      <SlideIn index={3}>
+        <div className="mt-10">
+          <h2 className="text-3xl font-semibold tracking-tight">{site.pageTitles?.aboutShop || "About the shop"}</h2>
+          <p className="mt-2 text-muted-foreground whitespace-pre-line">{site.location.directions}</p>
+        </div>
+      </SlideIn>
+
+      <SlideIn index={4}>
+        <div className="mt-10">
+          <Section title={reviews.title}>
           <Carousel slidesPerView={{ mobile: 1, desktop: 3 }}>
             {reviews.items.map((r, idx) => (
               <Card key={idx} className="h-full">
@@ -153,6 +141,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
             ))}
           </Carousel>
         </Section>
+        </div>
       </SlideIn>
     </div>
   );
