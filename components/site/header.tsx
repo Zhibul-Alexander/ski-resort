@@ -87,9 +87,6 @@ export function Header({
               </Link>
             );
           })}
-          <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-            <Button size="sm" className="whitespace-nowrap text-xs lg:text-sm animate-shake-attention">{navLabels?.requestBooking || "Booking"}</Button>
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -97,11 +94,6 @@ export function Header({
             {navLabels?.contacts || "Contacts"}
           </Link>
           <LanguageSwitcher currentLang={lang} />
-
-          {/* Tablet/Mobile primary action */}
-          <Link href={`/${lang}/rental#booking-form`} className="lg:hidden no-underline">
-            <Button size="sm" className="whitespace-nowrap text-xs animate-shake-attention">{navLabels?.requestBooking || "Booking"}</Button>
-          </Link>
 
           {/* Mobile menu */}
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -150,14 +142,6 @@ export function Header({
 
                 <div className="pt-2">
                   <LanguageSwitcherMobile currentLang={lang} onLanguageChange={() => setIsMenuOpen(false)} />
-                </div>
-
-                <div className="pt-2 border-t border-border">
-                  <SheetClose asChild>
-                    <Link href={`/${lang}/rental#booking-form`} className="no-underline">
-                      <Button className="w-full h-auto py-3 px-4 animate-shake-attention">{navLabels?.requestBooking || "Booking"}</Button>
-                    </Link>
-                  </SheetClose>
                 </div>
               </div>
             </SheetContent>

@@ -1,9 +1,0 @@
-name = "ski-no1-rental-booking"
-main = "src/index.ts"
-compatibility_date = "2025-12-15"
-
-[vars]
-# Set via secrets instead:
-# RESEND_API_KEY
-# OWNER_EMAIL
-# FROM_EMAIL
