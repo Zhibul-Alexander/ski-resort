@@ -74,7 +74,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Lang }>
                     <Phone className="h-4 w-4" />{site.contacts.phone}
                   </a>
                   <span className="text-muted-foreground">{site.pageTitles?.phoneLabel || "Phone"} | </span>
-                  <a className="hover:underline text-muted-foreground" href={`https://wa.me/${(site.contacts.whatsapp || site.contacts.phone).replace(/[\s+\-()]/g, '')}`} target="_blank" rel="noreferrer">
+                  <a className="hover:underline text-foreground" href={`https://wa.me/${(site.contacts.whatsapp || site.contacts.phone).replace(/[\s+\-()]/g, '')}`} target="_blank" rel="noreferrer">
                     WhatsApp
                   </a>
                 </div>

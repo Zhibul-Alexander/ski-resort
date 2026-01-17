@@ -1,10 +1,11 @@
 import type { Lang } from "@/lib/i18n";
 import { getPricing, getSite } from "@/lib/content";
 import { Section } from "@/components/site/section";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
 import { SlideIn } from "@/components/ui/slide-in";
+import { Phone, Clock } from "lucide-react";
 import Image from "next/image";
 
 export default async function RentalPage({ params }: { params: Promise<{ lang: Lang }> }) {
@@ -167,6 +168,55 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
           </SlideIn>
         ))}
       </div>
+
+      <SlideIn index={pricing.rental.tables.length + 1}>
+        <div id="booking-form" className="scroll-mt-24">
+          <Section title={(site.pageTitles as any)?.equipmentBookingTitle || "Equipment Booking"} subtitle={(site.pageTitles as any)?.equipmentBookingSubtitle || "To book equipment, contact us in any convenient way."} className="pb-0">
+            <Card>
+              <CardHeader>
+                <CardTitle>{site.pageTitles?.footerContacts || "Contacts"}</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-2 text-sm">
+                <div className="flex flex-wrap items-center gap-2">
+                  <a className="hover:underline flex items-center gap-2" href={`tel:${site.contacts.phone}`}>
+                    <Phone className="h-4 w-4" />
+                    {site.contacts.phone}
+                  </a>
+                  <span className="text-muted-foreground">
+                    {(() => {
+                      const phoneAndWhatsApp = site.pageTitles?.phoneAndWhatsApp || "Phone | WhatsApp";
+                      const parts = phoneAndWhatsApp.split(' | ');
+                      const phonePart = parts[0] || "Phone";
+                      const whatsappPart = parts[1] || "WhatsApp";
+                      return (
+                        <>
+                          {phonePart} |{" "}
+                          {site.contacts.whatsapp ? (
+                            <a
+                              href={`https://wa.me/${site.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="hover:underline text-foreground"
+                            >
+                              {whatsappPart}
+                            </a>
+                          ) : (
+                            whatsappPart
+                          )}
+                        </>
+                      );
+                    })()}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 mt-3">
+                  <Clock className="h-4 w-4" />
+                  <span>{site.pageTitles?.hoursLabel || "Hours:"} {site.hours.value}</span>
+                </div>
+              </CardContent>
+            </Card>
+          </Section>
+        </div>
+      </SlideIn>
     </div>
   );
 }
