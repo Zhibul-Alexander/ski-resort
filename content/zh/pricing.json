@@ -102,26 +102,11 @@
   },
   "services": {
     "items": [
-      { "name": "双板固定器安装", "price": 50 },
-      { "name": "Touring /Freeride 双板固定器安装", "price": 70 },
-      { "name": "单板固定器安装", "price": 30 },
-      { "name": "分体单板（Splitboard）固定器安装", "price": 70 },
-      { "name": "双板固定器重新安装", "price": 70 },
-      { "name": "Touring/Freeride 双板固定器重新安装", "price": 70 },
-      { "name": "分体单板（Splitboard）固定器重新安装", "price": 60 },
-      { "name": "双板刃边打磨", "price": 45 },
-      { "name": "单板刃边打磨", "price": 35 },
-      { "name": "双板/Touring 双板底板修复", "price": 35 },
-      { "name": "单板/分体单板（Splitboard）底板修复", "price": 35 },
-      { "name": "双板打蜡", "price": 35 },
-      { "name": "Touring 双板打蜡", "price": 35 },
-      { "name": "单板打蜡", "price": 45 },
-      { "name": "分体单板（Splitboard）打蜡", "price": 35 },
-      { "name": "双板全套保养", "price": 100 },
-      { "name": "Touring 双板全套保养", "price": 100 },
-      { "name": "单板全套保养", "price": 100 },
-      { "name": "分体单板（Splitboard）全套保养", "price": 100 },
-      { "name": "Touring 双板、分体单板（Splitboard）皮条（skin）修剪", "price": 50 }
+      { "name": "双板 / 单板打蜡", "price": 30 },
+      { "name": "双板 / 单板刃边磨锐", "price": 30 },
+      { "name": "双板 / 单板刃边打磨", "price": 40 },
+      { "name": "双板 / 单板全套保养（打蜡、刃边磨锐、刃边打磨）", "price": 90 },
+      { "name": "双板 / 单板固定器重新安装", "price": 20 }
     ],
     "note": "价格可能会根据损坏情况有所变化"
   }
