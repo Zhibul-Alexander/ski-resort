@@ -7,6 +7,8 @@ import { formatPrice } from "@/lib/currency";
 import { SlideIn } from "@/components/ui/slide-in";
 import { Phone, Clock } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/ui/booking-button";
 
 export default async function RentalPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -60,10 +62,18 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                             </div>
                           </div>
                           
-                          {/* От и цена */}
-                          <div className="font-semibold px-4 pb-4 text-right">
-                            <span>{(site.pageTitles as any)?.priceFrom || "От"} </span>
-                            <span className="text-lg">{priceValue} GEL</span>
+                          {/* Блок с ценой и кнопкой booking */}
+                          <div className="px-4 pb-4 flex flex-col gap-3">
+                            {/* Цена */}
+                            <div className="font-semibold text-center">
+                              <span>{(site.pageTitles as any)?.priceFrom || "От"} </span>
+                              <span className="text-lg">{priceValue} GEL</span>
+                            </div>
+                            
+                            {/* Кнопка booking */}
+                            <BookingButton className="w-full">
+                              {(site.pageTitles as any)?.requestBooking || "Booking"}
+                            </BookingButton>
                           </div>
                         </div>
                       );
@@ -102,12 +112,25 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                             </div>
                           </div>
                           
-                          {/* Правая колонка: название и цена */}
-                          <div className="flex flex-col justify-center p-4 flex-1 text-right">
-                            <div className="font-medium mb-2 text-lg">{r.label}</div>
-                            <div className="font-semibold">
-                              <span>{(site.pageTitles as any)?.priceFrom || "От"} </span>
-                              <span className="text-lg">{priceValue} GEL</span>
+                          {/* Правая колонка: название, цена и кнопка */}
+                          <div className="flex flex-col justify-between p-4 flex-1 text-right">
+                            {/* Название по верхней линии */}
+                            <div className="font-medium text-lg">{r.label}</div>
+                            
+                            {/* Блок с ценой и кнопкой booking */}
+                            <div className="flex flex-col gap-3">
+                              {/* Цена */}
+                              <div className="font-semibold">
+                                <span>{(site.pageTitles as any)?.priceFrom || "От"} </span>
+                                <span className="text-lg">{priceValue} GEL</span>
+                              </div>
+                              
+                              {/* Кнопка booking */}
+                              <div>
+                                <BookingButton>
+                                  {(site.pageTitles as any)?.requestBooking || "Booking"}
+                                </BookingButton>
+                              </div>
                             </div>
                           </div>
                         </div>

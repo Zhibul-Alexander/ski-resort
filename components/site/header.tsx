@@ -44,6 +44,35 @@ export function Header({
     { href: `/${lang}/services`, label: navLabels?.services || "Services" }
   ];
 
+  // Функция для плавной прокрутки к якорю
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const url = new URL(href, window.location.origin);
+    const hash = url.hash;
+    const targetPath = url.pathname;
+    const normalizedPathname = pathname.replace(/\/$/, "") || "/";
+    const normalizedTargetPath = targetPath.replace(/\/$/, "");
+    
+    // Если есть якорь
+    if (hash) {
+      const elementId = hash.substring(1); // Убираем #
+      
+      // Если мы на той же странице (или на главной, а ссылка на главную)
+      const isSamePage = normalizedPathname === normalizedTargetPath || 
+                        (normalizedPathname === `/${lang}` && normalizedTargetPath === `/${lang}`);
+      
+      if (isSamePage) {
+        // Прокручиваем к элементу на текущей странице
+        e.preventDefault();
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      // Если на другой странице, используем стандартное поведение браузера
+      // (браузер сам прокрутит после загрузки страницы)
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
@@ -88,9 +117,13 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}#find-us`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+          <a 
+            href={`/${lang}#find-us`} 
+            onClick={(e) => handleAnchorClick(e, `/${lang}#find-us`)}
+            className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+          >
             {navLabels?.contacts || "Contacts"}
-          </Link>
+          </a>
           <LanguageSwitcher currentLang={lang} />
 
           {/* Mobile menu */}
@@ -130,11 +163,18 @@ export function Header({
 
                 <div className="pt-2 border-t border-border">
                   <SheetClose asChild>
-                    <Link href={`/${lang}#find-us`} className="no-underline">
+                    <a 
+                      href={`/${lang}#find-us`}
+                      onClick={(e) => {
+                        handleAnchorClick(e, `/${lang}#find-us`);
+                        setIsMenuOpen(false);
+                      }}
+                      className="no-underline"
+                    >
                       <Button variant="secondary" className="w-full justify-start h-auto py-3 px-4">
                         {navLabels?.contacts || "Contacts"}
                       </Button>
-                    </Link>
+                    </a>
                   </SheetClose>
                 </div>
 
