@@ -36,7 +36,7 @@ export function Footer({
         <div>
           <div className="font-semibold">{brandName}</div>
           <div className="text-sm text-muted-foreground mt-2">
-            {footerLabels?.description || "Premium rentals & lessons in Gudauri. Quick pickup, fresh gear, and a friendly team."}
+            {footerLabels?.description || "Premium rentals & lessons in Bakuriani. Quick pickup, fresh gear, and a friendly team."}
           </div>
         </div>
 

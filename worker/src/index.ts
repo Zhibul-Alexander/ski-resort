@@ -273,7 +273,7 @@ function formatCustomerEmail(payload: BookingPayload) {
   lines.push("");
   lines.push(`Best regards,`);
   lines.push(`Ski №1 Rental Team`);
-  lines.push(`Gudauri, Georgia`);
+  lines.push(`Bakuriani, Georgia`);
   
   // HTML версия
   const htmlParts: string[] = [];
@@ -342,7 +342,7 @@ function formatCustomerEmail(payload: BookingPayload) {
   htmlParts.push(`<div class="footer">
     <p><strong>Best regards,</strong><br>
     Ski №1 Rental Team<br>
-    Gudauri, Georgia</p>
+    Bakuriani, Georgia</p>
   </div>`);
   
   htmlParts.push(`</body></html>`);

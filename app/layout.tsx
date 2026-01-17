@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ski №1 Rental — Gudauri",
-  description: "Premium ski rental & lessons in Gudauri",
+  title: "Ski №1 Rental — Bakuriani",
+  description: "Premium ski rental & lessons in Bakuriani",
   icons: {
     icon: [
       { url: "/logo.png", type: "image/png" },

@@ -27,7 +27,6 @@ export function Header({
     rentalPrices?: string;
     lessons?: string;
     services?: string;
-    skiResort?: string;
     contacts?: string;
     requestBooking?: string;
   };
@@ -44,8 +43,7 @@ export function Header({
     { href: `/${lang}`, label: navLabels?.aboutUs || "About Us" },
     { href: `/${lang}/rental`, label: navLabels?.rentalPrices || "Rental Prices" },
     { href: `/${lang}/lessons`, label: navLabels?.lessons || "Lessons" },
-    { href: `/${lang}/services`, label: navLabels?.services || "Services" },
-    { href: `/${lang}/resort`, label: navLabels?.skiResort || "Ski Resort" }
+    { href: `/${lang}/services`, label: navLabels?.services || "Services" }
   ];
 
   return (

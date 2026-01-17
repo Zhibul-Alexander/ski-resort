@@ -1,10 +1,10 @@
 {
   "brand": {
     "name": "Ski №1 Rental",
-    "tagline": "Gudauri 高端双板/单板租赁与私教课程。"
+    "tagline": "Bakuriani 高端双板/单板租赁与私教课程。"
   },
   "resort": {
-    "name": "Gudauri",
+    "name": "Bakuriani",
     "description": "格鲁吉亚大高加索山脉中的热门滑雪度假区，位于格鲁吉亚军事公路沿线，距离第比利斯约 120–130 km。这里有适合不同水平的雪道——从新手练习到进阶滑行，同时雪道附近也有大片区域适合自由式/野雪（freeride）爱好者。度假区紧凑便利：住宿、咖啡馆和各类服务通常都在缆车附近。冬季受天气影响道路状况可能变化，建议行程预留更多时间。"
   },
   "contacts": {
@@ -20,7 +20,7 @@
     "value": "09:00–19:00"
   },
   "location": {
-    "addressLine": "格鲁吉亚，Gudauri",
+    "addressLine": "格鲁吉亚，Bakuriani",
     "directions": "我们是专业的双板与单板租赁服务，专注于高品质装备，让你在雪道上获得更舒适、更安全、更开心的体验。\n\n我们深知根据水平和滑行风格选择合适装备有多重要，同时也要保证可靠防护和舒适贴合——这样你从一开始就能在雪道上更有信心。我们提供成人与儿童所需的一切：双板、单板、雪靴、固定器以及儿童套装。你还可以租借服装与配件：滑雪夹克与滑雪裤、头盔、雪镜和手套——无论天气如何都能从容应对。\n\n我们的目标很简单：让你的冬季假期轻松又愉快。第一次尝试？我们会帮你选最合适的方案并讲清楚要点。已经能自信滑行？我们会按你的风格和山上条件配更进阶的装备。想更快进步并更安全地滑行？我们有经验丰富的教练：帮助你建立技术、扎实掌握基础，或在任何水平上继续提升。我们重视服务、装备品质和你的心情——让你每天在雪道上都只留下最好的回忆。",
     "mapEmbedUrl": "https://www.google.com/maps?q=42.4661767,44.4830638&z=17&output=embed",
     "mapOpenUrl": "https://www.google.com/maps/place/%D0%9F%D0%B0%D1%81%D0%B0%D0%BD%D0%B0%D1%83%D1%80%D0%B8/@42.4659349,44.4830925,17.25z/data=!4m6!3m5!1s0x404529d8333dd5e3:0x8ec9ffc4962978a2!8m2!3d42.4661767!4d44.4830638!16s%2Fg%2F11pzvl7bp9"
@@ -80,7 +80,7 @@
     "navSkiResort": "滑雪度假区",
     "navContacts": "联系方式",
     "hoursLabel": "营业时间：",
-    "footerDescription": "Gudauri 高端租赁与私教。快速取装备、状态新、团队友好。",
+    "footerDescription": "Bakuriani 高端租赁与私教。快速取装备、状态新、团队友好。",
     "footerContacts": "联系方式",
     "footerPrivacyPolicy": "隐私政策",
     "footerRights": "版权所有。",
@@ -311,7 +311,7 @@
           "length": "250 m"
         },
         {
-          "name": "Juvenile Magic Carpet in New Gudauri",
+          "name": "Juvenile Magic Carpet in Bakuriani",
           "type": "Magic Carpet",
           "capacity": "",
           "startAltitude": "2200 m",

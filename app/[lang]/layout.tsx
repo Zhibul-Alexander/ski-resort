@@ -14,13 +14,20 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
-  const { lang } = await params;
-  if (!LANGS.includes(lang)) return {};
-  const site = await getSite(lang);
-  return {
-    title: `${site.brand.name} — ${site.brand.tagline}`,
-    description: `Premium rental & lessons in ${site.resort.name}.`
-  };
+  try {
+    const { lang } = await params;
+    if (!LANGS.includes(lang)) return {};
+    const site = await getSite(lang);
+    return {
+      title: `${site.brand.name} — ${site.brand.tagline}`,
+      description: `Premium rental & lessons in ${site.resort.name}.`
+    };
+  } catch (error) {
+    return {
+      title: "Ski №1 Rental — Bakuriani",
+      description: "Premium ski rental & lessons in Bakuriani"
+    };
+  }
 }
 
 export default async function LangLayout({
@@ -32,7 +39,14 @@ export default async function LangLayout({
 }) {
   const { lang } = await params;
   if (!LANGS.includes(lang)) notFound();
-  const site = await getSite(lang);
+  
+  let site;
+  try {
+    site = await getSite(lang);
+  } catch (error) {
+    console.error(`Failed to load site data for lang: ${lang}`, error);
+    notFound();
+  }
 
   return (
     <>
@@ -46,7 +60,6 @@ export default async function LangLayout({
           rentalPrices: (site.pageTitles as any)?.navRentalPrices,
           lessons: (site.pageTitles as any)?.navLessons,
           services: (site.pageTitles as any)?.navServices,
-          skiResort: (site.pageTitles as any)?.navSkiResort,
           contacts: (site.pageTitles as any)?.navContacts,
           requestBooking: (site.pageTitles as any)?.requestBooking
         }}
