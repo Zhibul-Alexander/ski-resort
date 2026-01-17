@@ -90,7 +90,7 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href={`/${lang}#contacts`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+          <Link href={`/${lang}#find-us`} className="hidden xl:flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
             {navLabels?.contacts || "Contacts"}
           </Link>
           <LanguageSwitcher currentLang={lang} />
@@ -132,7 +132,7 @@ export function Header({
 
                 <div className="pt-2 border-t border-border">
                   <SheetClose asChild>
-                    <Link href={`/${lang}#contacts`} className="no-underline">
+                    <Link href={`/${lang}#find-us`} className="no-underline">
                       <Button variant="secondary" className="w-full justify-start h-auto py-3 px-4">
                         {navLabels?.contacts || "Contacts"}
                       </Button>
