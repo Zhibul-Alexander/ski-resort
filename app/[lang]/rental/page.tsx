@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
 import { SlideIn } from "@/components/ui/slide-in";
+import Image from "next/image";
 
 export default async function RentalPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -45,30 +46,69 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                 </div>
               </CardContent>
 
-              {/* Desktop: Table view */}
+              {/* Desktop: Table view or Cards for Adults */}
               <CardContent className="pt-6 hidden md:block">
-                <div className="overflow-x-auto rounded-2xl border border-border">
-                  <Table className="w-full">
-                    <THead>
-                      <TR>
-                        <TH>{t.columns[0]}</TH>
-                        {t.columns.slice(1).map((c) => (
-                          <TH key={c}>{c}</TH>
-                        ))}
-                      </TR>
-                    </THead>
-                    <TBody>
-                      {t.rows.map((r) => (
-                        <TR key={r.label}>
-                          <TD className="font-medium">{r.label}</TD>
-                          {r.values.map((v, idx) => (
-                            <TD key={idx}>{formatPrice(v, exchangeRate)}</TD>
+                {t.id === "adults" ? (
+                  <div className="grid grid-cols-1 gap-4">
+                    {t.rows.map((r, rowIdx) => {
+                      // Получаем первую цену (1-2 дня)
+                      const firstPrice = r.values[0] || "";
+                      // Если цена содержит "/", берем первую часть
+                      const priceValue = firstPrice.includes("/") 
+                        ? firstPrice.split("/")[0].trim() 
+                        : firstPrice.trim();
+                      
+                      return (
+                        <div 
+                          key={r.label} 
+                          className="flex gap-4 rounded-xl border border-border bg-card overflow-hidden"
+                        >
+                          {/* Левая колонка: картинка */}
+                          <div className="relative w-48 h-32 flex-shrink-0">
+                            <Image
+                              src={`/images/shop/${(rowIdx % 7) + 1}.webp`}
+                              alt={r.label}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          
+                          {/* Правая колонка: название и цена */}
+                          <div className="flex flex-col justify-center p-4 flex-1 text-right">
+                            <div className="font-medium mb-2 text-lg">{r.label}</div>
+                            <div className="font-semibold">
+                              <span>{(site.pageTitles as any)?.priceFrom || "От"} </span>
+                              <span className="text-lg">{priceValue} GEL</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto rounded-2xl border border-border">
+                    <Table className="w-full">
+                      <THead>
+                        <TR>
+                          <TH>{t.columns[0]}</TH>
+                          {t.columns.slice(1).map((c) => (
+                            <TH key={c}>{c}</TH>
                           ))}
                         </TR>
-                      ))}
-                    </TBody>
-                  </Table>
-                </div>
+                      </THead>
+                      <TBody>
+                        {t.rows.map((r) => (
+                          <TR key={r.label}>
+                            <TD className="font-medium">{r.label}</TD>
+                            {r.values.map((v, idx) => (
+                              <TD key={idx}>{formatPrice(v, exchangeRate)}</TD>
+                            ))}
+                          </TR>
+                        ))}
+                      </TBody>
+                    </Table>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </Section>
