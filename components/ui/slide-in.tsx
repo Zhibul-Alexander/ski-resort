@@ -215,8 +215,9 @@ export function SlideIn({
   }, [isMobile, mounted]); // Убрали index из зависимостей, так как он не должен меняться
 
   // Не применяем классы сдвига до монтирования или на мобильных устройствах
+  // На мобильных устройствах элементы всегда видимы без трансформаций
   const directionClass = !mounted || isMobile 
-    ? "" // До монтирования или на мобилке без анимации
+    ? "" // До монтирования или на мобилке без анимации и трансформаций
     : direction === "left" 
       ? (isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-[33%]")
       : (isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-[33%]");
@@ -225,12 +226,15 @@ export function SlideIn({
     <div
       ref={ref}
       className={cn(
+        // На мобильных не применяем никаких трансформаций и переходов
         mounted && !isMobile && "transition-all duration-700 ease-out", // Переходы только на десктопе после монтирования
         directionClass,
         className
       )}
       style={{
-        animationDelay: isVisible && !isMobile ? `${delay}ms` : "0ms"
+        animationDelay: isVisible && !isMobile ? `${delay}ms` : "0ms",
+        // Дополнительная защита на мобильных - явно убираем любые трансформации
+        transform: isMobile ? "none" : undefined
       }}
     >
       {children}

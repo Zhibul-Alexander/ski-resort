@@ -82,6 +82,16 @@ a {
     animation: slide-in-right 0.25s ease-out forwards;
   }
 
+  /* Отключаем анимации выезжания на мобильных устройствах для предотвращения горизонтального скролла */
+  @media (max-width: 1023px) {
+    .animate-slide-in-left,
+    .animate-slide-in-right {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
   @keyframes shake-attention {
     0%, 75% { transform: translateX(0) rotate(0deg); }
     76% { transform: translateX(-2px) rotate(-1deg); }
