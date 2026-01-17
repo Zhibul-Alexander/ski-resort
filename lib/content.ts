@@ -30,7 +30,6 @@ export type SiteContent = {
     openMapDescription?: string;
     openInGoogleMaps?: string;
     contactsDescription?: string;
-    thankYouMessage?: string;
     resortMap?: string;
     resortPhotos?: string;
     capacity?: string;

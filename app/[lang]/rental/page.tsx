@@ -26,11 +26,11 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
         {pricing.rental.tables.map((t, tableIdx) => (
           <SlideIn key={t.id} index={tableIdx + 1}>
             <Section title={t.title} subtitle={t.subtitle}>
-            <Card>
-              {/* Mobile: Card view */}
-              <CardContent className="pt-6 px-0 md:px-6 md:hidden">
-                {t.id === "adults" ? (
-                  <div className="space-y-3 px-3">
+            {["adults", "kids", "accessories"].includes(t.id) ? (
+              <>
+                {/* Mobile: Card view */}
+                <div className="md:hidden">
+                  <div className="space-y-3">
                     {t.rows.map((r, rowIdx) => {
                       // Получаем первую цену (1-2 дня)
                       const firstPrice = r.values[0] || "";
@@ -65,28 +65,10 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                       );
                     })}
                   </div>
-                ) : (
-                  <div className="space-y-2 px-3">
-                    {t.rows.map((r) => (
-                      <div key={r.label} className="rounded-xl border border-border bg-card p-2.5">
-                        <div className="font-medium text-xs mb-2 break-words leading-snug">{r.label}</div>
-                        <div className="space-y-1.5">
-                          {t.columns.slice(1).map((col, idx) => (
-                            <div key={idx} className="flex items-start justify-between gap-2">
-                              <span className="text-muted-foreground text-[11px] shrink-0 leading-tight pt-0.5">{col}:</span>
-                              <span className="font-medium text-xs text-right break-words leading-tight">{formatPrice(r.values[idx], exchangeRate)}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
+                </div>
 
-              {/* Desktop: Table view or Cards for Adults */}
-              <CardContent className="pt-6 hidden md:block">
-                {t.id === "adults" ? (
+                {/* Desktop: Cards */}
+                <div className="hidden md:block">
                   <div className="grid grid-cols-1 gap-4">
                     {t.rows.map((r, rowIdx) => {
                       // Получаем первую цену (1-2 дня)
@@ -125,7 +107,31 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                       );
                     })}
                   </div>
-                ) : (
+                </div>
+              </>
+            ) : (
+              <Card>
+                {/* Mobile: Card view */}
+                <CardContent className="pt-6 px-0 md:px-6 md:hidden">
+                  <div className="space-y-2 px-3">
+                    {t.rows.map((r) => (
+                      <div key={r.label} className="rounded-xl border border-border bg-card p-2.5">
+                        <div className="font-medium text-xs mb-2 break-words leading-snug">{r.label}</div>
+                        <div className="space-y-1.5">
+                          {t.columns.slice(1).map((col, idx) => (
+                            <div key={idx} className="flex items-start justify-between gap-2">
+                              <span className="text-muted-foreground text-[11px] shrink-0 leading-tight pt-0.5">{col}:</span>
+                              <span className="font-medium text-xs text-right break-words leading-tight">{formatPrice(r.values[idx], exchangeRate)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+
+                {/* Desktop: Table view */}
+                <CardContent className="pt-6 hidden md:block">
                   <div className="overflow-x-auto rounded-2xl border border-border">
                     <Table className="w-full">
                       <THead>
@@ -148,9 +154,9 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                       </TBody>
                     </Table>
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            )}
           </Section>
           </SlideIn>
         ))}
