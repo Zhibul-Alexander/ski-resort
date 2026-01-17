@@ -47,24 +47,22 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
         >
           <Card>
             <CardContent className="pt-6">
-              <div className="overflow-x-auto rounded-2xl border border-border">
-                <Table>
-                  <THead>
-                    <TR>
-                      <TH>{(site.pageTitles as any)?.service || "Service"}</TH>
-                      <TH className="text-right">{(site.pageTitles as any)?.price || "Price"}</TH>
+              <Table>
+                <THead>
+                  <TR>
+                    <TH>{(site.pageTitles as any)?.service || "Service"}</TH>
+                    <TH className="text-right">{(site.pageTitles as any)?.price || "Price"}</TH>
+                  </TR>
+                </THead>
+                <TBody>
+                  {services.items.map((service, idx) => (
+                    <TR key={idx}>
+                      <TD className="font-medium">{service.name}</TD>
+                      <TD className="text-right">{formatPrice(String(service.price), exchangeRate)}</TD>
                     </TR>
-                  </THead>
-                  <TBody>
-                    {services.items.map((service, idx) => (
-                      <TR key={idx}>
-                        <TD className="font-medium">{service.name}</TD>
-                        <TD className="text-right">{formatPrice(String(service.price), exchangeRate)}</TD>
-                      </TR>
-                    ))}
-                  </TBody>
-                </Table>
-              </div>
+                  ))}
+                </TBody>
+              </Table>
             </CardContent>
           </Card>
         </Section>

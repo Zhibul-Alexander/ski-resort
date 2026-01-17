@@ -1,5 +1,5 @@
 export type Lang = "en" | "ru" | "ge" | "zh" | "kk" | "he";
-export const LANGS: Lang[] = ["en", "ru", "ge", "zh", "kk", "he"];
+export const LANGS: Lang[] = ["en", "ru", "ge", "he", "zh", "kk"];
 
 export type LocaleKey = "en" | "ru" | "ge" | "zh" | "kk" | "he";
 

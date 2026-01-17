@@ -9,9 +9,9 @@ const langs: { lang: Lang; label: string }[] = [
   { lang: "en", label: "EN" },
   { lang: "ru", label: "RU" },
   { lang: "ge", label: "GE" },
+  { lang: "he", label: "עברית" },
   { lang: "zh", label: "中文" },
-  { lang: "kk", label: "KK" },
-  { lang: "he", label: "עברית" }
+  { lang: "kk", label: "KK" }
 ];
 
 export function LanguageSwitcher({ currentLang }: { currentLang: Lang }) {
