@@ -39,6 +39,9 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                         ? firstPrice.split("/")[0].trim() 
                         : firstPrice.trim();
                       
+                      // Для Equipment (adults): картинки 1-7, для Accessories: картинки 8-12
+                      const imageIndex = t.id === "adults" ? rowIdx + 1 : rowIdx + 8;
+                      
                       return (
                         <div key={r.label} className="rounded-xl border border-border bg-card overflow-hidden">
                           {/* Название */}
@@ -48,7 +51,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                           <div className="px-4 pb-4">
                             <div className="relative w-full aspect-square">
                               <Image
-                                src={`/images/shop/${(rowIdx % 7) + 1}.webp`}
+                                src={`/images/rental/${imageIndex}.webp`}
                                 alt={r.label}
                                 fill
                                 className="object-cover rounded-lg"
@@ -78,6 +81,9 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                         ? firstPrice.split("/")[0].trim() 
                         : firstPrice.trim();
                       
+                      // Для Equipment (adults): картинки 1-7, для Accessories: картинки 8-12
+                      const imageIndex = t.id === "adults" ? rowIdx + 1 : rowIdx + 8;
+                      
                       return (
                         <div 
                           key={r.label} 
@@ -87,7 +93,7 @@ export default async function RentalPage({ params }: { params: Promise<{ lang: L
                           <div className="flex-shrink-0 p-4">
                             <div className="relative w-48 h-48">
                               <Image
-                                src={`/images/shop/${(rowIdx % 7) + 1}.webp`}
+                                src={`/images/rental/${imageIndex}.webp`}
                                 alt={r.label}
                                 fill
                                 className="object-cover rounded-lg"

@@ -21,7 +21,7 @@
   },
   "location": {
     "addressLine": "Georgia, Bakuriani",
-    "directions": "We are a professional ski and snowboard rental service. We specialize in quality equipment that helps you get the most out of your skiing — with comfort, safety, and great experiences.\n\nWe understand how important it is to choose the right equipment for your skill level and skiing style, as well as to ensure reliable protection and a comfortable fit — so you feel confident on the slopes from the first minutes. In our rental, you'll find everything you need for adults and children: skis, snowboards, boots, bindings, and kids' sets. You can also rent clothing and accessories: jackets and pants, helmets, goggles, and gloves — so you're fully prepared for any weather conditions.\n\nOur goal is simple: to make your winter vacation as easy and enjoyable as possible. Are you a beginner and want to try for the first time — we'll help you choose the best option and explain everything. Already confident on the slopes — we'll select more advanced equipment for your style and mountain conditions. And if you want to progress faster and ski more safely, we have experienced instructors: they'll help you develop technique, confidently master the basics, or improve your skills at any level. We care about service, equipment quality, and your mood, so every day on the slopes is remembered only for the best impressions.",
+    "directions": "We are a professional ski and snowboard rental focused on quality equipment for comfort, safety, and great experiences on the slopes.\n\nWe help you choose the right gear for your level and style, ensuring a perfect fit from the first minutes. Our rental offers everything for adults and children — skis, snowboards, boots, bindings, kids' sets, as well as clothing and accessories for any weather.\n\nOur goal is to make your winter holiday easy and enjoyable. Beginners get clear guidance and support, experienced riders get advanced equipment, and our professional instructors help you progress and ride with confidence at any level.",
     "mapEmbedUrl": "https://www.google.com/maps?q=42.4661767,44.4830638&z=17&output=embed",
     "mapOpenUrl": "https://www.google.com/maps/place/%D0%9F%D0%B0%D1%81%D0%B0%D0%BD%D0%B0%D1%83%D1%80%D0%B8/@42.4659349,44.4830925,17.25z/data=!4m6!3m5!1s0x404529d8333dd5e3:0x8ec9ffc4962978a2!8m2!3d42.4661767!4d44.4830638!16s%2Fg%2F11pzvl7bp9"
   },
@@ -80,7 +80,7 @@
     "navSkiResort": "Ski Resort",
     "navContacts": "Contacts",
     "hoursLabel": "Hours:",
-    "footerDescription": "Premium rentals & lessons in Bakuriani. Quick pickup, fresh gear, and a friendly team.",
+    "footerDescription": "Premium rentals & lessons in Bakuriani. Fast, fresh, friendly.",
     "footerContacts": "Contacts",
     "footerPrivacyPolicy": "Privacy Policy",
     "footerRights": "All rights reserved.",
@@ -124,31 +124,31 @@
       "items": [
         {
           "title": "Professional rental",
-          "text": "We specialize in quality equipment for skiing and snowboarding."
+          "text": "High-quality ski and snowboard equipment for comfort and safety."
         },
         {
           "title": "Right selection",
-          "text": "We select equipment based on skill level and skiing style, ensuring reliable protection and comfortable fit."
+          "text": "We choose gear based on your level and riding style for a perfect fit."
         },
         {
           "title": "For adults and kids",
-          "text": "Everything you need: skis, snowboards, boots, bindings, and kids' sets."
+          "text": "Complete sets for adults and children, including kids' equipment."
         },
         {
           "title": "Clothing and accessories",
-          "text": "Jackets, pants, helmets, goggles, and gloves — fully prepared for any weather conditions."
+          "text": "Jackets, pants, helmets, goggles, and gloves for any weather."
         },
         {
-          "title": "For beginners and pros",
-          "text": "We'll help you choose the best option for your first experience or advanced equipment for confident skiers."
+          "title": "All skill levels",
+          "text": "From first-time riders to confident skiers and snowboarders."
         },
         {
           "title": "Experienced instructors",
-          "text": "They'll help you develop technique, master the basics, or improve your skills at any level."
+          "text": "Professional lessons to help you progress and ride with confidence."
         },
         {
           "title": "Quality care",
-          "text": "We care about service, equipment quality, and your mood, so every day on the slopes is remembered for the best impressions."
+          "text": "Friendly service, well-maintained gear, and a great experience on the slopes."
         }
       ]
     },
