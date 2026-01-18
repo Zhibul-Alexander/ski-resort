@@ -28,6 +28,12 @@
     ]
   },
   "pageTitles": {
+    "metaTitleHome": "SKI HOUSE+ — Gudauri",
+    "metaTitleInfo": "SKI HOUSE+ — Info",
+    "metaTitleLessons": "SKI HOUSE+ — Lessons",
+    "metaTitleRental": "SKI HOUSE+ — Rental Prices",
+    "metaTitleServices": "SKI HOUSE+ — Services",
+    "metaTitlePrivacy": "SKI HOUSE+ — Privacy Policy",
     "aboutShop": "About us",
     "findUs": "Find us",
     "quickAnswers": "Quick answers",
@@ -86,6 +92,7 @@
     "footerDescription": "Premium rentals and lessons in Gudauri — we'll gear you up fast with no unnecessary waiting. Clean, well-serviced equipment and a friendly team that truly helps.",
     "footerContacts": "Contacts",
     "footerPrivacyPolicy": "Privacy Policy",
+    "privacyDescription": "Privacy policy for SKI HOUSE+ ski rental and lessons service in Gudauri",
     "footerRights": "All rights reserved.",
     "bookingFormDates": "Dates",
     "bookingFormDatesDesc": "Pick your rental dates.",

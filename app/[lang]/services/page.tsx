@@ -1,10 +1,20 @@
 import type { Lang } from "@/lib/i18n";
+import type { Metadata } from "next";
 import { getPricing, getSite } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { formatPrice } from "@/lib/currency";
 import { SlideIn } from "@/components/ui/slide-in";
+import { generateMultilingualMetadata } from "@/lib/metadata";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const site = await getSite(lang);
+  const title = (site.pageTitles as any)?.metaTitleServices || `${site.brand.name} — ${(site.pageTitles as any)?.navServices || "Services"}`;
+  const description = (site.pageTitles as any)?.servicePricesSubtitle || "Equipment maintenance and repair services";
+  return generateMultilingualMetadata(lang, 'services', { title, description });
+}
 
 export default async function ServicesPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;

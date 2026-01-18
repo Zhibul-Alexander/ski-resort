@@ -28,6 +28,12 @@
     ]
   },
   "pageTitles": {
+    "metaTitleHome": "SKI HOUSE+ — Gudauri",
+    "metaTitleInfo": "SKI HOUSE+ — 信息",
+    "metaTitleLessons": "SKI HOUSE+ — 课程",
+    "metaTitleRental": "SKI HOUSE+ — 租赁价格",
+    "metaTitleServices": "SKI HOUSE+ — 服务",
+    "metaTitlePrivacy": "SKI HOUSE+ — 隐私政策",
     "aboutShop": "关于我们",
     "findUs": "找到我们",
     "quickAnswers": "快速答疑",
@@ -86,6 +92,7 @@
     "footerDescription": "Gudauri 高端租赁与课程——快速配齐装备，无需久等。干净、保养到位的装备，加上真正愿意帮你的友好团队。",
     "footerContacts": "联系方式",
     "footerPrivacyPolicy": "隐私政策",
+    "privacyDescription": "SKI HOUSE+ — Gudauri 滑雪装备租赁与课程服务的隐私政策",
     "footerRights": "版权所有。",
     "bookingFormDates": "日期",
     "bookingFormDatesDesc": "选择租赁日期。",

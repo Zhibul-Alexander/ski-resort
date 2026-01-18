@@ -28,6 +28,12 @@
     ]
   },
   "pageTitles": {
+    "metaTitleHome": "SKI HOUSE+ — Гудаури",
+    "metaTitleInfo": "SKI HOUSE+ — Ақпарат",
+    "metaTitleLessons": "SKI HOUSE+ — Сабақтар",
+    "metaTitleRental": "SKI HOUSE+ — Жалға алу бағалары",
+    "metaTitleServices": "SKI HOUSE+ — Сервис",
+    "metaTitlePrivacy": "SKI HOUSE+ — Құпиялық саясаты",
     "aboutShop": "Біз туралы",
     "findUs": "Бізді табу",
     "quickAnswers": "Жылдам жауаптар",
@@ -86,6 +92,7 @@
     "footerDescription": "Гудауридегі Premium жалға беру және сабақтар — жинақты тез дайындап, артық күттірмей береміз. Таза, жақсы күтім көрген жабдық және шын көмектесетін жылы жүзді команда.",
     "footerContacts": "Байланыс",
     "footerPrivacyPolicy": "Құпиялық саясаты",
+    "privacyDescription": "SKI HOUSE+ — Гудауридегі шаңғы жалға беру және сабақтар қызметінің құпиялық саясаты",
     "footerRights": "Барлық құқықтар қорғалған.",
     "bookingFormDates": "Күндер",
     "bookingFormDatesDesc": "Жалға алу күндерін таңдаңыз.",

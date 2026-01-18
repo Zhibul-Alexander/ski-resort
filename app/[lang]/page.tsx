@@ -1,4 +1,5 @@
 import type { Lang } from "@/lib/i18n";
+import type { Metadata } from "next";
 import { getSite, getReviews, getPricing } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -9,8 +10,17 @@ import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { GoogleMap } from "@/components/site/google-map";
 import { formatPrice } from "@/lib/currency";
+import { generateMultilingualMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const site = await getSite(lang);
+  const title = (site.pageTitles as any)?.metaTitleHome || `${site.brand.name} — Gudauri`;
+  const description = site.brand.tagline;
+  return generateMultilingualMetadata(lang, '', { title, description });
+}
 
 export default async function Home({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;

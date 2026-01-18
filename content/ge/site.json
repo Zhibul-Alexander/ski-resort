@@ -28,6 +28,12 @@
     ]
   },
   "pageTitles": {
+    "metaTitleHome": "SKI HOUSE+ — გუდაური",
+    "metaTitleInfo": "SKI HOUSE+ — ინფო",
+    "metaTitleLessons": "SKI HOUSE+ — გაკვეთილები",
+    "metaTitleRental": "SKI HOUSE+ — ფასები",
+    "metaTitleServices": "SKI HOUSE+ — სერვისი",
+    "metaTitlePrivacy": "SKI HOUSE+ — კონფიდენციალურობა",
     "aboutShop": "ჩვენს შესახებ",
     "findUs": "როგორ გვიპოვოთ",
     "quickAnswers": "სწრაფი პასუხები",
@@ -86,6 +92,7 @@
     "footerDescription": "პრემიუმ გაქირავება და გაკვეთილები გუდაურში — სწრაფად შეგირჩევთ კომპლექტს ზედმეტი ლოდინის გარეშე. სუფთა, მოვლილი აღჭურვილობა და მეგობრული გუნდი, რომელიც ნამდვილად გეხმარებათ.",
     "footerContacts": "კონტაქტები",
     "footerPrivacyPolicy": "კონფიდენციალურობა",
+    "privacyDescription": "კონფიდენციალურობის პოლიტიკა SKI HOUSE+ — თხილამურების გაქირავებისა და გაკვეთილების სერვისისთვის გუდაურში",
     "footerRights": "ყველა უფლება დაცულია.",
     "bookingFormDates": "თარიღები",
     "bookingFormDatesDesc": "აირჩიეთ ქირავნობის თარიღები.",

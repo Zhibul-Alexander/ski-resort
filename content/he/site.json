@@ -28,6 +28,12 @@
     ]
   },
   "pageTitles": {
+    "metaTitleHome": "SKI HOUSE+ — גודאורי",
+    "metaTitleInfo": "SKI HOUSE+ — מידע",
+    "metaTitleLessons": "SKI HOUSE+ — שיעורים",
+    "metaTitleRental": "SKI HOUSE+ — מחירי השכרה",
+    "metaTitleServices": "SKI HOUSE+ — שירותים",
+    "metaTitlePrivacy": "SKI HOUSE+ — מדיניות פרטיות",
     "aboutShop": "עלינו",
     "findUs": "איך למצוא אותנו",
     "quickAnswers": "תשובות מהירות",
@@ -86,6 +92,7 @@
     "footerDescription": "השכרה ושיעורים ברמת Premium בגודאורי — נארגן לך סט במהירות, בלי המתנה מיותרת. ציוד נקי ומטופל וצוות ידידותי שבאמת עוזר.",
     "footerContacts": "יצירת קשר",
     "footerPrivacyPolicy": "מדיניות פרטיות",
+    "privacyDescription": "מדיניות פרטיות עבור SKI HOUSE+ — שירות השכרת סקי ושיעורים בגודאורי",
     "footerRights": "כל הזכויות שמורות.",
     "bookingFormDates": "תאריכים",
     "bookingFormDatesDesc": "בחרו את תאריכי ההשכרה.",

@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
   if (!LANGS.includes(lang)) return {};
   const site = await getSite(lang);
   return {
-    title: `${site.brand.name} — ${site.brand.tagline}`,
-    description: `${site.brand.tagline}`
+    title: `${site.brand.name} — Gudauri`,
+    description: site.brand.tagline
   };
 }
 

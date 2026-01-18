@@ -1,6 +1,16 @@
 import type { Lang } from "@/lib/i18n";
+import type { Metadata } from "next";
 import { getSite, getPrivacy } from "@/lib/content";
+import { generateMultilingualMetadata } from "@/lib/metadata";
 import Link from "next/link";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const site = await getSite(lang);
+  const title = (site.pageTitles as any)?.metaTitlePrivacy || `${site.brand.name} — ${(site.pageTitles as any)?.footerPrivacyPolicy || "Privacy Policy"}`;
+  const description = (site.pageTitles as any)?.privacyDescription || "Privacy policy for SKI HOUSE+ ski rental and lessons service in Gudauri";
+  return generateMultilingualMetadata(lang, 'privacy', { title, description });
+}
 
 export default async function PrivacyPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;

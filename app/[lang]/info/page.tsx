@@ -1,4 +1,5 @@
 import type { Lang } from "@/lib/i18n";
+import type { Metadata } from "next";
 import { getSite, getFaq, getReviews } from "@/lib/content";
 import { Section } from "@/components/site/section";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -9,6 +10,15 @@ import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SlideIn } from "@/components/ui/slide-in";
 import { GoogleMap } from "@/components/site/google-map";
+import { generateMultilingualMetadata } from "@/lib/metadata";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const site = await getSite(lang);
+  const title = (site.pageTitles as any)?.metaTitleInfo || `${site.brand.name} — ${(site.pageTitles as any)?.navInfo || "Info"}`;
+  const description = site.pageTitles?.aboutShop || "About our ski rental shop in Gudauri";
+  return generateMultilingualMetadata(lang, 'info', { title, description });
+}
 
 export default async function InfoPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;

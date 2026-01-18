@@ -27,6 +27,12 @@
     ]
   },
   "pageTitles": {
+    "metaTitleHome": "SKI HOUSE+ — Гудаури",
+    "metaTitleInfo": "SKI HOUSE+ — Инфо",
+    "metaTitleLessons": "SKI HOUSE+ — Уроки",
+    "metaTitleRental": "SKI HOUSE+ — Цены проката",
+    "metaTitleServices": "SKI HOUSE+ — Сервис",
+    "metaTitlePrivacy": "SKI HOUSE+ — Политика конфиденциальности",
     "aboutShop": "О нас",
     "findUs": "Как нас найти",
     "quickAnswers": "Быстрые ответы",
@@ -85,6 +91,7 @@
     "footerDescription": "Премиальный прокат и уроки в Гудаури — быстро соберём комплект, выдадим без лишнего ожидания. Чистая, обслуженная экипировка и дружелюбная команда, которая реально помогает.",
     "footerContacts": "Контакты",
     "footerPrivacyPolicy": "Политика конфиденциальности",
+    "privacyDescription": "Политика конфиденциальности для SKI HOUSE+ — прокат лыж и уроки в Гудаури",
     "footerRights": "Все права защищены.",
     "bookingFormDates": "Даты",
     "bookingFormDatesDesc": "Выберите даты аренды.",

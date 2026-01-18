@@ -1,7 +1,17 @@
 import type { Lang } from "@/lib/i18n";
+import type { Metadata } from "next";
 import { getSite } from "@/lib/content";
 import { SlideIn } from "@/components/ui/slide-in";
 import { Phone } from "lucide-react";
+import { generateMultilingualMetadata } from "@/lib/metadata";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const site = await getSite(lang);
+  const title = (site.pageTitles as any)?.metaTitleLessons || `${site.brand.name} — ${(site.pageTitles as any)?.navLessons || "Lessons"}`;
+  const description = (site.pageTitles as any)?.lessonsSubtitle || "Ski and snowboard lessons in Gudauri";
+  return generateMultilingualMetadata(lang, 'lessons', { title, description });
+}
 
 export default async function LessonsPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
